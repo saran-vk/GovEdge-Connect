@@ -1,0 +1,67 @@
+# Week 1 prototype configuration (single source of truth).
+# All paths are relative to the repo root unless absolute.
+
+project_root: null            # auto-resolved to repo root if null
+
+logging:
+  level: INFO
+
+# ------------------------------------------------------------------
+# Track A: NLU, RAG & vector store
+# ------------------------------------------------------------------
+track_a:
+  corpus_dir: track_a/data/corpus          # seed markdown fact sheets (committed)
+  raw_dir: track_a/data/raw                # drop real e-Gov PDFs here
+  processed_dir: track_a/data/processed    # cleaned text + chunks (generated)
+  chroma_dir: track_a/data/chroma_db       # persistent ChromaDB workspace
+  collection_name: scheme_corpus
+
+  chunking:
+    chunk_size: 512
+    overlap: 64
+
+  embeddings:
+    backend: auto                # auto | indicbert | minilm
+    indicbert_model: ai4bharat/indic-bert
+    minilm_model: sentence-transformers/all-MiniLM-L6-v2
+    batch_size: 32
+
+  retrieval:
+    top_k: 4
+    distance: l2
+
+# ------------------------------------------------------------------
+# Track B: Speech & Language AI
+# ------------------------------------------------------------------
+track_b:
+  audio_dir: track_b/data/audio            # synthesized / dropped-in clips
+  transcript_dir: track_b/data/transcripts # ground-truth JSON per clip
+  results_dir: track_b/data/results        # WER baseline + profiler outputs
+
+  asr:
+    backend: faster-whisper
+    model_size: small                      # tiny | base | small | medium
+    device: auto                           # auto | cpu | cuda
+    compute_type: int8                     # int8 | float16 | float32
+    language: null                         # null = auto-detect per clip
+    beam_size: 5
+
+  speech:
+    languages: [en-IN, hi-IN, ta-IN]       # edge-tts voices; en always English
+    utterances_per_language: 5
+    voice_map:
+      en-IN: en-IN-NeerjaNeural
+      hi-IN: hi-IN-MadhurNeural
+      ta-IN: ta-IN-PallaviNeural
+
+  profiler:
+    tts_model: facebook/mms-tts-hin        # lightweight multilingual TTS
+    nmt_model: ai4bharat/indictrans2-en-indic-1B   # best-effort (skip on failure)
+    nmt_enabled: true
+    tts_enabled: true
+
+# ------------------------------------------------------------------
+# Interface contract (A4)
+# ------------------------------------------------------------------
+contract:
+  schema_file: config/asr_nlu_contract.json

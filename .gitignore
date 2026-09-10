@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environment
+.venv/
+
+# Generated data
+track_a/data/processed/
+track_a/data/chroma_db/
+track_a/data/raw/*.pdf
+
+# Generated audio & results (transcripts are versioned - they define the benchmark)
+track_b/data/audio/
+track_b/data/results/
+
+# Models / HF cache
+.hf_cache/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

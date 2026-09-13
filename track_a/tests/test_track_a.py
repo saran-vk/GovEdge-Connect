@@ -1,4 +1,4 @@
-"""Unit tests for chunking, taxonomy, and corpus ingestion (offline)."""
+"""Unit tests for chunking, taxonomy, corpus ingestion, and response generation (offline)."""
 from pathlib import Path
 
 import pytest
@@ -6,6 +6,7 @@ import pytest
 from shared.contract import ASROutput, NLUQuery, example_asr_output, validate_against_schema
 from track_a.chunker import chunk_corpus, chunk_document, chunk_text
 from track_a.corpus_ingest import read_markdown
+from track_a.responder import generate_response
 from track_a.taxonomy import ENTITIES, INTENTS
 
 CORPUS_DIR = Path(__file__).resolve().parents[1] / "data" / "corpus"
@@ -64,13 +65,30 @@ class TestTaxonomy:
 class TestCorpusIngest:
     def test_corpus_has_seed_sheets(self):
         sheets = list(CORPUS_DIR.glob("*.md"))
-        assert len(sheets) >= 4
+        assert len(sheets) >= 8  # 4 original + 4 expanded
 
     def test_markdown_readable(self):
         for path in CORPUS_DIR.glob("*.md"):
             text = read_markdown(path)
             assert len(text) > 200
             assert "\r" not in text
+
+
+class TestResponder:
+    def test_generates_response_with_chunks(self):
+        chunks = [{"text": "PM-KISAN gives Rs. 6000 per year to farmers.", "source": "pm_kisan.md", "distance": 0.5}]
+        response = generate_response("check_eligibility", {"scheme_name": ["pm-kisan"]}, chunks)
+        assert "PM-KISAN" in response or "pm-kisan" in response.lower()
+        assert "Rs. 6000" in response
+
+    def test_generates_response_without_chunks(self):
+        response = generate_response("general_inquiry", {}, [])
+        assert "No specific information" in response or "the requested scheme" in response
+
+    def test_fallback_to_default_template(self):
+        chunks = [{"text": "Some info.", "source": "unknown.md", "distance": 1.0}]
+        response = generate_response("unknown_intent", {}, chunks)
+        assert "Some info." in response
 
 
 class TestContract:

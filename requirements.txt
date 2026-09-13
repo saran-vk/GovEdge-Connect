@@ -18,6 +18,8 @@ edge-tts>=7.0,<8.0
 # --- Shared / validation ---
 pydantic>=2.7,<3.0
 pydantic-settings>=2.4,<3.0
+jsonschema>=4.20,<5.0
+numpy>=1.24
 
 # --- Dev / verification ---
 pytest>=8.0,<9.0

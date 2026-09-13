@@ -1,4 +1,4 @@
-"""End-to-end demo: audio clip -> ASR -> contract -> intent+entities -> RAG top-k.
+"""End-to-end demo: audio clip -> ASR -> contract -> intent+entities -> RAG top-k -> response.
 
 Usage (from repo root, inside .venv):
     python -m demo.end_to_end [clip_path] [--text "optional raw text"]
@@ -11,6 +11,7 @@ from shared.contract import NLUQuery, validate_against_schema
 from shared.logger import get_logger
 
 from track_a.intent_classifier import IntentClassifier
+from track_a.responder import generate_response
 from track_a.vector_store import VectorStore
 from track_b.asr import ASR
 
@@ -48,6 +49,16 @@ def run(clip_path: str | None = None, text: str | None = None) -> None:
     for i, hit in enumerate(hits, 1):
         print(f"          {i}. [{hit['source']}] d={hit['distance']:.4f} {hit['text'][:80]}...")
 
+    response = generate_response(
+        intent=analysis["intent"],
+        entities=analysis["entities"],
+        chunks=hits,
+        query=query_text,
+    )
+    print(f"\n[3] Response:\n")
+    for line in response.split("\n"):
+        print(f"    {line}")
+
     nlu_query = NLUQuery(
         query=query_text,
         language=(asr_out.detected_language if asr_out else "text"),
@@ -56,7 +67,7 @@ def run(clip_path: str | None = None, text: str | None = None) -> None:
         sources=[h["source"] for h in hits],
     )
     validate_against_schema(nlu_query.model_dump(), "nlu_query")
-    print(f"[3] Contract NLUQuery: intents={nlu_query.intents} sources={len(nlu_query.sources)}")
+    print(f"\n[4] Contract NLUQuery: intents={nlu_query.intents} sources={len(nlu_query.sources)}")
 
 
 def main() -> None:

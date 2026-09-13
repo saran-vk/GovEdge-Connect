@@ -9,7 +9,7 @@ __pycache__/
 # Virtual environment
 .venv/
 
-# Generated data
+# Generated data (keep committed: track_a/data/corpus/, track_b/data/transcripts/)
 track_a/data/processed/
 track_a/data/chroma_db/
 track_a/data/raw/*.pdf

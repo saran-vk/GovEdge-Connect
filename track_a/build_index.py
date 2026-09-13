@@ -21,7 +21,7 @@ log = get_logger(__name__)
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build the ChromaDB index from the corpus")
     parser.add_argument("--skip-pdfs", action="store_true", help="only use the seed markdown corpus")
-    parser.add_argument("--backend", choices=["auto", "indicbert", "minilm"], default=None,
+    parser.add_argument("--backend", choices=["auto", "bge_m3", "minilm"], default=None,
                         help="override embedding backend")
     args = parser.parse_args()
 

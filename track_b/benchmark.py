@@ -76,7 +76,8 @@ def run_benchmark(asr: ASR | None = None,
         if gt is None:
             log.warning("no transcript for %s - skipping", clip_id)
             continue
-        pred = asr.transcribe(wav)
+        initial_prompt = cfg["asr"].get("initial_prompt")
+        pred = asr.transcribe(wav, initial_prompt=initial_prompt)
         ref, hyp = gt["text"], pred.transcript
         w = _wer(ref, hyp) if (ref and hyp) else 1.0
         c = _cer(ref, hyp) if (ref and hyp) else 1.0

@@ -21,8 +21,8 @@ track_a:
     overlap: 64
 
   embeddings:
-    backend: auto                # auto | indicbert | minilm
-    indicbert_model: ai4bharat/indic-bert
+    backend: auto                # auto | bge_m3 | minilm
+    bge_m3_model: BAAI/bge-m3   # open multilingual (100+ languages, no auth needed)
     minilm_model: sentence-transformers/all-MiniLM-L6-v2
     batch_size: 32
 
@@ -40,11 +40,12 @@ track_b:
 
   asr:
     backend: faster-whisper
-    model_size: small                      # tiny | base | small | medium
+    model_size: medium                     # tiny | base | small | medium | large-v3
     device: auto                           # auto | cpu | cuda
     compute_type: int8                     # int8 | float16 | float32
     language: null                         # null = auto-detect per clip
     beam_size: 5
+    initial_prompt: "PM Kisan, Ayushman Bharat, PM Awas Yojana, PMAY, Kalaignar, welfare scheme, eligibility, documents, application status"
 
   speech:
     languages: [en-IN, hi-IN, ta-IN]       # edge-tts voices; en always English

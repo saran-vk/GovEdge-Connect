@@ -58,4 +58,8 @@ SCHEME_KEYWORDS: dict[str, list[str]] = {
     "pm-kisan": ["pm-kisan", "pm kisan", "pradhan mantri kisan", "kisan samman"],
     "ayushman-bharat": ["ayushman", "pmjay", "health insurance", "medical cover"],
     "pmay": ["pmay", "pm awas", "awas yojana", "rural housing", "housing"],
+    "mgnrega": ["mgnrega", "mnrega", "employment guarantee", "job card", "narega", "रोजगार"],
+    "ujjwala": ["ujjwala", "lpg", "cooking gas", "gas connection", "उज्ज्वला"],
+    "jan-dhan": ["jan dhan", "pmjdy", "bank account", "zero balance", "jan धन"],
+    "sukanya-samriddhi": ["sukanya", "samriddhi", "girl child", "beti bachao", "सुकन्या"],
 }

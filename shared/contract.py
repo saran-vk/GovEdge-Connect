@@ -63,43 +63,17 @@ def load_contract_schema() -> dict:
 
 
 def validate_against_schema(instance: dict, schema_kind: str = "asr_output") -> None:
-    """Best-effort structural check of a payload against the contract schema.
+    """Validate a payload against the contract JSON schema using jsonschema."""
+    from jsonschema import ValidationError, validate  # noqa: PLC0415
 
-    Uses only the standard library (jsonschema semantics hand-rolled for the
-    small subset used in the contract) to avoid a hard dependency.
-    """
     schema = load_contract_schema().get(schema_kind)
     if schema is None:
         raise ValueError(f"unknown contract kind: {schema_kind}")
 
-    required = schema.get("required", [])
-    missing = [k for k in required if k not in instance]
-    if missing:
-        raise ValueError(f"missing required fields: {missing}")
-
-    for key, spec in schema.get("properties", {}).items():
-        if key not in instance:
-            continue
-        val = instance[key]
-        ptype = spec.get("type")
-        if ptype == "string" and not isinstance(val, str):
-            raise ValueError(f"{key}: expected string, got {type(val).__name__}")
-        if ptype == "number" and not isinstance(val, (int, float)):
-            raise ValueError(f"{key}: expected number, got {type(val).__name__}")
-        if ptype == "array" and not isinstance(val, list):
-            raise ValueError(f"{key}: expected array, got {type(val).__name__}")
-        if ptype == "object" and not isinstance(val, dict):
-            raise ValueError(f"{key}: expected object, got {type(val).__name__}")
-        if ptype == "number" and isinstance(val, (int, float)):
-            lo = spec.get("minimum")
-            hi = spec.get("maximum")
-            if lo is not None and val < lo:
-                raise ValueError(f"{key}: below minimum {lo}")
-            if hi is not None and val > hi:
-                raise ValueError(f"{key}: above maximum {hi}")
-        if ptype == "string" and isinstance(val, str):
-            if spec.get("pattern") and not re.search(spec["pattern"], val):
-                raise ValueError(f"{key}: fails pattern {spec['pattern']}")
+    try:
+        validate(instance=instance, schema=schema)
+    except ValidationError as exc:
+        raise ValueError(f"contract validation failed: {exc.message}") from exc
 
 
 def example_asr_output() -> ASROutput:

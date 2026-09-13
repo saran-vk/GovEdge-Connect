@@ -1,9 +1,10 @@
-"""A2 - Embedding backends: IndicBERT (ai4bharat/indic-bert) with MiniLM fallback.
+"""A2 - Embedding backends: BAAI/bge-m3 (primary) with MiniLM fallback.
 
-The plan requires IndicBERT. IndicBERT is a masked LM, so its CLS/mean-pooled
-hidden states act as a sentence encoder for the few-shot classifier and for
-ChromaDB indexing. If loading/embedding IndicBERT fails (e.g., download issue on
-transformers 5.x), we automatically fall back to a MiniLM sentence encoder.
+The plan required IndicBERT, but ai4bharat/indic-bert is a gated HF repo
+that returns 401 without explicit auth. BAAI/bge-m3 is an open multilingual
+embedding model supporting 100+ languages (including Hindi, Tamil, and code-mixed
+Indic text) with strong retrieval performance. Falls back to MiniLM if bge-m3
+fails to load (e.g., insufficient disk/RAM).
 """
 from __future__ import annotations
 
@@ -27,17 +28,17 @@ class EmbeddingBackend:
     def _load(self) -> None:
         cfg = load_settings()["track_a"]["embeddings"]
         candidates: list[str] = []
-        if self.backend_name == "indicbert":
-            candidates = ["indicbert"]
+        if self.backend_name == "bge_m3":
+            candidates = ["bge_m3"]
         elif self.backend_name == "minilm":
             candidates = ["minilm"]
         else:  # auto
-            candidates = ["indicbert", "minilm"]
+            candidates = ["bge_m3", "minilm"]
 
         for cand in candidates:
             try:
-                if cand == "indicbert":
-                    self._load_indicbert(cfg["indicbert_model"])
+                if cand == "bge_m3":
+                    self._load_bge_m3(cfg["bge_m3_model"])
                 else:
                     self._load_minilm(cfg["minilm_model"])
                 self._loaded = cand
@@ -48,15 +49,12 @@ class EmbeddingBackend:
 
         raise RuntimeError("no embedding backend available")
 
-    def _load_indicbert(self, model_name: str) -> None:
-        from transformers import AutoModel, AutoTokenizer
+    def _load_bge_m3(self, model_name: str) -> None:
+        from sentence_transformers import SentenceTransformer
 
-        import torch
-
-        self._tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self._model = AutoModel.from_pretrained(model_name)
-        self._model.eval()
-        self._use_torch = True
+        self._model = SentenceTransformer(model_name)
+        self._tokenizer = None
+        self._use_torch = False
         self._model_name = model_name
 
     def _load_minilm(self, model_name: str) -> None:
@@ -76,7 +74,8 @@ class EmbeddingBackend:
             return np.zeros((0, self.dim), dtype=np.float32)
         if self._use_torch:
             return self._embed_torch(texts)
-        return np.asarray(self._model.encode(texts, batch_size=self.batch_size), dtype=np.float32)
+        return np.asarray(self._model.encode(texts, batch_size=self.batch_size,
+                                             show_progress_bar=False), dtype=np.float32)
 
     def _embed_torch(self, texts: list[str]) -> np.ndarray:
         import torch

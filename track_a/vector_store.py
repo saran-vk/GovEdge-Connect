@@ -72,6 +72,10 @@ class VectorStore:
         vec = self.embeddings.embed([text])[0].tolist()
         res = self.collection.query(query_embeddings=[vec], n_results=k)
         hits = []
+        docs = res.get("documents")
+        if not docs or not docs[0]:
+            log.warning("no results returned from ChromaDB for query: %s", text[:60])
+            return hits
         for i, doc in enumerate(res["documents"][0]):
             hits.append(
                 {

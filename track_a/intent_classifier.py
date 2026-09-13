@@ -23,6 +23,10 @@ from track_a.taxonomy import ENTITIES, ENTITY_PATTERNS, INTENTS, SCHEME_KEYWORDS
 
 log = get_logger(__name__)
 
+# Minimum cosine similarity to accept an intent classification.
+# Below this threshold, the query is classified as "general_inquiry" as a safe fallback.
+CONFIDENCE_THRESHOLD = 0.4
+
 EXEMPLARS: dict[str, list[str]] = {
     "check_eligibility": [
         "am I eligible for PM Kisan",
@@ -90,6 +94,10 @@ class IntentClassifier:
         for intent, centroid in self._centroids.items():
             scores[intent] = float(np.dot(qnorm, centroid))
         best = max(scores, key=scores.get)
+        if scores[best] < CONFIDENCE_THRESHOLD:
+            log.info("low confidence (%.3f < %.3f) for query: %s — defaulting to general_inquiry",
+                     scores[best], CONFIDENCE_THRESHOLD, query[:60])
+            return "general_inquiry", scores
         return best, scores
 
     def extract_entities(self, query: str) -> dict[str, list[str]]:

@@ -15,8 +15,6 @@ from shared.logger import get_logger
 
 log = get_logger(__name__)
 
-TRACK_A = ["check_eligibility", "scheme_benefits", "required_documents", "application_status", "general_inquiry"]
-
 
 def _load_json(path: Path) -> dict:
     if not path.exists():
@@ -150,10 +148,10 @@ def _render(wer: dict, profiler: dict, nlu: dict) -> str:
     if nlu.get("status") == "ok":
         corpus_dir = resolve(load_settings()["track_a"]["corpus_dir"])
         n_sheets = len(list(corpus_dir.glob("*.md")))
+        chunk_cfg = load_settings()["track_a"]["chunking"]
         add(f"- {n_sheets} seed fact sheets indexed as {nlu['index_stats']['count']} chunks "
-            f"(chunk 512 / overlap 64).")
-        add(f"- Embedding backend used: **{nlu['backend']}** "
-            "(IndicBERT is gated on HuggingFace; see section 6).")
+            f"(chunk {chunk_cfg['chunk_size']} / overlap {chunk_cfg['overlap']}).")
+        add(f"- Embedding backend used: **{nlu['backend']}**.")
         add("- Retrieval conclusions are only valid within this seeded corpus; "
             "real e-Gov PDF ingestion (A1) must scale for production claims.")
     else:
@@ -170,7 +168,7 @@ def _render(wer: dict, profiler: dict, nlu: dict) -> str:
             add(f"| {r['query']} | {r['intent']} | {r['entities']} | {r['sources']} | "
                 f"{'OK' if r['contract_ok'] else 'FAIL'} |")
         add("")
-        add("- Classifier is nearest-centroid over IndicBERT/MiniLM embeddings, not a "
+        add("- Classifier is nearest-centroid over multilingual embeddings, not a "
             "trained head. Good enough to validate the taxonomy; needs a labelled "
             "fine-tuning set for production.")
     else:
@@ -204,12 +202,11 @@ def _render(wer: dict, profiler: dict, nlu: dict) -> str:
     add("")
     add("1. **ASR is the bottleneck.** The language with the highest WER determines "
         "end-to-end quality; invest in Indic ASR fine-tuning data before RAG tuning.")
-    add("2. **IndicBERT is gated.** `ai4bharat/indic-bert` returned 401 without auth - "
-        "the MiniLM fallback kept the pipeline green. Decide: request HF access for "
-        "IndicBERT, or standardise on a multilingual sentence encoder "
-        "(e.g. multilingual-e5) as the Week-2 baseline.")
-    add("3. **Corpus is the other bottleneck.** 4 seed sheets prove the pipeline; "
-        "official e-Gov PDFs must be ingested (A1) and indexed for any real claim.")
+    add("2. **Embeddings standardised on BAAI/bge-m3.** Open multilingual model "
+        "replacing the gated IndicBERT; MiniLM fallback preserved for constrained environments.")
+    add("3. **Corpus expanded to 8 seed sheets.** PM-KISAN, Ayushman Bharat, PMAY, "
+        "TN welfare, MGNREGA, Ujjwala, Jan Dhan, Sukanya Samriddhi. "
+        "Official e-Gov PDFs must still be ingested (A1) for production claims.")
     add("4. **Taxonomy validated.** All five intents and six entity types worked on the "
         "probe set; convert exemplars into a labelled fine-tuning set for a trained head.")
     add("5. **Interface contract is the frozen seam** between Track B and Track A - keep "

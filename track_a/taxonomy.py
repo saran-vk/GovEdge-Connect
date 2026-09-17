@@ -48,14 +48,17 @@ ENTITIES: dict[str, str] = {
 
 # regexes for rule-based entity extraction (English + transliterated Hindi/Tamil)
 ENTITY_PATTERNS: dict[str, str] = {
-    "age": r"\b(?:age|aged|years? old|साल|வயது)\s*:?\s*(\d{2})\b|(\d{2})\s*(?:years?|saal|varusham)\b",
-    "income_level": r"\b(?:income|annual income)\s*:?\s*₹?\s?(\d[\d,]*)\b|(\d[\d,]*)\s*(?:rs|rupees)\b",
-    "caste_category": r"\b(SC|ST|OBC|EWS|General|scheduled caste|scheduled tribe|अनुसूचित|बीसी|எஸ்சி|ஓபிசி)\b",
-    "scheme_name": r"\b(PM-KISAN|PM Kisan|Pradhan Mantri Kisan|Ayushman Bharat|PM Awas|PMAY|PMJAY|rural housing)\b",
+    "age": r"\b(?:age|aged|years? old|साल|वर्ष|வயது)\s*:?\s*(\d{2})\b|(\d{2})\s*(?:years?|saal|varsh|varusham)\b",
+    "income_level": r"\b(?:income|annual income|monthly income)\s*:?\s*[₹]?\s?(\d[\d,]*(?:\.\d+)?)\b|(\d[\d,]*(?:\.\d+)?)\s*(?:rs|rupees|lakh|rupees per year)\b",
+    "caste_category": r"\b(SC|ST|OBC|EWS|General|scheduled caste|scheduled tribe|अनुसूचित|बीसी|अन्य पिछड़ा|எஸ்சி|ஓபிசி|பொது)\b",
+    "scheme_name": r"\b(PM-KISAN|PM Kisan|Pradhan Mantri Kisan|Ayushman Bharat|PM Awas|PMAY|PMJAY|rural housing|PM Awaas|महिला सहायता|மகளிர் உரிமை)\b",
+    "occupation": r"\b(farmer|labourer?|laborer|weaver|pensioner|retired|mason|construction worker|driver|fisherman|artisan|handloom|self[- ]employed|किसान|मज़दूर|बुनकर|सेवानिवृत्त|ரைத்|விவசாயி|தொழிலாளி|நெசவாளர்)\b",
+    "district_state": r"\b(Tamil Nadu|Kerala|Karnataka|Telangana|Andhra Pradesh|Maharashtra|Uttar Pradesh|Bihar|Madhya Pradesh|Punjab|Haryana|Gujarat|Rajasthan|Odisha|West Bengal|Assam|Jharkhand|Chhattisgarh|Delhi|Himachal Pradesh|Jammu|Kashmir|तमिलनाडु|केरल|उत्तर प्रदेश|बिहार|தமிழ்நாடு|கேரளா)\b|district[s:]?\s+([A-Za-z]+(?:\s+[A-Za-z]+)?)",
 }
 
 SCHEME_KEYWORDS: dict[str, list[str]] = {
-    "pm-kisan": ["pm-kisan", "pm kisan", "pradhan mantri kisan", "kisan samman"],
-    "ayushman-bharat": ["ayushman", "pmjay", "health insurance", "medical cover"],
-    "pmay": ["pmay", "pm awas", "awas yojana", "rural housing", "housing"],
+    "pm-kisan": ["pm-kisan", "pm kisan", "pradhan mantri kisan", "kisan samman", "கிசான்", "किसान"],
+    "ayushman-bharat": ["ayushman", "pmjay", "health insurance", "medical cover", "ஆயுஷ்மான்", "आयुष्मान"],
+    "pmay": ["pmay", "pm awas", "awas yojana", "rural housing", "housing", "ஆவாஸ்", "आवास"],
+    "magalir-urimai": ["magalir urimai", "women assistance", "மகளிர் உரிமை", "महिला सहायता", "kalaignar", "கலைஞர்"],
 }

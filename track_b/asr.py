@@ -38,11 +38,15 @@ class ASR:
     def transcribe(self, audio_path: str | Path, language: str | None = None,
                    beam_size: int | None = None) -> ASROutput:
         cfg = load_settings()["track_b"]["asr"]
+        vad_params = cfg.get("vad_parameters") or {}
         segments, info = self._model.transcribe(
             str(audio_path),
             language=language or cfg["language"],
             beam_size=beam_size or cfg["beam_size"],
             vad_filter=True,  # trims silence; reduces end-of-utterance hallucinations
+            vad_parameters=vad_params,
+            initial_prompt=cfg.get("initial_prompt") or None,
+            condition_on_previous_text=cfg.get("condition_on_previous_text", False),
         )
         seg_list = list(segments)
         text = " ".join(seg.text.strip() for seg in seg_list).strip()

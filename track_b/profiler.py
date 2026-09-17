@@ -19,6 +19,8 @@ from shared.logger import get_logger
 log = get_logger(__name__)
 
 _SAMPLE_EN = "PM Kisan gives six thousand rupees every year to eligible farmers."
+# NLLB uses its own flores200 language codes for src/tgt (eng_Latn -> hin_Deva).
+_NLLB_LANGS = {"src_lang": "eng_Latn", "tgt_lang": "hin_Deva"}
 # (model, text) - each mms-tts variant is language-specific.
 _TTS_SAMPLES = [
     ("facebook/mms-tts-hin", "नमस्ते, आप कैसे हैं?"),
@@ -69,18 +71,28 @@ def profile_tts(samples: list[tuple[str, str]]) -> dict:
     }
 
 
-def profile_nmt(model_name: str) -> dict:
+def profile_nmt(model_name: str,
+                nllb_langs: dict[str, str] | None = None) -> dict:
     try:
         from transformers import AutoModelForSeq2SeqLM, AutoTokenizer  # noqa: PLC0415
+        from shared.hf_auth import hf_token, login_hf  # noqa: PLC0415
 
+        login_hf()
+        token = {"token": hf_token()} if hf_token() else {}
         start = time.time()
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        model = AutoModelForSeq2SeqLM.from_pretrained(model_name, **token)
+        tokenizer = AutoTokenizer.from_pretrained(model_name, **token)
         load_ms = _measure_ms(start)
+
+        gen_kwargs: dict = {"max_new_tokens": 64}
+        if nllb_langs:  # NLLB needs forced target language tokens
+            tokenizer.src_lang = nllb_langs["src_lang"]
+            gen_kwargs["forced_bos_token_id"] = tokenizer.convert_tokens_to_ids(
+                nllb_langs["tgt_lang"])
 
         inp = tokenizer([_SAMPLE_EN], return_tensors="pt", truncation=True)
         start = time.time()
-        out = model.generate(**inp, max_new_tokens=64)
+        out = model.generate(**inp, **gen_kwargs)
         infer_ms = _measure_ms(start)
         decoded = tokenizer.batch_decode(out, skip_special_tokens=True)
         return {
@@ -94,6 +106,8 @@ def profile_nmt(model_name: str) -> dict:
     except Exception as exc:  # graceful skip
         log.warning("NMT model %s skipped: %s", model_name, exc)
         return {"model": model_name, "status": "skipped", "reason": f"{type(exc).__name__}: {str(exc)[:200]}"}
+    finally:
+        pass
 
 
 def run_profiler() -> dict:
@@ -111,7 +125,12 @@ def run_profiler() -> dict:
             report["tts"] = {"model": cfg["tts_model"], "status": "skipped", "reason": str(exc)[:200]}
 
     if cfg["nmt_enabled"]:
-        report["nmt"] = profile_nmt(cfg["nmt_model"])
+        for cand in (cfg["nmt_model"], "facebook/nllb-200-distilled-600M",
+                     "Helsinki-NLP/opus-mt-hi-en"):  # fallback chain for gated/unavailable
+            res = profile_nmt(cand, _NLLB_LANGS if "nllb" in cand else None)
+            report["nmt"] = res
+            if res["status"] == "ok":
+                break
 
     (results_dir / "profiler.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     (results_dir / "week1_profiler.md").write_text(_render_md(report), encoding="utf-8")

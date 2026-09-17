@@ -15,7 +15,7 @@ class _StubASR:
     def __init__(self, txn_dir: str | Path | None = None):
         self._txn_dir = Path(txn_dir) if txn_dir else Path("track_b/data/transcripts")
 
-    def transcribe(self, wav_path: str | Path) -> ASROutput:
+    def transcribe(self, wav_path: str | Path, language: str | None = None) -> ASROutput:
         clip_id = Path(wav_path).stem
         txn = self._txn_dir / f"{clip_id}.json"
         gt = json.loads(txn.read_text(encoding="utf-8"))["text"]

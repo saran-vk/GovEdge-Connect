@@ -1,8 +1,9 @@
-# Week 1 one-shot runner: build index -> synth audio -> WER baseline ->
-# NMT/TTS profiler -> end-to-end demo -> conclusions report.
+# Week 1 one-shot runner: fetch corpus -> build index -> synth audio ->
+# WER baseline -> NMT/TTS profiler -> end-to-end demo -> conclusions report.
 #
 # Usage (from repo root):
 #   powershell -ExecutionPolicy Bypass -File scripts/run_all.ps1 [-SkipDemo] [-SkipPdf]
+# Optional: set $env:HF_TOKEN before running to unlock gated ai4bharat models.
 # All model caches are kept inside the project (.hf_cache) - no global changes.
 
 param(
@@ -28,30 +29,34 @@ function Step($msg) { Write-Host "`n=== $msg ===" -ForegroundColor Cyan }
 
 Push-Location $Root
 try {
-    Step "1/5 Track A - build ChromaDB index"
+    Step "0/6 Track A - fetch official e-Gov PDFs"
+    & $Py -m scripts.fetch_corpus --fetch
+    if ($LASTEXITCODE -ne 0) { Write-Host "fetch_corpus skipped (offline?)" }
+
+    Step "1/6 Track A - build ChromaDB index"
     $pdfArg = @()
     if ($SkipPdf) { $pdfArg = @("--skip-pdfs") }
     & $Py -m track_a.build_index @pdfArg
     if ($LASTEXITCODE -ne 0) { throw "build_index failed" }
 
-    Step "2/5 Track B - synthesize en/hi/ta speech corpus (edge-tts)"
+    Step "2/6 Track B - synthesize en/hi/ta speech corpus (edge-tts)"
     & $Py -m track_b.synth_audio
     if ($LASTEXITCODE -ne 0) { throw "synth_audio failed" }
 
-    Step "3/5 Track B - WER/CER baseline benchmark (faster-whisper)"
+    Step "3/6 Track B - WER/CER baseline benchmark (faster-whisper)"
     & $Py -m track_b.benchmark
     if ($LASTEXITCODE -ne 0) { throw "benchmark failed" }
 
-    Step "4/5 Track B - NMT/TTS latency profiler"
+    Step "4/6 Track B - NMT/TTS latency profiler"
     & $Py -m track_b.profiler
 
     if (-not $SkipDemo) {
-        Step "5/5 End-to-end demo"
+        Step "5/6 End-to-end demo"
         & $Py -m demo.end_to_end --text "Am I eligible for PM Kisan and which documents are required?"
         if ($LASTEXITCODE -ne 0) { throw "demo failed" }
     }
 
-    Step "Generate week-1 conclusions"
+    Step "6/6 Generate week-1 conclusions"
     & $Py -m scripts.generate_week1_conclusions
     if ($LASTEXITCODE -ne 0) { throw "conclusions generation failed" }
 

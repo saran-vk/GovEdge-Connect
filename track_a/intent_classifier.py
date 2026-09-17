@@ -5,7 +5,7 @@ Intent classification is a nearest-centroid classifier over embedding space:
   * centroid = mean embedding of exemplars
   * query -> nearest centroid by cosine similarity
 This is intentionally a prototype: it proves the taxonomy pipeline without a
-labelled fine-tuning set. A future Week-2 task swaps in a trained head.
+labelled fine-tuning set. A trained head is a planned follow-up.
 
 Entity extraction is rule-based (regex/keywords) covering the six annotated
 entity types, including basic transliterated Hindi/Tamil matches.
@@ -13,9 +13,11 @@ entity types, including basic transliterated Hindi/Tamil matches.
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 import numpy as np
 
+from shared.config import load_settings, resolve
 from shared.logger import get_logger
 
 from track_a.embeddings import EmbeddingBackend
@@ -32,6 +34,9 @@ EXEMPLARS: dict[str, list[str]] = {
         "can a farmer above 60 get the benefit",
         "kya main pm kisan ke liye patra hun",
         "எனக்கு pm kisan தகுதி உண்டா",
+        "is my family eligible for Ayushman Bharat",
+        "main patra hun ya nahi",
+        "என்னுடைய குடும்பம் தகுதியா",
     ],
     "scheme_benefits": [
         "how much money does PM Kisan give",
@@ -40,6 +45,9 @@ EXEMPLARS: dict[str, list[str]] = {
         "what assistance does the housing scheme provide",
         "kitna paisa milega",
         "இதில் என்ன பலன் கிடைக்கும்",
+        "how much monthly amount does the women scheme give",
+        "kya mujhe 6000 rupaye milenge",
+        "இதில் எவ்வளவு பணம் கிடைக்கும்",
     ],
     "required_documents": [
         "which documents are required for PM Kisan",
@@ -48,6 +56,9 @@ EXEMPLARS: dict[str, list[str]] = {
         "do I need Aadhaar and a land certificate",
         "kya documents chahiye",
         "என்ன ஆவணங்கள் தேவை",
+        "what papers are needed for the housing scheme",
+        "do I need a ration card for the women scheme",
+        "kis documents ki zaroorat hai",
     ],
     "application_status": [
         "how do I check my PM Kisan status",
@@ -56,6 +67,9 @@ EXEMPLARS: dict[str, list[str]] = {
         "where to check the status online",
         "mera aavedan kahan hai",
         "என் விண்ணப்ப நிலை என்ன",
+        "check my PMJAY card status",
+        "how long does approval take",
+        "status kya hai mera",
     ],
     "general_inquiry": [
         "what is PM Kisan scheme",
@@ -64,14 +78,25 @@ EXEMPLARS: dict[str, list[str]] = {
         "how can I get more information",
         "is scheme ke baare me batao",
         "இந்த திட்டம் பற்றி சொல்லுங்கள்",
+        "what is the women assistance scheme about",
+        "helpline number for PM Kisan",
     ],
 }
 
 
 class IntentClassifier:
+    # Similarity threshold below which intent is reported as "unknown".
+    SIM_THRESHOLD = 0.30
+
     def __init__(self, embedding_backend: EmbeddingBackend | None = None):
         self.embeddings = embedding_backend or EmbeddingBackend()
         self._centroids: dict[str, np.ndarray] | None = None
+
+    def _centroid_cache_path(self) -> Path | None:
+        cfg = load_settings()["track_a"]
+        cache_dir = resolve(cfg["processed_dir"])
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        return cache_dir / "intent_centroids.npz"
 
     def _build_centroids(self) -> None:
         centroids: dict[str, np.ndarray] = {}
@@ -81,15 +106,37 @@ class IntentClassifier:
             centroids[intent] /= np.linalg.norm(centroids[intent])
         self._centroids = centroids
 
+    def fit(self, force: bool = False) -> None:
+        """Compute (and optionally cache) centroids once per embedding backend."""
+        cache = self._centroid_cache_path()
+        if not force and cache.exists():
+            try:
+                data = np.load(cache)
+                if set(data.files) == set(EXEMPLARS):
+                    self._centroids = {k: data[k] for k in EXEMPLARS}
+                    log.info("loaded intent centroids from %s", cache.name)
+                    return
+            except Exception as exc:  # noqa: BLE001 - cache corruption is non-fatal
+                log.warning("centroid cache unusable (%s); rebuilding", exc)
+
+        self._build_centroids()
+        try:
+            np.savez(cache, **self._centroids)
+            log.info("cached intent centroids -> %s", cache.name)
+        except Exception as exc:  # noqa: BLE001 - caching is best-effort
+            log.warning("could not cache centroids: %s", exc)
+
     def classify(self, query: str) -> tuple[str, dict[str, float]]:
         if self._centroids is None:
-            self._build_centroids()
+            self.fit()
         qvec = self.embeddings.embed([query])[0]
         qnorm = qvec / (np.linalg.norm(qvec) + 1e-9)
         scores: dict[str, float] = {}
         for intent, centroid in self._centroids.items():
             scores[intent] = float(np.dot(qnorm, centroid))
         best = max(scores, key=scores.get)
+        if scores[best] < self.SIM_THRESHOLD:
+            return "general_inquiry", scores  # low-confidence -> default intent
         return best, scores
 
     def extract_entities(self, query: str) -> dict[str, list[str]]:

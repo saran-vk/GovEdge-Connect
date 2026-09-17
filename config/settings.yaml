@@ -23,12 +23,14 @@ track_a:
   embeddings:
     backend: auto                # auto | indicbert | minilm
     indicbert_model: ai4bharat/indic-bert
-    minilm_model: sentence-transformers/all-MiniLM-L6-v2
+    # Open multilingual fallback (multi-lingual sentence encoder - handles
+    # hi/ta far better than the English-only MiniLM). Used when IndicBERT is gated.
+    minilm_model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
     batch_size: 32
 
   retrieval:
     top_k: 4
-    distance: l2
+    distance: cosine                 # cosine is the right metric for sentence-transformers
 
 # ------------------------------------------------------------------
 # Track B: Speech & Language AI
@@ -40,11 +42,18 @@ track_b:
 
   asr:
     backend: faster-whisper
-    model_size: small                      # tiny | base | small | medium
-    device: auto                           # auto | cpu | cuda
-    compute_type: int8                     # int8 | float16 | float32
+    model_size: large-v3                   # tiny | base | small | medium | large-v2 | large-v3 | turbo
+    device: cpu                            # auto | cpu | cuda (CUDA needs cublas-12 compat)
+    compute_type: int8                     # int8 on CPU | float16 on CUDA
     language: null                         # null = auto-detect per clip
     beam_size: 5
+    # Anchors short/end-of-utterance clip decoding with scheme vocabulary to
+    # reduce Whisper hallucinations; empty string disables the prompt.
+    initial_prompt: "PM Kisan, PM-KISAN, Ayushman Bharat, PM Awas Yojana, PMAY, PMJAY, ration card, Aadhaar, scheme, पीएम किसान, आयुष्मान भारत, प्रधानमंत्री आवास योजना, योजना, திட்டம், கிசான், ஆயுஷ்மான் பாரத், கலைஞர்"
+    # Disable cross-segment conditioning (keeps short clips from repeating text).
+    condition_on_previous_text: false
+    vad_parameters:
+      min_silence_duration_ms: 300
 
   speech:
     languages: [en-IN, hi-IN, ta-IN]       # edge-tts voices; en always English

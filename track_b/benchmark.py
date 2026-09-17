@@ -11,6 +11,7 @@ Per-language and overall WER/CER are written for the conclusions generator.
 from __future__ import annotations
 
 import json
+import unicodedata
 from collections import defaultdict
 from pathlib import Path
 
@@ -23,10 +24,23 @@ from track_b.asr import ASR
 
 log = get_logger(__name__)
 
+
+class NFKC(tr.AbstractTransform):
+    """Unicode NFKC normalization - folds Indic orthographic variants
+    (devanagari/tamil conjuncts, zero-width joiner/non-joiner) so WER/CER are
+    not inflated by representation, not content."""
+
+    def process_string(self, s: str) -> str:
+        return unicodedata.normalize("NFKC", s)
+
+    def process_list(self, inp: list[str]) -> list[str]:
+        return [self.process_string(s) for s in inp]
+
+
 # jiwer 3.x does not normalize by default - apply explicit fair transforms so
 # case/punctuation do not inflate WER/CER. Pipelines must end with a
 # ReduceToListOfListOf* transform (see jiwer.Compose docs).
-_NORMALIZE = [tr.RemoveMultipleSpaces(), tr.Strip(), tr.RemovePunctuation(),
+_NORMALIZE = [NFKC(), tr.RemoveMultipleSpaces(), tr.Strip(), tr.RemovePunctuation(),
               tr.ToLowerCase(), tr.ExpandCommonEnglishContractions()]
 _WORD_STANDARD = tr.Compose([*_NORMALIZE, tr.ReduceToListOfListOfWords()])
 _CHAR_STANDARD = tr.Compose([*_NORMALIZE, tr.ReduceToListOfListOfChars()])
@@ -76,7 +90,9 @@ def run_benchmark(asr: ASR | None = None,
         if gt is None:
             log.warning("no transcript for %s - skipping", clip_id)
             continue
-        pred = asr.transcribe(wav)
+        # Pin the language from ground truth (kills auto-detect misfires on
+        # short clips, which previously inflated WER and 'hallucinated' flags).
+        pred = asr.transcribe(wav, language=gt["language"][:2].lower())
         ref, hyp = gt["text"], pred.transcript
         w = _wer(ref, hyp) if (ref and hyp) else 1.0
         c = _cer(ref, hyp) if (ref and hyp) else 1.0

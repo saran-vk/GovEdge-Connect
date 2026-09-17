@@ -1,15 +1,16 @@
 """A2 - Embedding backends: IndicBERT (ai4bharat/indic-bert) with MiniLM fallback.
 
-The plan requires IndicBERT. IndicBERT is a masked LM, so its CLS/mean-pooled
-hidden states act as a sentence encoder for the few-shot classifier and for
-ChromaDB indexing. If loading/embedding IndicBERT fails (e.g., download issue on
-transformers 5.x), we automatically fall back to a MiniLM sentence encoder.
+The plan requires IndicBERT. Gated access is authorized by HF_TOKEN (see
+shared.hf_auth). If loading/embedding IndicBERT fails (no token / 401 /
+download issue on transformers 5.x), we automatically fall back to an open
+multilingual sentence encoder.
 """
 from __future__ import annotations
 
 import numpy as np
 
 from shared.config import load_settings
+from shared.hf_auth import hf_token, login_hf
 from shared.logger import get_logger
 
 log = get_logger(__name__)
@@ -22,6 +23,7 @@ class EmbeddingBackend:
         self.batch_size = batch_size or cfg["batch_size"]
         self._model = None
         self._loaded: str | None = None
+        login_hf()
         self._load()
 
     def _load(self) -> None:
@@ -53,8 +55,9 @@ class EmbeddingBackend:
 
         import torch
 
-        self._tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self._model = AutoModel.from_pretrained(model_name)
+        token = {"token": hf_token()} if hf_token() else {}
+        self._tokenizer = AutoTokenizer.from_pretrained(model_name, **token)
+        self._model = AutoModel.from_pretrained(model_name, **token)
         self._model.eval()
         self._use_torch = True
         self._model_name = model_name

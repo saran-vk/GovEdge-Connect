@@ -1,26 +1,34 @@
-# S5 Mini Project — Multilingual Speech-to-Welfare Assistant (Week 1)
+# S5 Mini Project — Multilingual Speech-to-Welfare Assistant
 
-Voice + text assistant for e-Governance welfare schemes. **Week 1** builds two
-parallel prototype tracks plus a shared interface contract.
+Voice + text assistant for e-Governance welfare schemes. Two parallel prototype
+tracks plus a shared interface contract.
 
 - **Track A (NLU, RAG & edge)** — lead: Saran V (7376242AD294)
 - **Track B (Speech & language AI)** — lead: Sanjay Rathinam M N (7376242AD288)
 
-## Quick start (Windows / PowerShell)
+## Quick start
 
-```powershell
-# 1. one-time: create .venv and install deps (inside the project only)
-powershell -ExecutionPolicy Bypass -File scripts/setup_venv.ps1
+```bash
+# 1. one-time: create .venv and install deps
+#   PowerShell:  powershell -ExecutionPolicy Bypass -File scripts/setup_venv.ps1
+#   bash/zsh:    python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
 
-# 2. one-shot week-1 run: index -> audio -> WER baseline -> profiler -> demo -> conclusions
+# 2. export your HuggingFace token (gated-model access, optional but recommended)
+export HF_TOKEN=hf_...               # Linux / macOS
+# $env:HF_TOKEN = "hf_..."           # PowerShell
+
+# 3. fetch official e-Gov PDFs into the corpus
+python -m scripts.fetch_corpus --fetch
+
+# 4. one-shot full run
+python -m track_a.build_index        # corpus -> chunks -> ChromaDB (797+ chunks)
+python -m track_b.synth_audio        # edge-tts en/hi/ta clips
+python -m track_b.benchmark          # WER/CER baseline (large-v3, CPU int8)
+python -m track_b.profiler           # NMT (NLLB-200 / IndicTransv2) + TTS latency
+python -m demo.end_to_end --text "Am I eligible for PM Kisan?"   # end-to-end demo
+
+# or PowerShell one-shot:
 powershell -ExecutionPolicy Bypass -File scripts/run_all.ps1
-
-# or step-by-step (inside .venv):
-python -m track_a.build_index          # Track A: corpus -> chunks -> ChromaDB
-python -m track_b.synth_audio          # Track B: synthesize en/hi/ta clips
-python -m track_b.benchmark            # Track B: WER/CER baseline
-python -m track_b.profiler             # Track B: NMT/TTS latency profile
-python -m demo.end_to_end --text "Am I eligible for PM Kisan?"   # glue demo
 
 # tests (offline)
 python -m pytest track_a track_b -q
@@ -33,39 +41,71 @@ written to your global HuggingFace cache.
 
 ```
 config/            settings.yaml + asr_nlu_contract.json (the frozen seam)
-shared/            contract validation (A4), settings loader, logger
+shared/            contract validation (A4), settings loader, logger, hf_auth
 track_a/           corpus ingest (A1), chunker (A1), embeddings (A2),
                    ChromaDB store (A2), taxonomy (A3), classifier (A3),
                    build_index runner
 track_b/           synth audio (B1), faster-whisper ASR (B2),
                    WER benchmark (B3), NMT/TTS profiler (B4)
 demo/              end-to-end: audio -> ASR -> contract -> NLU -> RAG
-scripts/           setup_venv.ps1, run_all.ps1, conclusions generator
+scripts/           setup_venv.ps1, run_all.ps1, fetch_corpus.py,
+                   conclusions generator
 docs/              week1_conclusions.md (generated)
 ```
 
-## Week-1 deliverables vs. plan matrix
+## Current status (bottlenecks resolved)
 
-| Plan component | Implementation | Where | Run |
-| --- | --- | --- | --- |
-| RAG pipeline: ChromaDB initialized | Persistent vector store, 512/64 chunking | `track_a/vector_store.py`, `chunker.py` | `python -m track_a.build_index` |
-| NLU engine: IndicBERT taxonomy | 5 intents + 6 entities; nearest-centroid classifier; IndicBERT w/ MiniLM fallback | `track_a/taxonomy.py`, `intent_classifier.py`, `embeddings.py` | demo / conclusions probe |
-| ASR engine: Whisper baseline | faster-whisper (CPU int8, CUDA-ready flag) | `track_b/asr.py` | `python -m track_b.benchmark` |
-| Speech corpus: IndicVoices subset | edge-tts en-IN/hi-IN/ta-IN clips + exact transcripts; real audio drop-in | `track_b/synth_audio.py` | `python -m track_b.synth_audio` |
-| NMT & TTS profiling | mms-tts latency + best-effort IndicTransv2 (graceful skip) | `track_b/profiler.py` | `python -m track_b.profiler` |
-| Module interface contract | Pydantic `ASROutput`/`NLUQuery` + schema validation | `shared/contract.py`, `config/asr_nlu_contract.json` | pytest |
+### ASR baseline (bottleneck — large-v3 + initial_prompt)
+
+| Metric | Before (medium/CPU/int8) | After (large-v3/CPU/int8) |
+| --- | ---: | ---: |
+| Overall WER | 23.83% | **10.16%** |
+| Overall CER | 10.02% | **4.09%** |
+| hi-IN WER | 33.50% | **12.33%** |
+| ta-IN WER | 38.00% | **13.71%** |
+| Hallucinations flagged | 1 | **0** |
+
+Key ASR improvements (`config/settings.yaml` → `track_b/asr`):
+- Model upgraded to `large-v3`; `initial_prompt` includes scheme terms in en/hi/ta
+- `vad_parameters.min_silence_duration_ms: 300` + `condition_on_previous_text: false`
+- Benchmark pins per-clip language from ground truth (kills auto-detect misfires)
+- NFKC + Indic-aware normalization in jiwer transforms
+
+**GPU note:** The RTX 4050 (CUDA 13) is confirmed working via torch, but
+faster-whisper/CTranslate2 requires CUDA 12 cublas. To enable GPU:
+either install `nvidia-cublas-cu12` (pip) or downgrade to CUDA 12 toolkit,
+then set `device: cuda`, `compute_type: float16` in settings.yaml.
+
+### Gated models & auth (bottleneck — IndicBERT / IndicTransv2)
+
+- `shared/hf_auth.py` reads `HF_TOKEN` env at runtime (never logged/committed)
+- `track_a/embeddings.py` tries `ai4bharat/indic-bert` (gated, with token) →
+  `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` → MiniLM
+- `track_b/profiler.py` tries `ai4bharat/indictrans2-en-indic-1B` →
+  `facebook/nllb-200-distilled-600M` (EN→HI/TA) → `Helsinki-NLP/opus-mt-hi-en`
+- Until gated access is accepted, the pipeline runs on open fallbacks (NLLB OK,
+  multilingual encoder OK)
+
+To enable the ai4bharat gated models, accept access at:
+- https://huggingface.co/ai4bharat/indic-bert
+- https://huggingface.co/ai4bharat/indictrans2-en-indic-1B
+
+### Corpus expansion (bottleneck — 4 seed sheets → 12 docs, 797 chunks)
+
+- 6 official GoI PDFs fetched via `scripts/fetch_corpus.py --fetch` into
+  `track_a/data/raw/` (PM-JAY guidelines, PMAY-G factsheets, PIB docs)
+- 2 additional Hindi/Tamil seed fact sheets added to `track_a/data/corpus/`
+- ChromaDB index is idempotent (`build_index` calls `reset()` before reindex)
+
+### NLU classifier (bottleneck — entity coverage)
+
+- Entity patterns expanded: `occupation` (farmer/labourer/kisan/vivasayi…),
+  `district_state` (all major states in en/hi/ta), `magalir-urimai` scheme
+- Centroids cached to `intent_centroids.npz` for fast startup after first fit
+- Similarity threshold (0.30) defaults ambiguous queries to `general_inquiry`
 
 ## Reports generated by a run
 
 - `track_b/data/results/week1_wer_baseline.md` — per-language WER/CER
 - `track_b/data/results/week1_profiler.md` — NMT/TTS latency
-- `docs/week1_conclusions.md` — auto-derived conclusions + Week-2 recommendations
-
-## Notes / known limitations
-
-- `ai4bharat/indic-bert` is a **gated** HF repo (401 without auth); the pipeline
-  auto-falls back to `all-MiniLM-L6-v2`. See conclusions doc §6.
-- The corpus is 4 seed fact sheets; real e-Gov PDFs go in `track_a/data/raw/`
-  (pdfplumber extracts them) — see `corpus_ingest.py`.
-- To use the RTX 4050 for ASR: set `track_b.asr.device: cuda` and
-  `compute_type: float16` in `config/settings.yaml`.
+- `docs/week1_conclusions.md` — auto-derived conclusions

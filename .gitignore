@@ -1,0 +1,83 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Large model files, weights, checkpoints
+models/
+checkpoints/
+*.pt
+*.bin
+*.onnx
+*.safetensors
+*.pth
+
+# Local databases and vector stores
+data/chroma/
+*.sqlite3
+*.db
+
+# Audio files (cache/temp recording data)
+data/raw_audio/
+*.wav
+*.mp3
+*.flac
+*.ogg
+!tests/fixtures/*.wav
+
+# Cache and logs
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+logs/
+*.log
+.coverage
+htmlcov/
+
+# Node / Web UI
+node_modules/
+web-ui/dist/
+web-ui/.next/
+web-ui/build/
+.npm
+.yarn
+
+# IDE and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

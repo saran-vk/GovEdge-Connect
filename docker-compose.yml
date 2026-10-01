@@ -1,0 +1,58 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: govconnect-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # Orchestrator API service (can be run directly via uvicorn in local dev or via docker)
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: govconnect-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - RUNTIME_MODE=${RUNTIME_MODE:-mock}
+      - REDIS_URL=redis://redis:6379/0
+      - CHROMA_PERSIST_DIR=/app/data/chroma
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Emulated Pi-profile container (Section 9: 4 cores, constrained memory)
+  gateway-pi-profile:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: govconnect-gateway-pi
+    ports:
+      - "8001:8000"
+    environment:
+      - RUNTIME_MODE=local
+      - REDIS_URL=redis://redis:6379/0
+      - CHROMA_PERSIST_DIR=/app/data/chroma
+    volumes:
+      - ./data:/app/data
+    deploy:
+      resources:
+        limits:
+          cpus: "4.0"
+          memory: 2048M
+    profiles:
+      - benchmark
+
+volumes:
+  redis-data:

@@ -4,7 +4,7 @@ Aggregates stage execution times and assesses SLA compliance (<3.0s hybrid, <1.5
 """
 
 import time
-from typing import Dict
+from typing import Dict, Tuple
 from gateway.schemas import TimingsMs, Path
 
 
@@ -33,7 +33,7 @@ class LatencyTracker:
         if stage in self.stage_timings:
             self.stage_timings[stage] = round(duration_ms, 2)
 
-    def finalize(self, path: Path) -> Tuple_Timings:
+    def finalize(self, path: Path) -> Tuple[TimingsMs, bool]:
         total_ms = (time.perf_counter() - self.start_time) * 1000
         timings = TimingsMs(
             asr=self.stage_timings.get("asr", 0.0),
@@ -48,6 +48,3 @@ class LatencyTracker:
         within_sla = total_ms <= threshold
         return timings, within_sla
 
-
-from typing import Tuple
-Tuple_Timings = Tuple[TimingsMs, bool]

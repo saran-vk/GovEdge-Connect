@@ -1,0 +1,402 @@
+[
+  {
+    "id": "eval_01",
+    "query_en": "Who is eligible to receive financial support under the PM-KISAN scheme?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["Small and marginal farmer families", "Own cultivable land holding in their name", "Excludes institutional landholders and income tax payers"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_02",
+    "query_en": "Can a retired government officer with land get PM-KISAN money?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["No", "Retired government employees with monthly pension of Rs 10,000 or more are excluded (except Class IV/Group D)"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_03",
+    "query_en": "Can tenant farmers who do not own land apply for PM-KISAN?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["No", "Landownership in official State revenue records is mandatory"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_04",
+    "query_en": "What documents are required to register for PM-KISAN?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "documents_needed",
+    "ground_truth_facts": ["Aadhaar Card", "Land revenue records (Khasra/Khatauni)", "Aadhaar-linked active bank account"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_05",
+    "query_en": "Is Aadhaar card mandatory to get PM-KISAN installments?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "documents_needed",
+    "ground_truth_facts": ["Yes", "Aadhaar is mandatory and must be linked to the bank account for DBT"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_06",
+    "query_en": "What land papers must I show for PM-KISAN registration?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "documents_needed",
+    "ground_truth_facts": ["Khasra/Khatauni or official land ownership document issued by State revenue department"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_07",
+    "query_en": "How can I register myself for PM-KISAN online?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "apply_process",
+    "ground_truth_facts": ["Visit pmkisan.gov.in", "Go to Farmers Corner -> New Farmer Registration", "Enter Aadhaar, mobile number, land survey details and submit OTP"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_08",
+    "query_en": "Where should I go in my village if I cannot apply for PM-KISAN online?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "apply_process",
+    "ground_truth_facts": ["Visit the nearest Common Service Centre (CSC) or local revenue officer / Patwari"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_09",
+    "query_en": "What is the procedure for PM-KISAN e-KYC authentication?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "apply_process",
+    "ground_truth_facts": ["Complete OTP-based e-KYC on the portal or biometric e-KYC at a CSC"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_10",
+    "query_en": "How much money does a farmer get per year from PM-KISAN?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["Rs. 6,000 per year"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_11",
+    "query_en": "In how many installments is the PM-KISAN amount paid?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["Three equal installments of Rs. 2,000 every 4 months"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_12",
+    "query_en": "When are the PM-KISAN installments deposited into bank accounts?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["April-July, August-November, and December-March tranches via Direct Benefit Transfer"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_13",
+    "query_en": "Is the PM-KISAN assistance paid as cash or sent to bank accounts?",
+    "target_scheme": "pm_kisan",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["Direct Benefit Transfer (DBT) directly into the beneficiary's Aadhaar-seeded bank account"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_14",
+    "query_en": "Who can get work under the MGNREGA scheme?",
+    "target_scheme": "mgnrega",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["Any adult member of a rural household willing to do unskilled manual work"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_15",
+    "query_en": "Is there any landholding or poverty line limit to work under MGNREGA?",
+    "target_scheme": "mgnrega",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["No", "All rural households are eligible regardless of landholding or poverty status"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_16",
+    "query_en": "What is the minimum age required to register for MGNREGA work?",
+    "target_scheme": "mgnrega",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["At least 18 years of age (adult members)"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_17",
+    "query_en": "What documents do I need to get an MGNREGA Job Card?",
+    "target_scheme": "mgnrega",
+    "target_intent": "documents_needed",
+    "ground_truth_facts": ["Proof of identity (Aadhaar or Voter ID)", "Proof of residence in Gram Panchayat", "Passport-size photographs", "Bank/post office passbook"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_18",
+    "query_en": "Do I need to pay any fee for obtaining an MGNREGA Job Card?",
+    "target_scheme": "mgnrega",
+    "target_intent": "documents_needed",
+    "ground_truth_facts": ["No", "The Job Card is issued completely free of cost"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_19",
+    "query_en": "What bank account details are required for MGNREGA wage payments?",
+    "target_scheme": "mgnrega",
+    "target_intent": "documents_needed",
+    "ground_truth_facts": ["Individual or joint bank or post office savings account passbook linked to Aadhaar"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_20",
+    "query_en": "Where do I submit my application for an MGNREGA Job Card?",
+    "target_scheme": "mgnrega",
+    "target_intent": "apply_process",
+    "ground_truth_facts": ["To the local Gram Panchayat or Programme Officer"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_21",
+    "query_en": "Within how many days should the Gram Panchayat issue a Job Card?",
+    "target_scheme": "mgnrega",
+    "target_intent": "apply_process",
+    "ground_truth_facts": ["Within 15 days of receiving the application"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_22",
+    "query_en": "How do I request work after getting my MGNREGA Job Card?",
+    "target_scheme": "mgnrega",
+    "target_intent": "apply_process",
+    "ground_truth_facts": ["Submit a written demand for work to the Gram Panchayat specifying dates; obtain a dated receipt"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_23",
+    "query_en": "How many days of work are guaranteed under MGNREGA per year?",
+    "target_scheme": "mgnrega",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["At least 100 days of guaranteed wage employment per financial year per rural household"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_24",
+    "query_en": "What happens if the government cannot provide MGNREGA work within 15 days of demand?",
+    "target_scheme": "mgnrega",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["The applicant is entitled to a daily Unemployment Allowance paid by the State Government"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_25",
+    "query_en": "Are men and women paid different wages under MGNREGA?",
+    "target_scheme": "mgnrega",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["No", "Equal wages are legally mandated for both men and women"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_26",
+    "query_en": "How far from the village will MGNREGA work be provided?",
+    "target_scheme": "mgnrega",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["Within 5 km radius; if beyond 5 km, an additional 10% wage is paid for travel and living expenses"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_27",
+    "query_en": "Who is eligible for healthcare benefits under Ayushman Bharat PM-JAY?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["Families identified in SECC 2011 deprivation criteria (rural D1-D5, D7), specified urban worker categories, and senior citizens 70+"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_28",
+    "query_en": "Are senior citizens above 70 years eligible for Ayushman Bharat regardless of income?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["Yes", "All individuals aged 70 and above are covered up to Rs 5 lakh annually without income limits"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_29",
+    "query_en": "Can urban street vendors and domestic workers get Ayushman Bharat coverage?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["Yes", "Street vendors and domestic workers are among the 11 recognized urban occupational categories"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_30",
+    "query_en": "Is there a limit on family size for Ayushman Bharat enrollment?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "check_eligibility",
+    "ground_truth_facts": ["No limit on family size, gender, or age of members"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_31",
+    "query_en": "What documents are required to make an Ayushman Golden Card?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "documents_needed",
+    "ground_truth_facts": ["Aadhaar Card for biometric authentication", "Ration card or PMJAY Family Letter", "Active mobile number"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_32",
+    "query_en": "Is a Ration card sufficient to verify family details for Ayushman Bharat?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "documents_needed",
+    "ground_truth_facts": ["Yes, along with Aadhaar card for individual identity verification"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_33",
+    "query_en": "Do I need to carry original identity cards to the hospital for PMJAY treatment?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "documents_needed",
+    "ground_truth_facts": ["Yes, carry the Ayushman card and government photo ID (Aadhaar) to the Ayushman Mitra desk"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_34",
+    "query_en": "How can I check if my name is on the Ayushman Bharat beneficiary list?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "apply_process",
+    "ground_truth_facts": ["Visit beneficiary.nha.gov.in, use the Ayushman App, or check at a local CSC or empanelled hospital"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_35",
+    "query_en": "Where do I go inside an empanelled hospital to avail cashless treatment?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "apply_process",
+    "ground_truth_facts": ["Approach the Ayushman Mitra help desk at the empanelled hospital for patient verification and pre-authorization"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_36",
+    "query_en": "Can I generate my Ayushman Card from a Common Service Centre?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "apply_process",
+    "ground_truth_facts": ["Yes, CSCs provide biometric e-KYC and issue Ayushman PVC cards"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_37",
+    "query_en": "What is the maximum medical cover provided under Ayushman Bharat per family?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["Up to Rs. 5,00,000 per eligible family per year on a family-floater basis"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_38",
+    "query_en": "Are pre-existing medical conditions covered from the first day in PM-JAY?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["Yes, all pre-existing conditions are covered from day one without waiting period"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_39",
+    "query_en": "Does Ayushman Bharat cover medicine costs after being discharged from the hospital?",
+    "target_scheme": "ayushman_bharat",
+    "target_intent": "benefit_amount",
+    "ground_truth_facts": ["Yes, covers up to 15 days of post-hospitalization medications and diagnostic tests"],
+    "is_out_of_scope": false
+  },
+  {
+    "id": "eval_40",
+    "query_en": "What is the procedure to apply for a fresh Driving Licence?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal; the system only handles PM-KISAN, MGNREGA, and Ayushman Bharat"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_41",
+    "query_en": "How do I book an online tatkal train ticket on IRCTC?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_42",
+    "query_en": "What is the today's weather forecast for Coimbatore?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_43",
+    "query_en": "Who won the cricket match between India and Australia yesterday?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_44",
+    "query_en": "How can I renew my Indian passport online?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_45",
+    "query_en": "What are the income tax slab rates for the current financial year?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_46",
+    "query_en": "How do I apply for an electricity connection for my house?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_47",
+    "query_en": "How can I apply for an education loan for engineering studies?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_48",
+    "query_en": "What is the procedure to link PAN card with bank account for income tax return?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_49",
+    "query_en": "How do I check my PF balance in EPFO portal using UAN?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  },
+  {
+    "id": "eval_50",
+    "query_en": "Can you recommend the best fertilizer for wheat crop?",
+    "target_scheme": null,
+    "target_intent": "out_of_scope",
+    "ground_truth_facts": ["Out of scope refusal"],
+    "is_out_of_scope": true
+  }
+]

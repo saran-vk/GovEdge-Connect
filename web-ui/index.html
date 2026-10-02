@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovConnect Edge — Voice-to-Voice Gateway Demo</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --success: #15803d;
+      --warning: #b45309;
+      --danger: #b91c1c;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 24px; line-height: 1.5; }
+    .container { max-width: 960px; margin: 0 auto; }
+    header { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .title-block h1 { font-size: 20px; font-weight: 700; color: var(--primary); }
+    .title-block p { font-size: 13px; color: var(--text-muted); }
+    .controls { display: flex; gap: 12px; align-items: center; }
+    select, button { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--border); font-size: 13px; font-weight: 500; cursor: pointer; }
+    select { background: white; outline: none; }
+    .btn-record { background: #fee2e2; color: #dc2626; border-color: #fca5a5; display: flex; align-items: center; gap: 6px; font-weight: 600; }
+    .btn-record.recording { background: #dc2626; color: white; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
+    .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .main-grid { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .card h2 { font-size: 16px; font-weight: 600; margin-bottom: 14px; color: var(--primary); display: flex; justify-content: space-between; align-items: center; }
+    .badge { font-size: 11px; padding: 3px 8px; border-radius: 9999px; text-transform: uppercase; font-weight: 700; }
+    .badge-cached { background: #dcfce7; color: var(--success); }
+    .badge-cloud { background: #dbeafe; color: var(--primary-light); }
+    .badge-offline { background: #fef3c7; color: var(--warning); }
+    .badge-danger { background: #fee2e2; color: var(--danger); }
+    .input-section textarea { width: 100%; height: 90px; padding: 10px; border-radius: 8px; border: 1px solid var(--border); font-size: 14px; resize: none; margin-bottom: 12px; outline: none; }
+    .input-section textarea:focus { border-color: var(--primary-light); }
+    .action-row { display: flex; gap: 10px; }
+    .btn-submit { background: var(--primary); color: white; border: none; flex: 1; }
+    .btn-submit:hover { background: #172554; }
+    .sample-queries { margin-top: 16px; border-top: 1px dashed var(--border); padding-top: 14px; }
+    .sample-queries p { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+    .chip-container { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip { font-size: 11px; background: #f1f5f9; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 6px; cursor: pointer; }
+    .chip:hover { background: #e2e8f0; }
+    .result-section { display: flex; flex-direction: column; gap: 16px; }
+    .meta-box { display: flex; gap: 8px; flex-wrap: wrap; }
+    .reply-box { background: #f8fafc; border-left: 4px solid var(--primary-light); padding: 14px; border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.6; }
+    .audio-player { margin-top: 8px; width: 100%; }
+    .citations-box { margin-top: 10px; }
+    .citations-box h3 { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .citation-card { font-size: 12px; background: #f8fafc; border: 1px solid var(--border); padding: 8px; border-radius: 6px; margin-bottom: 6px; }
+    .timing-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
+    .timing-table td { padding: 4px 6px; border-bottom: 1px solid #f1f5f9; }
+    .timing-table td:last-child { text-align: right; font-weight: 600; font-family: monospace; }
+    .total-row { font-weight: 700; border-top: 2px solid var(--border); }
+    .sla-pill { font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+    .sla-pass { background: #dcfce7; color: var(--success); }
+    .sla-fail { background: #fee2e2; color: var(--danger); }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="title-block">
+      <h1>GovConnect Edge</h1>
+      <p>Voice-to-Voice Multilingual Gateway for Rural Welfare Schemes</p>
+    </div>
+    <div class="controls">
+      <select id="modeSelect">
+        <option value="mock">Mode: Mock</option>
+        <option value="hybrid">Mode: Hybrid (Cloud)</option>
+        <option value="local">Mode: Local (Edge)</option>
+      </select>
+      <select id="langSelect">
+        <option value="en">English</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+        <option value="hi">हिन्दी (Hindi)</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="main-grid">
+    <!-- Input Section -->
+    <div class="card input-section">
+      <h2>
+        Citizen Query
+        <span class="badge" id="recordingStatus" style="display:none; background:#fee2e2; color:#dc2626;">Listening...</span>
+      </h2>
+      <textarea id="queryText" placeholder="Type a scheme question or use microphone..."></textarea>
+      
+      <div class="action-row">
+        <button id="recordBtn" class="btn-record">
+          <span id="recordIcon">🎤</span> <span id="recordLabel">Speak</span>
+        </button>
+        <button id="submitBtn" class="btn-submit">Submit Query</button>
+      </div>
+
+      <div class="sample-queries">
+        <p>QUICK SAMPLE QUERIES</p>
+        <div class="chip-container">
+          <div class="chip" onclick="setQuery('Who is eligible for PM-KISAN funds?', 'en')">PM-KISAN Eligibility (EN)</div>
+          <div class="chip" onclick="setQuery('பிஎம் கிசான் விண்ணப்பிக்க என்ன ஆவணங்கள் தேவை?', 'ta')">PM-KISAN Docs (TA)</div>
+          <div class="chip" onclick="setQuery('मनरेगा में 100 दिन का काम कैसे मांगें?', 'hi')">MGNREGA Process (HI)</div>
+          <div class="chip" onclick="setQuery('Are pre-existing diseases covered in Ayushman Bharat?', 'en')">Ayushman Cover (EN)</div>
+          <div class="chip" onclick="setQuery('What is the weather in Delhi today?', 'en')">Out of Scope Test</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output Section -->
+    <div class="card result-section">
+      <h2>
+        Grounded Response
+        <span id="pathBadge" class="badge badge-cached">Path: Pending</span>
+      </h2>
+
+      <div class="meta-box">
+        <span id="intentBadge" class="chip">Intent: -</span>
+        <span id="schemeBadge" class="chip">Scheme: -</span>
+        <span id="slaBadge" class="sla-pill sla-pass" style="display:none;">Within SLA</span>
+      </div>
+
+      <div>
+        <div class="reply-box" id="replyText">
+          Submit a voice or text query to see the grounded policy answer and citations.
+        </div>
+        <audio id="audioPlayer" class="audio-player" controls style="display:none;"></audio>
+      </div>
+
+      <div class="citations-box" id="citationsBox" style="display:none;">
+        <h3>Official Citations</h3>
+        <div id="citationsList"></div>
+      </div>
+
+      <div>
+        <h3 style="font-size:12px; font-weight:600; text-transform:uppercase; color:var(--text-muted);">Latency Breakdown</h3>
+        <table class="timing-table">
+          <tr><td>ASR Transcription</td><td id="t-asr">-</td></tr>
+          <tr><td>NMT Translation</td><td id="t-nmt">-</td></tr>
+          <tr><td>NLU Intent & Slots</td><td id="t-nlu">-</td></tr>
+          <tr><td>RAG Retrieval</td><td id="t-rag">-</td></tr>
+          <tr><td>LLM / Cache Response</td><td id="t-llm">-</td></tr>
+          <tr><td>TTS Synthesis</td><td id="t-tts">-</td></tr>
+          <tr class="total-row"><td>Total Latency</td><td id="t-total">-</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let mediaRecorder = null;
+  let audioChunks = [];
+
+  function setQuery(text, lang) {
+    document.getElementById('queryText').value = text;
+    document.getElementById('langSelect').value = lang;
+  }
+
+  // Audio Recording Handler
+  const recordBtn = document.getElementById('recordBtn');
+  recordBtn.addEventListener('click', async () => {
+    if (mediaRecorder && mediaRecorder.state === "recording") {
+      mediaRecorder.stop();
+      recordBtn.classList.remove('recording');
+      document.getElementById('recordLabel').innerText = "Speak";
+      document.getElementById('recordingStatus').style.display = "none";
+    } else {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+        mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+        mediaRecorder.onstop = async () => {
+          const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+          await sendVoiceQuery(audioBlob);
+        };
+        mediaRecorder.start();
+        recordBtn.classList.add('recording');
+        document.getElementById('recordLabel').innerText = "Stop";
+        document.getElementById('recordingStatus').style.display = "inline-block";
+      } catch (err) {
+        alert("Microphone access failed: " + err.message);
+      }
+    }
+  });
+
+  // Text Query Submission
+  document.getElementById('submitBtn').addEventListener('click', async () => {
+    const text = document.getElementById('queryText').value.trim();
+    if (!text) return;
+    const lang = document.getElementById('langSelect').value;
+    const mode = document.getElementById('modeSelect').value;
+
+    document.getElementById('replyText').innerText = "Processing query through orchestrator pipeline...";
+
+    try {
+      const resp = await fetch('/api/v1/text-query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          session_id: 'session_' + Date.now(),
+          text: text,
+          lang: lang,
+          runtime_mode: mode
+        })
+      });
+      const data = await resp.json();
+      renderResponse(data);
+    } catch (err) {
+      document.getElementById('replyText').innerText = "Error: " + err.message;
+    }
+  });
+
+  async function sendVoiceQuery(blob) {
+    const lang = document.getElementById('langSelect').value;
+    const mode = document.getElementById('modeSelect').value;
+    const formData = new FormData();
+    formData.append('session_id', 'voice_' + Date.now());
+    formData.append('lang_hint', lang);
+    formData.append('runtime_mode', mode);
+    formData.append('audio_file', blob, 'query.wav');
+
+    document.getElementById('replyText').innerText = "Transcribing and processing voice query...";
+
+    try {
+      const resp = await fetch('/api/v1/voice-query', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await resp.json();
+      if (data.transcript) {
+        document.getElementById('queryText').value = data.transcript;
+      }
+      renderResponse(data);
+    } catch (err) {
+      document.getElementById('replyText').innerText = "Error: " + err.message;
+    }
+  }
+
+  function renderResponse(data) {
+    document.getElementById('replyText').innerText = data.reply_text || "No reply generated.";
+
+    // Path badge
+    const pb = document.getElementById('pathBadge');
+    pb.innerText = data.path.toUpperCase() + (data.degraded ? " (DEGRADED)" : "");
+    pb.className = "badge " + (data.path === 'cached' ? 'badge-cached' : (data.path === 'cloud_assisted' ? 'badge-cloud' : 'badge-offline'));
+
+    // Intent & Slot badges
+    document.getElementById('intentBadge').innerText = "Intent: " + data.intent.name + " (" + Math.round(data.intent.confidence * 100) + "%)";
+    document.getElementById('schemeBadge').innerText = "Scheme: " + (data.slots.scheme_name || "None");
+
+    // SLA
+    const sla = document.getElementById('slaBadge');
+    sla.style.display = "inline-block";
+    sla.innerText = data.within_sla ? "SLA Passed (<3.0s)" : "SLA Exceeded";
+    sla.className = "sla-pill " + (data.within_sla ? "sla-pass" : "sla-fail");
+
+    // Audio Playback
+    const player = document.getElementById('audioPlayer');
+    if (data.audio) {
+      player.src = "data:audio/wav;base64," + data.audio;
+      player.style.display = "block";
+      player.play().catch(() => {});
+    } else {
+      player.style.display = "none";
+    }
+
+    // Citations
+    const cBox = document.getElementById('citationsBox');
+    const cList = document.getElementById('citationsList');
+    cList.innerHTML = "";
+    if (data.citations && data.citations.length > 0) {
+      cBox.style.display = "block";
+      data.citations.forEach(c => {
+        const div = document.createElement('div');
+        div.className = "citation-card";
+        div.innerHTML = `<strong>[${c.chunk_id}]</strong> ${c.scheme.toUpperCase()} (Relevance: ${Math.round(c.score * 100)}%)`;
+        cList.appendChild(div);
+      });
+    } else {
+      cBox.style.display = "none";
+    }
+
+    // Latency Timings
+    const t = data.timings_ms || {};
+    document.getElementById('t-asr').innerText = (t.asr || 0) + " ms";
+    document.getElementById('t-nmt').innerText = (t.nmt || 0) + " ms";
+    document.getElementById('t-nlu').innerText = (t.nlu || 0) + " ms";
+    document.getElementById('t-rag').innerText = (t.rag || 0) + " ms";
+    document.getElementById('t-llm').innerText = (t.llm_or_cache || 0) + " ms";
+    document.getElementById('t-tts').innerText = (t.tts || 0) + " ms";
+    document.getElementById('t-total').innerText = (t.total || 0) + " ms";
+  }
+</script>
+
+</body>
+</html>

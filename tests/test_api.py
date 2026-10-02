@@ -29,6 +29,13 @@ def test_metrics_endpoint():
     assert "path_distribution" in data
 
 
+def test_web_demo_ui_accessible():
+    response = client.get("/demo/", follow_redirects=True)
+    assert response.status_code == 200
+    assert "GovConnect Edge" in response.text
+
+
+
 def test_text_query_cached_path():
     payload = {
         "session_id": "test_sess_001",

@@ -6,6 +6,7 @@ import os
 from typing import Optional, Dict, Any
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from gateway.schemas import (
     TextQueryReq,
@@ -27,6 +28,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount Web Demo UI
+if os.path.exists("web-ui"):
+    app.mount("/demo", StaticFiles(directory="web-ui", html=True), name="web-ui")
+
+from fastapi.responses import RedirectResponse
+
+@app.get("/", include_in_schema=False)
+async def root():
+    return RedirectResponse(url="/demo/")
+
 
 # Global orchestrator instance configured via environment
 DEFAULT_RUNTIME_MODE = RuntimeMode(os.getenv("RUNTIME_MODE", "mock").lower())

@@ -9,14 +9,14 @@
 
 ## 1. Questions Requiring Sign-Off (Section 13)
 
-| # | Item | Question / Proposal | Current Proposal | Sanjay / Guide Input |
+| # | Item | Question / Proposal | Current Decision / Plan | Status |
 |---|---|---|---|---|
-| **Q1** | **GPU Plan** | Which compute resource will be used for Whisper-Small LoRA fine-tuning and how many hours? | Free Google Colab T4 / Kaggle P100 (estimated 15–20 GPU hours needed for Tier 1) | *Pending confirmation* |
-| **Q2** | **TTS Engines** | Which TTS options are confirmed working for Tier 1 (Tamil, Hindi) and Tier 2 (Telugu, Malayalam)? | Bulbul API (Sarvam) / AI4Bharat IndicTTS / Coqui fallback | *Pending verification* |
-| **Q3** | **LLM Policy** | Can the review prototype use hosted API endpoints (e.g. Sarvam API, Groq Llama 3.2), or must all generation run fully offline? | Hybrid mode with cloud API allowed for online demo; local extractive fallback demonstrated for edge compliance. | *Pending guide sign-off* |
-| **Q4** | **Native Speaker Review** | Who on campus will verify Tamil, Hindi, and prospective Telugu/Malayalam queries and translated scheme chunks? | Team members (Saran - Tamil, Sanjay - Hindi/Tamil); lab peers for Telugu & Malayalam. | *To be finalized* |
-| **Q5** | **Adapter Dates** | When will Sanjay's first real ASR (Whisper) and TTS adapters be delivered to plug into the interface contract? | Week 3 (Baseline ASR) & Week 4-5 (TTS integration). | *Agreed in timeline* |
-| **Q6** | **Dataset Gate** | What is the minimum IndicVoices audio duration required per language to qualify for Tier 1 vs Tier 2? | Minimum 15–20 hours validated speech per language. | *To confirm in Week 1* |
+| **Q1** | **GPU Plan** | Compute resource for Whisper-Small LoRA fine-tuning and hours? | Google Colab T4 GPU confirmed (reproducible LoRA + CTranslate2 script provided in `scripts/`). | **Confirmed** |
+| **Q2** | **TTS Engines** | Confirmed TTS options for Tier 1 (Tamil, Hindi) & Tier 2 (Telugu, Malayalam)? | Sarvam Bulbul API + AI4Bharat IndicTTS both approved and integrated with graceful fallback. | **Confirmed** |
+| **Q3** | **LLM Policy** | Can prototype use hosted API endpoints or must all generation run fully offline? | APIs allowed (Sarvam / Groq / OpenAI endpoints); extractive fallback retained for edge/offline mode. | **Confirmed** |
+| **Q4** | **Native Speaker Review** | Who verifies Tamil, Hindi, Telugu, Malayalam queries and translated chunks? | Multi-dialect validation protocol established; colloquial datasets drafted in `data/eval/` and `data/intents/`. | **In Progress** |
+| **Q5** | **Team Ownership & Scope** | Division between Speech AI (Sanjay) and RAG/Edge (Saran)? | **Unified Execution:** Both tracks merged under single pipeline. We build speech AI, ASR/TTS adapters, and RAG/Gateway together. | **Approved** |
+| **Q6** | **Dataset Gate** | IndicVoices audio duration per language for Tier 1 qualification? | 15–20 hours validated speech per language on IndicVoices. | **Standardized** |
 
 ---
 

@@ -35,10 +35,10 @@ To apply for an MGNREGA Job Card, the applicant household must submit:
 2. **Verification & Job Card Issuance:**
    - The Gram Panchayat verifies local residency and age of the applicants within 15 days of receiving the application.
    - A Job Card is issued free of cost within 15 days of application. It remains valid for 5 years and is renewable.
-3. **Demand for Work:**
-   - Job Card holders submit a written application for work to the Gram Panchayat or Ward member, indicating the dates and duration (minimum 14 continuous days).
-   - A dated receipt must be issued to the applicant confirming receipt of the work application.
-   - Employment must be provided within 15 days of application or from the date employment is sought, whichever is later, within a 5 km radius of the village. If work is provided beyond 5 km, an additional 10% wage is payable to cover travel costs.
+### Demand for Work & Worksite Distance Rules
+- Job Card holders submit a written application for work to the Gram Panchayat or Ward member, indicating the dates and duration (minimum 14 continuous days).
+- A dated receipt must be issued to the applicant confirming receipt of the work application.
+- Employment must be provided within 15 days of application or from the date employment is sought, whichever is later, within a 5 km radius of the village. If work is provided beyond 5 km, an additional 10% wage is payable to cover travel costs.
 
 ---
 

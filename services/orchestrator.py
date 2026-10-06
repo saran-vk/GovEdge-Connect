@@ -78,11 +78,11 @@ class OrchestratorPipeline:
 
     def _get_adapters(self, mode: RuntimeMode):
         if mode == RuntimeMode.MOCK:
-            return self.mock_asr, self.mock_nmt, self.mock_nlu, self.mock_tts
+            return self.mock_asr, self.real_nmt, self.real_nlu, self.mock_tts
         elif mode == RuntimeMode.HYBRID:
             return self.real_asr, self.real_nmt, self.real_nlu, self.real_tts
         else:  # LOCAL (INT8 / Quantized)
-            return self.real_asr, self.mock_nmt, self.real_nlu, self.mock_tts
+            return self.real_asr, self.real_nmt, self.real_nlu, self.mock_tts
 
     async def process_query(
         self,

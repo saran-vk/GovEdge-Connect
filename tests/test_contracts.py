@@ -67,3 +67,42 @@ def test_query_res_schema():
     assert res.intent.name == Intent.CHECK_ELIGIBILITY
     assert res.path == Path.CACHED
     assert res.timings_ms.total == 120.0
+
+
+@pytest.mark.asyncio
+async def test_real_adapters_contracts():
+    from services.asr.whisper import WhisperASRAdapter
+    from services.nmt.indictrans2 import IndicTrans2NMTAdapter
+    from services.nlu.indicbert import IndicBERTNLUAdapter
+    from services.tts.bulbul import BulbulTTSAdapter
+    from services.tts.mock import MOCK_WAV_HEADER
+
+    # Real ASR Adapter Contract
+    asr = WhisperASRAdapter()
+    asr_res = await asr.transcribe(MOCK_WAV_HEADER, lang_hint="ta")
+    assert "text" in asr_res and isinstance(asr_res["text"], str)
+    assert "lang" in asr_res and isinstance(asr_res["lang"], str)
+    assert "confidence" in asr_res and isinstance(asr_res["confidence"], float)
+    assert "ms" in asr_res and asr_res["ms"] >= 0
+
+    # Real NMT Adapter Contract
+    nmt = IndicTrans2NMTAdapter()
+    nmt_res = await nmt.translate("பிஎம் கிசான் தகுதி", src_lang="ta", tgt_lang="en")
+    assert "text" in nmt_res and isinstance(nmt_res["text"], str)
+    assert "ms" in nmt_res and nmt_res["ms"] >= 0
+
+    # Real NLU Adapter Contract
+    nlu = IndicBERTNLUAdapter()
+    nlu_res = await nlu.extract("Who is eligible for PM KISAN?")
+    assert "intent" in nlu_res and isinstance(nlu_res["intent"], IntentResult)
+    assert nlu_res["intent"].name in [i.value for i in Intent]
+    assert 0.0 <= nlu_res["intent"].confidence <= 1.0
+    assert "slots" in nlu_res and isinstance(nlu_res["slots"], Slots)
+    assert "ms" in nlu_res and nlu_res["ms"] >= 0
+
+    # Real TTS Adapter Contract
+    tts = BulbulTTSAdapter()
+    tts_res = await tts.synthesize("PM KISAN eligibility details", lang="hi")
+    assert "audio_wav_bytes" in tts_res and isinstance(tts_res["audio_wav_bytes"], bytes)
+    assert "ms" in tts_res and tts_res["ms"] >= 0
+    assert len(tts_res["audio_wav_bytes"]) > 0

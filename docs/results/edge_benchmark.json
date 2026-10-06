@@ -1,0 +1,192 @@
+{
+  "hardware_profile": "Raspberry Pi 4 Emulated (4 CPU Cores, 2GB Memory, No GPU)",
+  "memory_peak_mb": 178.64,
+  "cached_path": {
+    "samples": 7,
+    "avg_ms": 1.2,
+    "p50_ms": 1.19,
+    "p95_ms": 1.31,
+    "sla_target_ms": 1500.0,
+    "within_sla": true
+  },
+  "extractive_fallback_path": {
+    "samples": 3,
+    "avg_ms": 1.18,
+    "p50_ms": 1.17,
+    "p95_ms": 1.22,
+    "sla_target_ms": 1500.0,
+    "within_sla": true
+  },
+  "runs": [
+    {
+      "name": "PM-KISAN Eligibility (Cached)",
+      "type": "cached",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.31,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.34
+      },
+      "wall_ms": 1.35,
+      "degraded": false,
+      "within_sla": true
+    },
+    {
+      "name": "PM-KISAN Documents (Cached)",
+      "type": "cached",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.19,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.21
+      },
+      "wall_ms": 1.22,
+      "degraded": false,
+      "within_sla": true
+    },
+    {
+      "name": "PM-KISAN Benefit Amount (Cached)",
+      "type": "cached",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.17,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.19
+      },
+      "wall_ms": 1.2,
+      "degraded": false,
+      "within_sla": true
+    },
+    {
+      "name": "MGNREGA 100 Days Work (Cached)",
+      "type": "cached",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.11,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.13
+      },
+      "wall_ms": 1.14,
+      "degraded": false,
+      "within_sla": true
+    },
+    {
+      "name": "MGNREGA Job Card (Cached)",
+      "type": "cached",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.13,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.15
+      },
+      "wall_ms": 1.16,
+      "degraded": false,
+      "within_sla": true
+    },
+    {
+      "name": "Ayushman Bharat 5 Lakh Cover (Cached)",
+      "type": "cached",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.13,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.15
+      },
+      "wall_ms": 1.16,
+      "degraded": false,
+      "within_sla": true
+    },
+    {
+      "name": "Ayushman Card CSC (Cached)",
+      "type": "cached",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.16,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.18
+      },
+      "wall_ms": 1.19,
+      "degraded": false,
+      "within_sla": true
+    },
+    {
+      "name": "PM-KISAN e-KYC (Extractive Fallback)",
+      "type": "extractive",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.13,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.16
+      },
+      "wall_ms": 1.17,
+      "degraded": false,
+      "within_sla": true
+    },
+    {
+      "name": "MGNREGA Wage Dispute (Extractive Fallback)",
+      "type": "extractive",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.1,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.12
+      },
+      "wall_ms": 1.13,
+      "degraded": false,
+      "within_sla": true
+    },
+    {
+      "name": "Ayushman Bharat Pre-existing (Extractive Fallback)",
+      "type": "extractive",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.2,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.22
+      },
+      "wall_ms": 1.23,
+      "degraded": false,
+      "within_sla": true
+    }
+  ]
+}

@@ -87,3 +87,35 @@ def test_voice_query_end_to_end():
     assert result["reply_text"] != ""
     assert result["audio"] is not None
     assert result["timings_ms"]["total"] > 0
+
+
+def test_websocket_voice_stream():
+    with client.websocket_connect("/api/v1/voice-stream") as websocket:
+        # 1. Send handshake
+        websocket.send_json({
+            "type": "handshake",
+            "session_id": "ws_test_001",
+            "lang_hint": "hi",
+            "runtime_mode": "mock",
+        })
+        ready_msg = websocket.receive_json()
+        assert ready_msg["event"] == "ready"
+        assert ready_msg["session_id"] == "ws_test_001"
+
+        # 2. Stream audio bytes chunk
+        websocket.send_bytes(MOCK_WAV_HEADER)
+        buf_msg = websocket.receive_json()
+        assert buf_msg["event"] == "buffered"
+        assert buf_msg["bytes_received"] == len(MOCK_WAV_HEADER)
+
+        # 3. Finish and process
+        websocket.send_json({"type": "finish"})
+        stage_msg = websocket.receive_json()
+        assert stage_msg["event"] == "stage"
+
+        complete_msg = websocket.receive_json()
+        assert complete_msg["event"] == "complete"
+        assert "response" in complete_msg
+        assert complete_msg["response"]["transcript"] != ""
+        assert complete_msg["response"]["reply_text"] != ""
+

@@ -1,0 +1,511 @@
+{
+  "total_queries": 50,
+  "hallucinated_count": 1,
+  "faithful_count": 49,
+  "hallucination_rate": 0.02,
+  "target_met": true,
+  "queries": [
+    {
+      "id": "eval_01",
+      "query": "Who is eligible to receive financial support under the PM-KISAN scheme?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Small and marginal farmer families with cultivable landholding in their name are eligible for PM-KISAN, subject to institutional exclusions.",
+      "citations": []
+    },
+    {
+      "id": "eval_02",
+      "query": "Can a retired government officer with land get PM-KISAN money?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Small and marginal farmer families with cultivable landholding in their name are eligible for PM-KISAN, subject to institutional exclusions.",
+      "citations": []
+    },
+    {
+      "id": "eval_03",
+      "query": "Can tenant farmers who do not own land apply for PM-KISAN?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Small and marginal farmer families with cultivable landholding in their name are eligible for PM-KISAN, subject to institutional exclusions.",
+      "citations": []
+    },
+    {
+      "id": "eval_04",
+      "query": "What documents are required to register for PM-KISAN?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "To apply for PM-KISAN, you need an Aadhaar card, land ownership records (Khasra/Khatauni), and an active bank account linked with Aadhaar.",
+      "citations": []
+    },
+    {
+      "id": "eval_05",
+      "query": "Is Aadhaar card mandatory to get PM-KISAN installments?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "To apply for PM-KISAN, you need an Aadhaar card, land ownership records (Khasra/Khatauni), and an active bank account linked with Aadhaar.",
+      "citations": []
+    },
+    {
+      "id": "eval_06",
+      "query": "What land papers must I show for PM-KISAN registration?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "To apply for PM-KISAN, you need an Aadhaar card, land ownership records (Khasra/Khatauni), and an active bank account linked with Aadhaar.",
+      "citations": []
+    },
+    {
+      "id": "eval_07",
+      "query": "How can I register myself for PM-KISAN online?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "You can register on the pmkisan.gov.in portal via Farmer Corner or visit the nearest Common Service Centre (CSC) or Agriculture Office.",
+      "citations": []
+    },
+    {
+      "id": "eval_08",
+      "query": "Where should I go in my village if I cannot apply for PM-KISAN online?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "You can register on the pmkisan.gov.in portal via Farmer Corner or visit the nearest Common Service Centre (CSC) or Agriculture Office.",
+      "citations": []
+    },
+    {
+      "id": "eval_09",
+      "query": "What is the procedure for PM-KISAN e-KYC authentication?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "You can register on the pmkisan.gov.in portal via Farmer Corner or visit the nearest Common Service Centre (CSC) or Agriculture Office.",
+      "citations": []
+    },
+    {
+      "id": "eval_10",
+      "query": "How much money does a farmer get per year from PM-KISAN?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "PM-KISAN provides Rs. 6,000 per year transferred directly to your bank account in three equal installments of Rs. 2,000 every 4 months.",
+      "citations": []
+    },
+    {
+      "id": "eval_11",
+      "query": "In how many installments is the PM-KISAN amount paid?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "PM-KISAN provides Rs. 6,000 per year transferred directly to your bank account in three equal installments of Rs. 2,000 every 4 months.",
+      "citations": []
+    },
+    {
+      "id": "eval_12",
+      "query": "When are the PM-KISAN installments deposited into bank accounts?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "PM-KISAN provides Rs. 6,000 per year transferred directly to your bank account in three equal installments of Rs. 2,000 every 4 months.",
+      "citations": []
+    },
+    {
+      "id": "eval_13",
+      "query": "Is the PM-KISAN assistance paid as cash or sent to bank accounts?",
+      "scheme": "pm_kisan",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "PM-KISAN provides Rs. 6,000 per year transferred directly to your bank account in three equal installments of Rs. 2,000 every 4 months.",
+      "citations": []
+    },
+    {
+      "id": "eval_14",
+      "query": "Who can get work under the MGNREGA scheme?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Any rural household whose adult members volunteer to do unskilled manual work is eligible for employment under MGNREGA.",
+      "citations": []
+    },
+    {
+      "id": "eval_15",
+      "query": "Is there any landholding or poverty line limit to work under MGNREGA?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Any rural household whose adult members volunteer to do unskilled manual work is eligible for employment under MGNREGA.",
+      "citations": []
+    },
+    {
+      "id": "eval_16",
+      "query": "What is the minimum age required to register for MGNREGA work?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "You need identity proof (Aadhaar or Voter ID), residence proof, and a passport-size photo to apply for a Job Card.",
+      "citations": []
+    },
+    {
+      "id": "eval_17",
+      "query": "What documents do I need to get an MGNREGA Job Card?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "You need identity proof (Aadhaar or Voter ID), residence proof, and a passport-size photo to apply for a Job Card.",
+      "citations": []
+    },
+    {
+      "id": "eval_18",
+      "query": "Do I need to pay any fee for obtaining an MGNREGA Job Card?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "You need identity proof (Aadhaar or Voter ID), residence proof, and a passport-size photo to apply for a Job Card.",
+      "citations": []
+    },
+    {
+      "id": "eval_19",
+      "query": "What bank account details are required for MGNREGA wage payments?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "You need identity proof (Aadhaar or Voter ID), residence proof, and a passport-size photo to apply for a Job Card.",
+      "citations": []
+    },
+    {
+      "id": "eval_20",
+      "query": "Where do I submit my application for an MGNREGA Job Card?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Submit a written application or oral request to your local Gram Panchayat. A Job Card will be issued within 15 days.",
+      "citations": []
+    },
+    {
+      "id": "eval_21",
+      "query": "Within how many days should the Gram Panchayat issue a Job Card?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Submit a written application or oral request to your local Gram Panchayat. A Job Card will be issued within 15 days.",
+      "citations": []
+    },
+    {
+      "id": "eval_22",
+      "query": "How do I request work after getting my MGNREGA Job Card?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Submit a written application or oral request to your local Gram Panchayat. A Job Card will be issued within 15 days.",
+      "citations": []
+    },
+    {
+      "id": "eval_23",
+      "query": "How many days of work are guaranteed under MGNREGA per year?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "MGNREGA guarantees at least 100 days of wage employment per financial year at statutory state-notified wage rates.",
+      "citations": []
+    },
+    {
+      "id": "eval_24",
+      "query": "What happens if the government cannot provide MGNREGA work within 15 days of demand?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "MGNREGA guarantees at least 100 days of wage employment per financial year at statutory state-notified wage rates.",
+      "citations": []
+    },
+    {
+      "id": "eval_25",
+      "query": "Are men and women paid different wages under MGNREGA?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "MGNREGA guarantees at least 100 days of wage employment per financial year at statutory state-notified wage rates.",
+      "citations": []
+    },
+    {
+      "id": "eval_26",
+      "query": "How far from the village will MGNREGA work be provided?",
+      "scheme": "mgnrega",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "MGNREGA guarantees at least 100 days of wage employment per financial year at statutory state-notified wage rates.",
+      "citations": []
+    },
+    {
+      "id": "eval_27",
+      "query": "Who is eligible for healthcare benefits under Ayushman Bharat PM-JAY?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Families listed in the SECC 2011 deprivation database (criteria D1-D5, D7 rural) and active RSBY beneficiaries are eligible for PMJAY.",
+      "citations": []
+    },
+    {
+      "id": "eval_28",
+      "query": "Are senior citizens above 70 years eligible for Ayushman Bharat regardless of income?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Families listed in the SECC 2011 deprivation database (criteria D1-D5, D7 rural) and active RSBY beneficiaries are eligible for PMJAY.",
+      "citations": []
+    },
+    {
+      "id": "eval_29",
+      "query": "Can urban street vendors and domestic workers get Ayushman Bharat coverage?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Families listed in the SECC 2011 deprivation database (criteria D1-D5, D7 rural) and active RSBY beneficiaries are eligible for PMJAY.",
+      "citations": []
+    },
+    {
+      "id": "eval_30",
+      "query": "Is there a limit on family size for Ayushman Bharat enrollment?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Families listed in the SECC 2011 deprivation database (criteria D1-D5, D7 rural) and active RSBY beneficiaries are eligible for PMJAY.",
+      "citations": []
+    },
+    {
+      "id": "eval_31",
+      "query": "What documents are required to make an Ayushman Golden Card?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "You need an Aadhaar card or Ration card along with a mobile number to verify eligibility at an empanelled hospital or CSC.",
+      "citations": []
+    },
+    {
+      "id": "eval_32",
+      "query": "Is a Ration card sufficient to verify family details for Ayushman Bharat?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Families listed in the SECC 2011 deprivation database (criteria D1-D5, D7 rural) and active RSBY beneficiaries are eligible for PMJAY.",
+      "citations": []
+    },
+    {
+      "id": "eval_33",
+      "query": "Do I need to carry original identity cards to the hospital for PMJAY treatment?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "You need an Aadhaar card or Ration card along with a mobile number to verify eligibility at an empanelled hospital or CSC.",
+      "citations": []
+    },
+    {
+      "id": "eval_34",
+      "query": "How can I check if my name is on the Ayushman Bharat beneficiary list?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Families listed in the SECC 2011 deprivation database (criteria D1-D5, D7 rural) and active RSBY beneficiaries are eligible for PMJAY.",
+      "citations": []
+    },
+    {
+      "id": "eval_35",
+      "query": "Where do I go inside an empanelled hospital to avail cashless treatment?",
+      "scheme": "ayushman_bharat",
+      "path": "offline_extractive",
+      "hallucinated": true,
+      "reasons": [
+        "Uncited generation in RAG path."
+      ],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_36",
+      "query": "Can I generate my Ayushman Card from a Common Service Centre?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Check eligibility at beneficiary.nha.gov.in or visit an empanelled hospital/Ayushman Mitra kiosk to generate your card.",
+      "citations": []
+    },
+    {
+      "id": "eval_37",
+      "query": "What is the maximum medical cover provided under Ayushman Bharat per family?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Ayushman Bharat provides cashless health cover of up to Rs. 5,00,000 per eligible family per year for secondary and tertiary care hospitalization.",
+      "citations": []
+    },
+    {
+      "id": "eval_38",
+      "query": "Are pre-existing medical conditions covered from the first day in PM-JAY?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Families listed in the SECC 2011 deprivation database (criteria D1-D5, D7 rural) and active RSBY beneficiaries are eligible for PMJAY.",
+      "citations": []
+    },
+    {
+      "id": "eval_39",
+      "query": "Does Ayushman Bharat cover medicine costs after being discharged from the hospital?",
+      "scheme": "ayushman_bharat",
+      "path": "cached",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "Ayushman Bharat provides cashless health cover of up to Rs. 5,00,000 per eligible family per year for secondary and tertiary care hospitalization.",
+      "citations": []
+    },
+    {
+      "id": "eval_40",
+      "query": "What is the procedure to apply for a fresh Driving Licence?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_41",
+      "query": "How do I book an online tatkal train ticket on IRCTC?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_42",
+      "query": "What is the today's weather forecast for Coimbatore?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_43",
+      "query": "Who won the cricket match between India and Australia yesterday?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_44",
+      "query": "How can I renew my Indian passport online?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_45",
+      "query": "What are the income tax slab rates for the current financial year?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_46",
+      "query": "How do I apply for an electricity connection for my house?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_47",
+      "query": "How can I apply for an education loan for engineering studies?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_48",
+      "query": "What is the procedure to link PAN card with bank account for income tax return?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_49",
+      "query": "How do I check my PF balance in EPFO portal using UAN?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    },
+    {
+      "id": "eval_50",
+      "query": "Can you recommend the best fertilizer for wheat crop?",
+      "scheme": null,
+      "path": "offline_extractive",
+      "hallucinated": false,
+      "reasons": [],
+      "reply_text": "I can only answer questions regarding PM-KISAN, MGNREGA, and Ayushman Bharat.",
+      "citations": []
+    }
+  ]
+}

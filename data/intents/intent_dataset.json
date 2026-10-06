@@ -449,7 +449,7 @@
   },
   {
     "query": "पीएम किसान की एक किस्त में कितनी राशि मिलती है?",
-    "hi": "hi",
+    "lang": "hi",
     "intent": "benefit_amount",
     "scheme": "pm_kisan",
     "id": "intent_065"

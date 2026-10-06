@@ -1,0 +1,396 @@
+{
+  "summary": {
+    "cached": {
+      "count": 20,
+      "avg_ms": 0.83,
+      "p50_ms": 1.1,
+      "p95_ms": 1.55,
+      "min_ms": 0.01,
+      "max_ms": 4.69,
+      "sla_target_ms": 2000.0,
+      "within_sla": true,
+      "stages_avg_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 1.91,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0
+      }
+    },
+    "cloud_assisted": {
+      "count": 1,
+      "avg_ms": 8.82,
+      "p50_ms": 8.82,
+      "p95_ms": 8.82,
+      "min_ms": 8.82,
+      "max_ms": 8.82,
+      "sla_target_ms": 3000.0,
+      "within_sla": true,
+      "stages_avg_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 8.78,
+        "llm_or_cache": 150.01,
+        "tts": 0.0
+      }
+    },
+    "offline_extractive": {
+      "count": 3,
+      "avg_ms": 0.02,
+      "p50_ms": 0.02,
+      "p95_ms": 0.02,
+      "min_ms": 0.02,
+      "max_ms": 0.02,
+      "sla_target_ms": 1500.0,
+      "within_sla": true,
+      "stages_avg_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0
+      }
+    }
+  },
+  "runs": [
+    {
+      "query": "Who is eligible for PM KISAN scheme?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.01,
+        "tts": 0.0,
+        "total": 0.06
+      },
+      "within_sla": true
+    },
+    {
+      "query": "What documents are needed for PM KISAN?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.02
+      },
+      "within_sla": true
+    },
+    {
+      "query": "How do I apply for PM KISAN portal?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.01
+      },
+      "within_sla": true
+    },
+    {
+      "query": "What is the annual benefit amount of PM KISAN?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.01
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Who is eligible for 100 days work under MGNREGA?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.01
+      },
+      "within_sla": true
+    },
+    {
+      "query": "What documents are required to get an MGNREGA Job Card?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.01
+      },
+      "within_sla": true
+    },
+    {
+      "query": "How to apply for job card in Gram Panchayat?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.01
+      },
+      "within_sla": true
+    },
+    {
+      "query": "How many days of wage employment in MGNREGA?",
+      "path": "offline_extractive",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.02
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Who is eligible for Ayushman Bharat PMJAY?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.01
+      },
+      "within_sla": true
+    },
+    {
+      "query": "What documents are needed for Ayushman Golden Card?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.01
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Can income tax paying farmers receive PM KISAN installments?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 6.66,
+        "rag": 0.0,
+        "llm_or_cache": 0.01,
+        "tts": 0.0,
+        "total": 4.69
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Are senior citizens aged 70 and above eligible for Ayushman Bharat?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.35,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.38
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Is unemployment allowance paid if MGNREGA work is delayed beyond 15 days?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.2,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.22
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Can tenant farmers apply without landholding documents?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.15,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.17
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Does Ayushman Bharat cover pre-existing diseases from day one?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.15,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.16
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Are equal wages paid to women and men under MGNREGA?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.13,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.15
+      },
+      "within_sla": true
+    },
+    {
+      "query": "What is the distance limit for MGNREGA work from the village?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.17,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.2
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Does Ayushman Bharat cover medicine costs after hospital discharge?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.18,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.2
+      },
+      "within_sla": true
+    },
+    {
+      "query": "What are the rules for PM KISAN beneficiary registration?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.08,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.1
+      },
+      "within_sla": true
+    },
+    {
+      "query": "How does Gram Panchayat issue job card within 15 days?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.08,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.1
+      },
+      "within_sla": true
+    },
+    {
+      "query": "What is the procedure for secondary hospitalization in PM-JAY?",
+      "path": "cached",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 3.15,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 1.17
+      },
+      "within_sla": true
+    },
+    {
+      "query": "What is the weather forecast for tomorrow?",
+      "path": "offline_extractive",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.02
+      },
+      "within_sla": true
+    },
+    {
+      "query": "How to book tatkal train ticket on IRCTC portal?",
+      "path": "cloud_assisted",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.0,
+        "rag": 8.78,
+        "llm_or_cache": 150.01,
+        "tts": 0.0,
+        "total": 8.82
+      },
+      "within_sla": true
+    },
+    {
+      "query": "Who won the cricket match yesterday between India and Australia?",
+      "path": "offline_extractive",
+      "timings_ms": {
+        "asr": 0.0,
+        "nmt": 0.0,
+        "nlu": 0.01,
+        "rag": 0.0,
+        "llm_or_cache": 0.0,
+        "tts": 0.0,
+        "total": 0.02
+      },
+      "within_sla": true
+    }
+  ]
+}

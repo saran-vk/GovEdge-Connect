@@ -4,7 +4,7 @@ FastAPI entrypoint and routing for GovConnect Edge orchestrator API.
 
 import os
 from typing import Optional, Dict, Any
-from fastapi import FastAPI, UploadFile, File, Form, HTTPException, status
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException, status, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
@@ -143,3 +143,75 @@ async def handle_voice_query(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error processing voice query: {str(e)}",
         )
+
+
+@app.websocket("/api/v1/voice-stream")
+async def websocket_voice_stream(websocket: WebSocket):
+    """
+    WebSocket endpoint for real-time voice query streaming with progressive stage telemetry.
+    Accepts JSON handshake or audio chunk packets, returns real-time pipeline events and audio.
+    """
+    await websocket.accept()
+    session_id = "ws_session_default"
+    lang_hint = "hi"
+    runtime_mode = None
+    audio_buffer = bytearray()
+
+    try:
+        while True:
+            message = await websocket.receive()
+            if "text" in message and message["text"]:
+                import json
+                try:
+                    payload = json.loads(message["text"])
+                    msg_type = payload.get("type", "")
+
+                    if msg_type == "handshake":
+                        session_id = payload.get("session_id", session_id)
+                        lang_hint = payload.get("lang_hint", lang_hint)
+                        if "runtime_mode" in payload and payload["runtime_mode"]:
+                            runtime_mode = RuntimeMode(payload["runtime_mode"])
+                        await websocket.send_json({"event": "ready", "session_id": session_id})
+
+                    elif msg_type == "finish":
+                        # Process buffered audio
+                        await websocket.send_json({"event": "stage", "stage": "processing"})
+                        mode = runtime_mode or DEFAULT_RUNTIME_MODE
+                        res = await orchestrator.process_query(
+                            session_id=session_id,
+                            wav_bytes=bytes(audio_buffer) if audio_buffer else None,
+                            lang_hint=lang_hint,
+                            runtime_mode=mode,
+                        )
+
+                        # Update metrics
+                        METRICS["total_queries"] += 1
+                        METRICS["paths"][res.path.value] = METRICS["paths"].get(res.path.value, 0) + 1
+                        METRICS["total_latency_ms"] += res.timings_ms.total
+
+                        # Send pipeline events and final result
+                        await websocket.send_json({
+                            "event": "complete",
+                            "response": res.model_dump(),
+                        })
+                        audio_buffer.clear()
+
+                except Exception as ex:
+                    await websocket.send_json({"event": "error", "detail": str(ex)})
+
+            elif "bytes" in message and message["bytes"]:
+                audio_buffer.extend(message["bytes"])
+                await websocket.send_json({
+                    "event": "buffered",
+                    "bytes_received": len(message["bytes"]),
+                    "total_buffer_size": len(audio_buffer),
+                })
+
+    except WebSocketDisconnect:
+        pass
+    except Exception as e:
+        try:
+            await websocket.send_json({"event": "error", "detail": str(e)})
+        except Exception:
+            pass
+

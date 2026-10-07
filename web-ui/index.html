@@ -544,15 +544,30 @@
     const speakBtn = document.getElementById('speakBtn');
     speakBtn.style.display = "inline-block";
 
+    const rate = parseFloat(document.getElementById('rateRange').value) || 0.85;
+
+    function getAudioDataUri(b64) {
+      if (!b64) return "";
+      if (b64.startsWith("data:")) return b64;
+      if (b64.startsWith("UklGR")) return "data:audio/wav;base64," + b64;
+      return "data:audio/mpeg;base64," + b64;
+    }
+
     if (data.audio && data.audio.length > 100) {
-      // Real synthesized audio returned
-      player.src = "data:audio/wav;base64," + data.audio;
+      player.src = getAudioDataUri(data.audio);
+      player.playbackRate = rate;
+      player.style.display = "block";
+      player.play().catch(e => {
+        console.warn("Direct base64 audio failed, fallback to stream:", e);
+        player.src = `/api/v1/tts-stream?text=${encodeURIComponent(lastReplyText)}&lang=${encodeURIComponent(lastReplyLang)}`;
+        player.playbackRate = rate;
+        player.play().catch(() => {});
+      });
+    } else if (lastReplyText) {
+      player.src = `/api/v1/tts-stream?text=${encodeURIComponent(lastReplyText)}&lang=${encodeURIComponent(lastReplyLang)}`;
+      player.playbackRate = rate;
       player.style.display = "block";
       player.play().catch(() => {});
-    } else {
-      // Use browser SpeechSynthesis so the user actually hears the answer
-      player.style.display = "none";
-      speakText(lastReplyText, lastReplyLang);
     }
 
     // Citations

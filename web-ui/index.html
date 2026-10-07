@@ -93,7 +93,7 @@
         Citizen Query
         <span class="badge" id="recordingStatus" style="display:none; background:#fee2e2; color:#dc2626;">Listening...</span>
       </h2>
-      <textarea id="queryText" placeholder="Type a scheme question or use microphone..."></textarea>
+      <textarea id="queryText" placeholder="Type a welfare scheme query or click Speak / Quick Test below..."></textarea>
       
       <div class="action-row">
         <button id="recordBtn" class="btn-record">
@@ -103,13 +103,17 @@
       </div>
 
       <div class="sample-queries">
-        <p>QUICK SAMPLE QUERIES</p>
+        <p>1-CLICK INSTANT TESTS (CLICK ANY TO RUN)</p>
         <div class="chip-container">
-          <div class="chip" onclick="setQuery('Who is eligible for PM-KISAN funds?', 'en')">PM-KISAN Eligibility (EN)</div>
-          <div class="chip" onclick="setQuery('பிஎம் கிசான் விண்ணப்பிக்க என்ன ஆவணங்கள் தேவை?', 'ta')">PM-KISAN Docs (TA)</div>
-          <div class="chip" onclick="setQuery('मनरेगा में 100 दिन का काम कैसे मांगें?', 'hi')">MGNREGA Process (HI)</div>
-          <div class="chip" onclick="setQuery('Are pre-existing diseases covered in Ayushman Bharat?', 'en')">Ayushman Cover (EN)</div>
-          <div class="chip" onclick="setQuery('What is the weather in Delhi today?', 'en')">Out of Scope Test</div>
+          <div class="chip" onclick="runSample('Who is eligible for PM-KISAN funds?', 'en')">🚜 PM-KISAN Eligibility (EN)</div>
+          <div class="chip" onclick="runSample('பிஎம் கிசான் விண்ணப்பிக்க என்ன ஆவணங்கள் தேவை?', 'ta')">🌾 PM-KISAN Docs (TA)</div>
+          <div class="chip" onclick="runSample('पीएम किसान योजना में कितने पैसे मिलते हैं?', 'hi')">💰 PM-KISAN Benefit (HI)</div>
+          <div class="chip" onclick="runSample('Who can apply for 100 days work under MGNREGA?', 'en')">⛏️ MGNREGA Work (EN)</div>
+          <div class="chip" onclick="runSample('मनरेगा में 100 दिन का काम कैसे मांगें?', 'hi')">📋 MGNREGA Process (HI)</div>
+          <div class="chip" onclick="runSample('வேலை அட்டை பெற என்ன ஆவணங்கள் தேவை?', 'ta')">🆔 MGNREGA Job Card (TA)</div>
+          <div class="chip" onclick="runSample('Are pre-existing diseases covered in Ayushman Bharat?', 'en')">🏥 Ayushman Cover (EN)</div>
+          <div class="chip" onclick="runSample('ஆயுஷ்மான் பாரத் திட்டத்தில் 5 லட்சம் மருத்துவ காப்பீடு யாருக்கு?', 'ta')">🩺 Ayushman 5 Lakh (TA)</div>
+          <div class="chip" onclick="runSample('What is the weather in Delhi today?', 'en')">🚫 Out of Scope Test</div>
         </div>
       </div>
     </div>
@@ -129,9 +133,14 @@
 
       <div>
         <div class="reply-box" id="replyText">
-          Submit a voice or text query to see the grounded policy answer and citations.
+          Select any 1-Click test query or type/speak a question to see the grounded policy answer, citations, and latency telemetry.
         </div>
-        <audio id="audioPlayer" class="audio-player" controls style="display:none;"></audio>
+        <div style="display: flex; gap: 8px; margin-top: 8px; align-items: center;">
+          <audio id="audioPlayer" class="audio-player" controls style="display:none;"></audio>
+          <button id="speakBtn" style="display:none; background:#f1f5f9; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer;" onclick="readAloudCurrent()">
+            🔊 Read Aloud (Browser Voice)
+          </button>
+        </div>
       </div>
 
       <div class="citations-box" id="citationsBox" style="display:none;">
@@ -158,42 +167,137 @@
 <script>
   let mediaRecorder = null;
   let audioChunks = [];
+  let speechRecognizer = null;
+  let lastReplyText = "";
+  let lastReplyLang = "en";
 
   function setQuery(text, lang) {
     document.getElementById('queryText').value = text;
     document.getElementById('langSelect').value = lang;
   }
 
-  // Audio Recording Handler
+  function runSample(text, lang) {
+    setQuery(text, lang);
+    submitActiveQuery();
+  }
+
+  function readAloudCurrent() {
+    if (!lastReplyText) return;
+    speakText(lastReplyText, lastReplyLang);
+  }
+
+  function speakText(text, lang) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    const langCodeMap = {
+      'ta': 'ta-IN',
+      'hi': 'hi-IN',
+      'te': 'te-IN',
+      'ml': 'ml-IN',
+      'en': 'en-IN'
+    };
+    utterance.lang = langCodeMap[lang] || 'en-US';
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // Audio Recording & Speech Recognition Handler
   const recordBtn = document.getElementById('recordBtn');
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
   recordBtn.addEventListener('click', async () => {
-    if (mediaRecorder && mediaRecorder.state === "recording") {
-      mediaRecorder.stop();
-      recordBtn.classList.remove('recording');
-      document.getElementById('recordLabel').innerText = "Speak";
-      document.getElementById('recordingStatus').style.display = "none";
+    if (recordBtn.classList.contains('recording')) {
+      stopRecording();
     } else {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRecorder = new MediaRecorder(stream);
-        audioChunks = [];
-        mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
-        mediaRecorder.onstop = async () => {
-          const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-          await sendVoiceQuery(audioBlob);
-        };
-        mediaRecorder.start();
-        recordBtn.classList.add('recording');
-        document.getElementById('recordLabel').innerText = "Stop";
-        document.getElementById('recordingStatus').style.display = "inline-block";
-      } catch (err) {
-        alert("Microphone access failed: " + err.message);
-      }
+      startRecording();
     }
   });
 
+  async function startRecording() {
+    const lang = document.getElementById('langSelect').value;
+    const langMap = { 'en': 'en-IN', 'ta': 'ta-IN', 'hi': 'hi-IN' };
+
+    recordBtn.classList.add('recording');
+    document.getElementById('recordLabel').innerText = "Stop";
+    document.getElementById('recordingStatus').style.display = "inline-block";
+    document.getElementById('recordingStatus').innerText = "Listening...";
+
+    // 1. Try Browser Web Speech API for high-fidelity live transcription if supported
+    if (SpeechRecognition) {
+      try {
+        speechRecognizer = new SpeechRecognition();
+        speechRecognizer.lang = langMap[lang] || 'en-IN';
+        speechRecognizer.interimResults = true;
+        speechRecognizer.maxAlternatives = 1;
+
+        speechRecognizer.onresult = (event) => {
+          const transcript = Array.from(event.results)
+            .map(res => res[0].transcript)
+            .join('');
+          document.getElementById('queryText').value = transcript;
+        };
+
+        speechRecognizer.onerror = (e) => {
+          console.warn("Speech recognition error:", e.error);
+        };
+
+        speechRecognizer.onend = () => {
+          if (recordBtn.classList.contains('recording')) {
+            stopRecording();
+          }
+        };
+
+        speechRecognizer.start();
+      } catch (e) {
+        console.warn("SpeechRecognizer start failed:", e);
+      }
+    }
+
+    // 2. Also record audio stream for backend voice-query endpoint
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder = new MediaRecorder(stream);
+      audioChunks = [];
+      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+      mediaRecorder.onstop = async () => {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+        // If text wasn't populated by speech recognition, send audio to backend
+        if (!document.getElementById('queryText').value.trim()) {
+          await sendVoiceQuery(audioBlob);
+        } else {
+          submitActiveQuery();
+        }
+      };
+      mediaRecorder.start();
+    } catch (err) {
+      // Microphone not permitted or unavailable; if SpeechRecognition was active it will handle it
+      if (!SpeechRecognition) {
+        alert("Microphone access failed: " + err.message);
+        stopRecording();
+      }
+    }
+  }
+
+  function stopRecording() {
+    recordBtn.classList.remove('recording');
+    document.getElementById('recordLabel').innerText = "Speak";
+    document.getElementById('recordingStatus').style.display = "none";
+
+    if (speechRecognizer) {
+      try { speechRecognizer.stop(); } catch (e) {}
+      speechRecognizer = null;
+    }
+    if (mediaRecorder && mediaRecorder.state === "recording") {
+      try { mediaRecorder.stop(); } catch (e) {}
+    }
+  }
+
   // Text Query Submission
-  document.getElementById('submitBtn').addEventListener('click', async () => {
+  document.getElementById('submitBtn').addEventListener('click', submitActiveQuery);
+
+  async function submitActiveQuery() {
     const text = document.getElementById('queryText').value.trim();
     if (!text) return;
     const lang = document.getElementById('langSelect').value;
@@ -213,11 +317,11 @@
         })
       });
       const data = await resp.json();
-      renderResponse(data);
+      renderResponse(data, lang);
     } catch (err) {
       document.getElementById('replyText').innerText = "Error: " + err.message;
     }
-  });
+  }
 
   async function sendVoiceQuery(blob) {
     const lang = document.getElementById('langSelect').value;
@@ -239,14 +343,17 @@
       if (data.transcript) {
         document.getElementById('queryText').value = data.transcript;
       }
-      renderResponse(data);
+      renderResponse(data, lang);
     } catch (err) {
       document.getElementById('replyText').innerText = "Error: " + err.message;
     }
   }
 
-  function renderResponse(data) {
-    document.getElementById('replyText').innerText = data.reply_text || "No reply generated.";
+  function renderResponse(data, lang) {
+    lastReplyText = data.reply_text || "";
+    lastReplyLang = lang || document.getElementById('langSelect').value;
+
+    document.getElementById('replyText').innerText = lastReplyText || "No reply generated.";
 
     // Path badge
     const pb = document.getElementById('pathBadge');
@@ -265,12 +372,18 @@
 
     // Audio Playback
     const player = document.getElementById('audioPlayer');
-    if (data.audio) {
+    const speakBtn = document.getElementById('speakBtn');
+    speakBtn.style.display = "inline-block";
+
+    if (data.audio && data.audio.length > 100) {
+      // Real synthesized audio returned
       player.src = "data:audio/wav;base64," + data.audio;
       player.style.display = "block";
       player.play().catch(() => {});
     } else {
+      // Use browser SpeechSynthesis so the user actually hears the answer
       player.style.display = "none";
+      speakText(lastReplyText, lastReplyLang);
     }
 
     // Citations

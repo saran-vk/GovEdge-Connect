@@ -80,4 +80,7 @@ web-ui/build/
 .idea/
 .vscode/
 *.swp
+
+# Plan and other file
+GovConnect_Edge_Master_Plan.md
 *~

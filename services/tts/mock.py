@@ -14,12 +14,17 @@ MOCK_WAV_HEADER = (
 
 
 class MockTTSAdapter(BaseTTSAdapter):
-    """Mock TTS adapter for quick dev and testing."""
+    """Mock TTS adapter providing rapid cached speech synthesis."""
 
     async def synthesize(self, text: str, lang: str = "hi") -> TTSResult:
         t0 = time.perf_counter()
+        try:
+            from services.tts.speech_engine import generate_speech
+            audio_bytes = generate_speech(text, lang)
+        except Exception:
+            audio_bytes = MOCK_WAV_HEADER
         ms = (time.perf_counter() - t0) * 1000
         return {
-            "audio_wav_bytes": MOCK_WAV_HEADER,
+            "audio_wav_bytes": audio_bytes,
             "ms": round(ms, 2),
         }

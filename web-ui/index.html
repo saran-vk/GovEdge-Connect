@@ -283,7 +283,10 @@
   };
 
   function updateRate(val) {
-    document.getElementById('rateVal').innerText = parseFloat(val).toFixed(2) + 'x';
+    const rate = parseFloat(val);
+    document.getElementById('rateVal').innerText = rate.toFixed(2) + 'x';
+    const player = document.getElementById('audioPlayer');
+    if (player) player.playbackRate = rate;
   }
 
   function updatePitch(val) {
@@ -345,14 +348,28 @@
     setTimeout(populateVoiceList, 300);
   }
 
-  function onVoiceSelected() {
-    // Selected persona updated
+  function playServerAudio(text, lang) {
+    if (!text) return;
+    const player = document.getElementById('audioPlayer');
+    const rate = parseFloat(document.getElementById('rateRange').value) || 0.85;
+    player.src = `/api/v1/tts-stream?text=${encodeURIComponent(text)}&lang=${encodeURIComponent(lang)}`;
+    player.playbackRate = rate;
+    player.style.display = 'block';
+    player.play().catch(e => {
+      console.warn("Server audio play failed, falling back to speech synthesis:", e);
+      speakText(text, lang);
+    });
   }
 
   function testCurrentVoice() {
     const lang = document.getElementById('langSelect').value;
     const phrase = TEST_PHRASES[lang] || TEST_PHRASES['en'];
-    speakText(phrase, lang);
+    playServerAudio(phrase, lang);
+  }
+
+  function readAloudCurrent() {
+    if (!lastReplyText) return;
+    playServerAudio(lastReplyText, lastReplyLang);
   }
 
   // Audio Recording & Speech Recognition Handler

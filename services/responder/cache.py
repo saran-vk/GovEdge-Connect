@@ -141,6 +141,13 @@ class ResponseCache:
         # Check in-memory seed cache first
         if key in self._memory_cache:
             reply_text, audio_b64 = self._memory_cache[key]
+            if audio_b64 == MOCK_AUDIO_B64:
+                try:
+                    from services.tts.speech_engine import get_cached_speech_b64
+                    audio_b64 = get_cached_speech_b64(reply_text, lang)
+                    self._memory_cache[key] = (reply_text, audio_b64)
+                except Exception:
+                    pass
             ms = (time.perf_counter() - t0) * 1000
             return reply_text, audio_b64, round(ms, 2)
 
@@ -149,6 +156,13 @@ class ResponseCache:
             fallback_key = self.generate_key(scheme, intent, "en", corpus_version)
             if fallback_key in self._memory_cache:
                 reply_text, audio_b64 = self._memory_cache[fallback_key]
+                if audio_b64 == MOCK_AUDIO_B64:
+                    try:
+                        from services.tts.speech_engine import get_cached_speech_b64
+                        audio_b64 = get_cached_speech_b64(reply_text, "en")
+                        self._memory_cache[fallback_key] = (reply_text, audio_b64)
+                    except Exception:
+                        pass
                 ms = (time.perf_counter() - t0) * 1000
                 return reply_text, audio_b64, round(ms, 2)
 

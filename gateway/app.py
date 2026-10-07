@@ -83,6 +83,26 @@ async def get_metrics():
     }
 
 
+from fastapi.responses import Response
+
+@app.get("/api/v1/tts-stream", tags=["Gateway"])
+async def stream_tts(text: str, lang: str = "ta"):
+    """Streams synthesized MP3 audio for given text and language."""
+    from services.tts.speech_engine import generate_speech
+    audio_bytes = generate_speech(text, lang)
+    return Response(content=audio_bytes, media_type="audio/mpeg")
+
+
+@app.post("/api/v1/tts", tags=["Gateway"])
+async def generate_tts_endpoint(payload: Dict[str, str]):
+    """Returns base64 synthesized audio for text and language."""
+    text = payload.get("text", "")
+    lang = payload.get("lang", "ta")
+    from services.tts.speech_engine import get_cached_speech_b64
+    audio_b64 = get_cached_speech_b64(text, lang)
+    return {"audio": audio_b64, "lang": lang}
+
+
 @app.post("/api/v1/text-query", response_model=QueryRes, tags=["Gateway"])
 async def handle_text_query(req: TextQueryReq) -> QueryRes:
     """Processes a text query and returns grounded text response and optional audio."""

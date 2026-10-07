@@ -75,6 +75,8 @@ class BulbulTTSAdapter(BaseTTSAdapter):
                 # Log and fallback gracefully
                 pass
 
-        # Fallback to local / mock audio synthesis
-        ms = (time.perf_counter() - t0) * 1000 + 120.0
-        return TTSResult(audio_wav_bytes=MOCK_WAV_HEADER, ms=round(ms, 2))
+        # Fallback to local cached speech engine (gTTS / offline cache)
+        from services.tts.speech_engine import generate_speech
+        audio_bytes = generate_speech(text, lang)
+        ms = (time.perf_counter() - t0) * 1000
+        return TTSResult(audio_wav_bytes=audio_bytes, ms=round(ms, 2))

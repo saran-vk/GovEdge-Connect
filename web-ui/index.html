@@ -4,7 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GovConnect Edge — Voice-to-Voice Gateway Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Noto Sans Tamil';
+      src: url('/demo/fonts/NotoSansTamil-Regular.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Noto Sans Devanagari';
+      src: url('/demo/fonts/NotoSansDevanagari-Regular.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
     :root {
       --primary: #1e3a8a;
       --primary-light: #3b82f6;
@@ -16,9 +31,13 @@
       --border: #e2e8f0;
       --text: #0f172a;
       --text-muted: #64748b;
+      --font-stack: 'Inter', 'Noto Sans Tamil', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding: 24px; line-height: 1.5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-stack); }
+    body { background-color: var(--bg); color: var(--text); padding: 24px; line-height: 1.5; font-family: var(--font-stack); }
+    input, textarea, select, button, .reply-box, .chip, .citation-card {
+      font-family: var(--font-stack) !important;
+    }
     .container { max-width: 960px; margin: 0 auto; }
     header { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     .title-block h1 { font-size: 20px; font-weight: 700; color: var(--primary); }
@@ -38,7 +57,7 @@
     .badge-cloud { background: #dbeafe; color: var(--primary-light); }
     .badge-offline { background: #fef3c7; color: var(--warning); }
     .badge-danger { background: #fee2e2; color: var(--danger); }
-    .input-section textarea { width: 100%; height: 90px; padding: 10px; border-radius: 8px; border: 1px solid var(--border); font-size: 14px; resize: none; margin-bottom: 12px; outline: none; }
+    .input-section textarea { width: 100%; height: 95px; padding: 10px; border-radius: 8px; border: 1px solid var(--border); font-size: 15px; line-height: 1.6; resize: none; margin-bottom: 12px; outline: none; font-family: var(--font-stack) !important; }
     .input-section textarea:focus { border-color: var(--primary-light); }
     .action-row { display: flex; gap: 10px; }
     .btn-submit { background: var(--primary); color: white; border: none; flex: 1; }
@@ -46,11 +65,11 @@
     .sample-queries { margin-top: 16px; border-top: 1px dashed var(--border); padding-top: 14px; }
     .sample-queries p { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
     .chip-container { display: flex; flex-wrap: wrap; gap: 6px; }
-    .chip { font-size: 11px; background: #f1f5f9; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 6px; cursor: pointer; }
+    .chip { font-size: 11px; background: #f1f5f9; border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-family: var(--font-stack) !important; }
     .chip:hover { background: #e2e8f0; }
     .result-section { display: flex; flex-direction: column; gap: 16px; }
     .meta-box { display: flex; gap: 8px; flex-wrap: wrap; }
-    .reply-box { background: #f8fafc; border-left: 4px solid var(--primary-light); padding: 14px; border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.6; }
+    .reply-box { background: #f8fafc; border-left: 4px solid var(--primary-light); padding: 14px; border-radius: 0 8px 8px 0; font-size: 15px; line-height: 1.6; font-family: var(--font-stack) !important; }
     .audio-player { margin-top: 8px; width: 100%; }
     .citations-box { margin-top: 10px; }
     .citations-box h3 { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }

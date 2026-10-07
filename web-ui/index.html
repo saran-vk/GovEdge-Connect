@@ -6,7 +6,7 @@
   <title>GovConnect Edge — Voice-to-Voice Gateway Demo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'Noto Sans Tamil';
@@ -17,6 +17,18 @@
     @font-face {
       font-family: 'Noto Sans Devanagari';
       src: url('/demo/fonts/NotoSansDevanagari-Regular.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Noto Sans Telugu';
+      src: url('/demo/fonts/NotoSansTelugu-Regular.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Noto Sans Malayalam';
+      src: url('/demo/fonts/NotoSansMalayalam-Regular.ttf') format('truetype');
       font-weight: 100 900;
       font-style: normal;
     }
@@ -31,7 +43,7 @@
       --border: #e2e8f0;
       --text: #0f172a;
       --text-muted: #64748b;
-      --font-stack: 'Inter', 'Noto Sans Tamil', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-stack: 'Inter', 'Noto Sans Tamil', 'Noto Sans Devanagari', 'Noto Sans Telugu', 'Noto Sans Malayalam', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-stack); }
     body { background-color: var(--bg); color: var(--text); padding: 24px; line-height: 1.5; font-family: var(--font-stack); }
@@ -97,13 +109,60 @@
         <option value="hybrid">Mode: Hybrid (Cloud)</option>
         <option value="local">Mode: Local (Edge)</option>
       </select>
-      <select id="langSelect">
-        <option value="en">English</option>
-        <option value="ta">தமிழ் (Tamil)</option>
-        <option value="hi">हिन्दी (Hindi)</option>
+      <select id="langSelect" onchange="onLanguageChange()">
+        <option value="ta" selected>தமிழ் (Tamil) — Tier 1</option>
+        <option value="hi">हिन्दी (Hindi) — Tier 1</option>
+        <option value="en">English — Reference</option>
+        <option value="te">తెలుగు (Telugu) — Tier 2</option>
+        <option value="ml">മലയാളം (Malayalam) — Tier 2</option>
       </select>
     </div>
   </header>
+
+  <!-- Voice Tone & Modulation Controls Panel -->
+  <div class="card" style="margin-bottom: 24px; padding: 16px 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+      <h2 style="font-size: 14px; margin: 0; color: var(--primary); display: flex; align-items: center; gap: 6px;">
+        🎛️ Voice Tone & Modulation Controls
+        <span style="font-size: 11px; font-weight: normal; color: var(--text-muted); margin-left: 6px;">
+          (Adjust pacing, tone & voice persona for clear Tamil & regional pronunciation)
+        </span>
+      </h2>
+      <button id="testVoiceBtn" style="background:#e0f2fe; color:#0369a1; border:1px solid #bae6fd; font-size:12px; padding:5px 12px; border-radius:6px; font-weight:600; cursor:pointer;" onclick="testCurrentVoice()">
+        🔊 Test Voice Tone
+      </button>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; font-size: 12px;">
+      <div>
+        <label style="font-weight: 600; display: block; margin-bottom: 5px; color: var(--text);">Voice Engine / Speaker Persona</label>
+        <select id="voiceSelect" style="width: 100%; padding: 7px; font-size: 12px;" onchange="onVoiceSelected()"></select>
+      </div>
+      <div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+          <label style="font-weight: 600; color: var(--text);">Speech Pacing / Speed</label>
+          <span id="rateVal" style="color:var(--primary); font-weight:700;">0.85x</span>
+        </div>
+        <input type="range" id="rateRange" min="0.6" max="1.3" step="0.05" value="0.85" style="width: 100%; cursor:pointer;" oninput="updateRate(this.value)">
+        <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-muted); margin-top:2px;">
+          <span>Slower (Clearer)</span>
+          <span id="rateAdvice" style="color:#059669; font-weight:600;">0.85x Ideal for Tamil</span>
+          <span>Faster</span>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+          <label style="font-weight: 600; color: var(--text);">Voice Pitch / Tone Modulation</label>
+          <span id="pitchVal" style="color:var(--primary); font-weight:700;">1.00</span>
+        </div>
+        <input type="range" id="pitchRange" min="0.7" max="1.3" step="0.05" value="1.0" style="width: 100%; cursor:pointer;" oninput="updatePitch(this.value)">
+        <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-muted); margin-top:2px;">
+          <span>Deeper Pitch</span>
+          <span>Natural</span>
+          <span>Higher Pitch</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="main-grid">
     <!-- Input Section -->
@@ -124,14 +183,22 @@
       <div class="sample-queries">
         <p>1-CLICK INSTANT TESTS (CLICK ANY TO RUN)</p>
         <div class="chip-container">
+          <!-- Tamil -->
+          <div class="chip" onclick="runSample('பிஎம் கிசான் விண்ணப்பிக்க என்ன ஆவணங்கள் தேவை?', 'ta')">🌾 PM-KISAN ஆவணங்கள் (TA)</div>
+          <div class="chip" onclick="runSample('வேலை அட்டை பெற என்ன ஆவணங்கள் தேவை?', 'ta')">🆔 MGNREGA வேலை அட்டை (TA)</div>
+          <div class="chip" onclick="runSample('ஆயுஷ்மான் பாரத் திட்டத்தில் 5 லட்சம் மருத்துவ காப்பீடு யாருக்கு?', 'ta')">🩺 Ayushman 5 லட்சம் (TA)</div>
+          <!-- Hindi -->
+          <div class="chip" onclick="runSample('पीएम किसान योजना में कितने पैसे मिलते हैं?', 'hi')">💰 PM-KISAN लाभ (HI)</div>
+          <div class="chip" onclick="runSample('मनरेगा में 100 दिन का काम कैसे मांगें?', 'hi')">📋 MGNREGA प्रक्रिया (HI)</div>
+          <!-- Telugu -->
+          <div class="chip" onclick="runSample('పీఎం కిసాన్ పథకానికి ఎవరు అర్హులు?', 'te')">🚜 PM-KISAN అర్హత (TE)</div>
+          <div class="chip" onclick="runSample('ఉపాధి హామీ జాబ్ కార్డు కోసం ఏ పత్రాలు కావాలి?', 'te')">🆔 MGNREGA జాబ్ కార్డ్ (TE)</div>
+          <!-- Malayalam -->
+          <div class="chip" onclick="runSample('പിഎം കിസാൻ പദ്ധതിയിൽ എത്ര രൂപ ലഭിക്കും?', 'ml')">💵 PM-KISAN ആനുകൂല്യം (ML)</div>
+          <div class="chip" onclick="runSample('തൊഴിലുറപ്പ് പദ്ധതിക്ക് ആർക്കൊക്കെ അപേക്ഷിക്കാം?', 'ml')">⛏️ MGNREGA തൊഴിലുറപ്പ് (ML)</div>
+          <!-- English -->
           <div class="chip" onclick="runSample('Who is eligible for PM-KISAN funds?', 'en')">🚜 PM-KISAN Eligibility (EN)</div>
-          <div class="chip" onclick="runSample('பிஎம் கிசான் விண்ணப்பிக்க என்ன ஆவணங்கள் தேவை?', 'ta')">🌾 PM-KISAN Docs (TA)</div>
-          <div class="chip" onclick="runSample('पीएम किसान योजना में कितने पैसे मिलते हैं?', 'hi')">💰 PM-KISAN Benefit (HI)</div>
-          <div class="chip" onclick="runSample('Who can apply for 100 days work under MGNREGA?', 'en')">⛏️ MGNREGA Work (EN)</div>
-          <div class="chip" onclick="runSample('मनरेगा में 100 दिन का काम कैसे मांगें?', 'hi')">📋 MGNREGA Process (HI)</div>
-          <div class="chip" onclick="runSample('வேலை அட்டை பெற என்ன ஆவணங்கள் தேவை?', 'ta')">🆔 MGNREGA Job Card (TA)</div>
           <div class="chip" onclick="runSample('Are pre-existing diseases covered in Ayushman Bharat?', 'en')">🏥 Ayushman Cover (EN)</div>
-          <div class="chip" onclick="runSample('ஆயுஷ்மான் பாரத் திட்டத்தில் 5 லட்சம் மருத்துவ காப்பீடு யாருக்கு?', 'ta')">🩺 Ayushman 5 Lakh (TA)</div>
           <div class="chip" onclick="runSample('What is the weather in Delhi today?', 'en')">🚫 Out of Scope Test</div>
         </div>
       </div>
@@ -188,38 +255,104 @@
   let audioChunks = [];
   let speechRecognizer = null;
   let lastReplyText = "";
-  let lastReplyLang = "en";
+  let lastReplyLang = "ta";
+  let availableVoices = [];
 
-  function setQuery(text, lang) {
-    document.getElementById('queryText').value = text;
-    document.getElementById('langSelect').value = lang;
+  const TEST_PHRASES = {
+    'ta': 'வணக்கம்! பிஎம் கிசான் மற்றும் அரசு நலத்திட்ட குரல் உதவிக்கு உங்களை வரவேற்கிறோம்.',
+    'hi': 'नमस्ते! पीएम किसान और सरकारी कल्याणकारी योजनाओं की जानकारी के लिए आपका स्वागत है।',
+    'te': 'నమస్కారం! ప్రభుత్వ సంక్షేమ పథకాల సమాచారానికి స్వాగతం.',
+    'ml': 'നമസ്കാരം! സർക്കാർ ക്ഷേമ പദ്ധതികളിലേക്ക് സ്വാഗതം.',
+    'en': 'Hello! Welcome to GovConnect Edge welfare scheme voice assistance.'
+  };
+
+  const DEFAULT_RATES = {
+    'ta': 0.85,
+    'te': 0.85,
+    'ml': 0.85,
+    'hi': 0.90,
+    'en': 1.00
+  };
+
+  const RATE_ADVICE = {
+    'ta': '0.85x Ideal for Tamil Pacing',
+    'te': '0.85x Ideal for Telugu Pacing',
+    'ml': '0.85x Ideal for Malayalam Pacing',
+    'hi': '0.90x Ideal for Hindi Pacing',
+    'en': '1.00x Standard English'
+  };
+
+  function updateRate(val) {
+    document.getElementById('rateVal').innerText = parseFloat(val).toFixed(2) + 'x';
   }
 
-  function runSample(text, lang) {
-    setQuery(text, lang);
-    submitActiveQuery();
+  function updatePitch(val) {
+    document.getElementById('pitchVal').innerText = parseFloat(val).toFixed(2);
   }
 
-  function readAloudCurrent() {
-    if (!lastReplyText) return;
-    speakText(lastReplyText, lastReplyLang);
+  function onLanguageChange() {
+    const lang = document.getElementById('langSelect').value;
+    lastReplyLang = lang;
+    const recommendedRate = DEFAULT_RATES[lang] || 0.9;
+    document.getElementById('rateRange').value = recommendedRate;
+    updateRate(recommendedRate);
+    document.getElementById('rateAdvice').innerText = RATE_ADVICE[lang] || 'Custom Pacing';
+    populateVoiceList();
   }
 
-  function speakText(text, lang) {
+  function populateVoiceList() {
     if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
+    availableVoices = window.speechSynthesis.getVoices();
+    const lang = document.getElementById('langSelect').value;
+    const voiceSelect = document.getElementById('voiceSelect');
+    voiceSelect.innerHTML = '';
+
     const langCodeMap = {
-      'ta': 'ta-IN',
-      'hi': 'hi-IN',
-      'te': 'te-IN',
-      'ml': 'ml-IN',
-      'en': 'en-IN'
+      'ta': ['ta-in', 'ta_in', 'ta', 'tamil'],
+      'hi': ['hi-in', 'hi_in', 'hi', 'hindi'],
+      'te': ['te-in', 'te_in', 'te', 'telugu'],
+      'ml': ['ml-in', 'ml_in', 'ml', 'malayalam'],
+      'en': ['en-in', 'en-us', 'en-gb', 'en']
     };
-    utterance.lang = langCodeMap[lang] || 'en-US';
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-    window.speechSynthesis.speak(utterance);
+
+    const targetKeywords = langCodeMap[lang] || [lang];
+    const matchingVoices = availableVoices.filter(v => {
+      const vLang = (v.lang || '').toLowerCase();
+      const vName = (v.name || '').toLowerCase();
+      return targetKeywords.some(k => vLang.includes(k) || vName.includes(k));
+    });
+
+    const displayVoices = matchingVoices.length > 0 ? matchingVoices : availableVoices;
+
+    displayVoices.forEach((v, idx) => {
+      const opt = document.createElement('option');
+      opt.value = v.name;
+      opt.innerText = `${v.name} (${v.lang || 'default'})${v.default ? ' [Default]' : ''}`;
+      if (idx === 0) opt.selected = true;
+      voiceSelect.appendChild(opt);
+    });
+
+    if (displayVoices.length === 0) {
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.innerText = 'Standard System Synthesizer';
+      voiceSelect.appendChild(opt);
+    }
+  }
+
+  if (window.speechSynthesis) {
+    window.speechSynthesis.onvoiceschanged = populateVoiceList;
+    setTimeout(populateVoiceList, 300);
+  }
+
+  function onVoiceSelected() {
+    // Selected persona updated
+  }
+
+  function testCurrentVoice() {
+    const lang = document.getElementById('langSelect').value;
+    const phrase = TEST_PHRASES[lang] || TEST_PHRASES['en'];
+    speakText(phrase, lang);
   }
 
   // Audio Recording & Speech Recognition Handler
@@ -236,7 +369,7 @@
 
   async function startRecording() {
     const lang = document.getElementById('langSelect').value;
-    const langMap = { 'en': 'en-IN', 'ta': 'ta-IN', 'hi': 'hi-IN' };
+    const langMap = { 'en': 'en-IN', 'ta': 'ta-IN', 'hi': 'hi-IN', 'te': 'te-IN', 'ml': 'ml-IN' };
 
     recordBtn.classList.add('recording');
     document.getElementById('recordLabel').innerText = "Stop";

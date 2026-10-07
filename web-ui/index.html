@@ -372,6 +372,46 @@
     playServerAudio(lastReplyText, lastReplyLang);
   }
 
+  function setQuery(text, lang) {
+    document.getElementById('queryText').value = text;
+    document.getElementById('langSelect').value = lang;
+    onLanguageChange();
+  }
+
+  function runSample(text, lang) {
+    setQuery(text, lang);
+    submitActiveQuery();
+  }
+
+  function speakText(text, lang) {
+    if (!window.speechSynthesis) return;
+    try {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      const langCodeMap = {
+        'ta': 'ta-IN',
+        'hi': 'hi-IN',
+        'te': 'te-IN',
+        'ml': 'ml-IN',
+        'en': 'en-IN'
+      };
+      utterance.lang = langCodeMap[lang] || 'en-US';
+      const rate = parseFloat(document.getElementById('rateRange').value) || 0.85;
+      const pitch = parseFloat(document.getElementById('pitchRange').value) || 1.0;
+      utterance.rate = rate;
+      utterance.pitch = pitch;
+
+      const selectedVoiceName = document.getElementById('voiceSelect').value;
+      if (selectedVoiceName && availableVoices.length > 0) {
+        const voiceObj = availableVoices.find(v => v.name === selectedVoiceName);
+        if (voiceObj) utterance.voice = voiceObj;
+      }
+      window.speechSynthesis.speak(utterance);
+    } catch (e) {
+      console.warn("Speech synthesis error:", e);
+    }
+  }
+
   // Audio Recording & Speech Recognition Handler
   const recordBtn = document.getElementById('recordBtn');
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;

@@ -43,3 +43,17 @@ Last Updated: `2026-10-01`
   - `documents_needed`: Aadhaar card for biometric e-KYC, Ration Card / Family ID, mobile number.
   - `apply_process`: Portal verification, Ayushman Mitra kiosk at empanelled hospital, CSC PVC card issuance.
   - `benefit_amount`: Up to Rs. 5,00,000 cashless health coverage per family per year for secondary/tertiary care without family size cap.
+  - `operational`: High-end tertiary surgical packages, national portability, anti-fraud helpline 14555.
+
+---
+
+## 4. Pradhan Mantri Awaas Yojana - Gramin (PMAY-G)
+- **Official Portal:** https://pmayg.nic.in/
+- **Local Guideline Corpus:** [data/schemes/pmay_g.md](file:///home/saran/Projects/S5_mini_antiG/data/schemes/pmay_g.md)
+- **Authority:** Ministry of Rural Development, Government of India
+- **Retrieved Date:** 2026-10-17
+- **Key Intents Covered:**
+  - `check_eligibility`: Homeless and kutcha house households via SECC 2011 / Awaas+, 13-point exclusion filter.
+  - `documents_needed`: Aadhaar card, bank/post office passbook, MGNREGA job card number, land possession certificate (Patta).
+  - `apply_process`: Automated PWL selection, BDO administrative sanction, AwaasApp geo-tagged photo inspections across 4 construction stages.
+  - `benefit_amount`: Rs. 1,20,000 (plain) / Rs. 1,30,000 (hilly/NE) unit grant, 90–95 days MGNREGA wages, Rs. 12,000 SBM toilet grant, free Ujjwala LPG connection, optional Rs. 70,000 subsidized bank loan.

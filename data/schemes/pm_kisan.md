@@ -59,3 +59,27 @@ Eligible farmers can enroll through the following modes:
   - 2nd Installment: August – November period
   - 3rd Installment: December – March period
 - **Mandatory Compliance:** Beneficiaries must complete e-KYC (biometric via CSC or facial/OTP via PM-KISAN app) to continue receiving installments.
+
+---
+
+## 6. Grievance Redressal & Refund Rules
+- **Grievance Query Portal:** Farmers can register grievances directly on the official PM-KISAN portal using their Registration Number or Mobile Number.
+- **Monitoring Structure:** Multi-tier Grievance Redressal Monitoring Committees operate at District, State, and National levels to resolve registration delays, incorrect rejections, and transfer blocks.
+- **Ineligible Beneficiary Refund Mechanism:** If an ineligible person (such as income-tax payee, constitutional post holder, or government employee) receives installments, the amount must be refunded.
+- **Voluntary Online Refund:** Beneficiaries can repay via the official 'Payment Refund from Individual Farmer' module on pmkisan.gov.in using Aadhaar authentication.
+- **Departmental Recovery:** District agriculture offices and state nodal agencies issue formal demand recovery notices for unrefunded amounts.
+
+---
+
+## 7. PFMS & Bank Disbursal Troubleshooting
+Common transaction and payment failure codes handled by the Public Financial Management System (PFMS):
+- **CBE0061 (UID Never Enabled for DBT):** The beneficiary's bank account is not mapped with NPCI mapper. The farmer must visit the home branch to submit an Aadhaar-DBT consent mandate form.
+- **Demographic Name Mismatch:** Name recorded in PM-KISAN portal does not match the name on Aadhaar or bank passbook. Must be updated online via 'Edit Aadhaar Failure Records'.
+- **Land Seeding Ineligible:** Land record verification flagged as pending or unverified by the local revenue department/Patwari. Farmer must submit physical land documents to the Block Agriculture Officer.
+
+---
+
+## 8. Kisan Credit Card (KCC) Linkage
+- **Concessional Agricultural Credit:** All registered PM-KISAN beneficiaries are entitled to obtain a Kisan Credit Card (KCC) with simplified single-page documentation.
+- **Credit Limit & Subsidized Interest:** Offers collateral-free agricultural crop loans up to Rs. 1,60,000/- and subsidized loans up to Rs. 3,00,000/- at an effective interest rate of 4% per annum (after prompt repayment subvention).
+- **Application Channel:** KCC application can be downloaded from pmkisan.gov.in and submitted with land copy at any commercial, rural, or cooperative bank branch.

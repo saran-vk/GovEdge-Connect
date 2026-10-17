@@ -15,13 +15,22 @@ WORKDIR /app
 # Install uv package manager
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# Copy dependencies first for caching
-COPY pyproject.toml .
-RUN uv pip install --system -e .
+# Copy project configuration and files
+COPY pyproject.toml uv.lock* README.md ./
+COPY gateway/ ./gateway/
+COPY services/ ./services/
+COPY middleware/ ./middleware/
+COPY eval/ ./eval/
+COPY models/ ./models/
+COPY web-ui/ ./web-ui/
+COPY data/ ./data/
 
-# Copy application files
-COPY . .
+# Install application and all dependencies
+RUN uv pip install --system .
 
 EXPOSE 8000
+
+HEALTHCHECK --interval=10s --timeout=5s --retries=3 \
+    CMD curl -f http://localhost:8000/healthz || exit 1
 
 CMD ["uvicorn", "gateway.app:app", "--host", "0.0.0.0", "--port", "8000"]

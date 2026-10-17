@@ -59,6 +59,8 @@ def run_intent_benchmark(save_results: bool = True) -> Dict[str, Any]:
     from sklearn.linear_model import LogisticRegression
     from sklearn.pipeline import FeatureUnion, Pipeline
 
+    from services.nlu.features import DomainKeywordFeature
+
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -66,12 +68,13 @@ def run_intent_benchmark(save_results: bool = True) -> Dict[str, Any]:
     labels = [x["intent"] for x in data]
 
     union = FeatureUnion([
-        ("word", TfidfVectorizer(ngram_range=(1, 2), analyzer="word", min_df=1)),
-        ("char", TfidfVectorizer(ngram_range=(3, 5), analyzer="char_wb", min_df=1)),
+        ("word", TfidfVectorizer(ngram_range=(1, 3), analyzer="word", sublinear_tf=True, min_df=1)),
+        ("char", TfidfVectorizer(ngram_range=(2, 5), analyzer="char_wb", sublinear_tf=True, min_df=1)),
+        ("domain", DomainKeywordFeature()),
     ])
     pipeline = Pipeline([
         ("features", union),
-        ("clf", LogisticRegression(C=10.0, max_iter=300)),
+        ("clf", LogisticRegression(C=15.0, max_iter=500)),
     ])
 
     skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)

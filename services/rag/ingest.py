@@ -142,6 +142,7 @@ class SchemeIngester:
             "pm_kisan": "pm_kisan.md",
             "mgnrega": "mgnrega.md",
             "ayushman_bharat": "ayushman_bharat.md",
+            "pmay_g": "pmay_g.md",
         }
 
         all_doc_entries = []
@@ -169,7 +170,7 @@ class SchemeIngester:
                         source_doc=filename,
                         page=None,
                         lang="en",
-                        corpus_version="1.0",
+                        corpus_version="2.0",
                     )
                 )
                 all_doc_entries.append((chunk_id, doc_str, scheme_name, item["header"], filename))
@@ -208,7 +209,7 @@ class SchemeIngester:
                 "header": e[3],
                 "source_doc": e[4],
                 "lang": "en",
-                "corpus_version": "1.0",
+                "corpus_version": "2.0",
             }
             for e in all_doc_entries
         ]

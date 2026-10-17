@@ -1482,5 +1482,1972 @@
     "intent": "out_of_scope",
     "scheme": null,
     "id": "intent_212"
+  },
+  {
+    "query": "What is the official website link to register for PM-KISAN?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_213"
+  },
+  {
+    "query": "Step by step procedure to complete OTP based e-KYC on PM Kisan portal.",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_214"
+  },
+  {
+    "query": "How to register biometric fingerprint for PM Kisan at CSC kiosk?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_215"
+  },
+  {
+    "query": "Where should I submit my job card application form in Gram Panchayat?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_216"
+  },
+  {
+    "query": "How to submit an oral application for 100 days work in MGNREGA?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_217"
+  },
+  {
+    "query": "How can I download Ayushman Golden Card on beneficiary.nha.gov.in portal?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_218"
+  },
+  {
+    "query": "How to create Ayushman card using PMJAY mobile app?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_219"
+  },
+  {
+    "query": "What is the procedure to link bank account with Aadhaar for PM Kisan?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_220"
+  },
+  {
+    "query": "How do I track my PM-KISAN application status online?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_221"
+  },
+  {
+    "query": "How to apply for Ayushman card at nearest government district hospital?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_222"
+  },
+  {
+    "query": "Steps to register household adult members for MGNREGA employment card.",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_223"
+  },
+  {
+    "query": "How to check Aadhaar seeding status on PM Kisan portal?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_224"
+  },
+  {
+    "query": "பிஎம் கிசான் இ-கேஒய்சி இணையதளத்தில் செய்வது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_225"
+  },
+  {
+    "query": "பொது சேவை மையத்தில் விரல் ரேகை வைத்து பிஎம் கிசான் பதிவு செய்வது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_226"
+  },
+  {
+    "query": "கிராம பஞ்சாயத்து அலுவலகத்தில் 100 நாள் வேலை அட்டைக்கு மனு கொடுப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_227"
+  },
+  {
+    "query": "வேலை அட்டை பெற்ற பிறகு வேலை கேட்டு விண்ணப்பிக்கும் முறை என்ன?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_228"
+  },
+  {
+    "query": "ஆயுஷ்மான் கோல்டன் கார்டு ஆன்லைனில் பதிவிறக்கம் செய்வது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_229"
+  },
+  {
+    "query": "அரசு மருத்துவமனையில் ஆயுஷ்மான் அட்டை எடுக்க விண்ணப்பிக்கும் வழிமுறைகள் என்ன?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_230"
+  },
+  {
+    "query": "பிஎம் கிசான் விண்ணப்பத்தின் நிலையை ஆன்லைனில் பார்ப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_231"
+  },
+  {
+    "query": "ஆயுஷ்மான் மொபைல் ஆப் மூலம் அட்டை விண்ணப்பிப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_232"
+  },
+  {
+    "query": "கிராம நிர்வாக அலுவலரிடம் நில சான்றிதழ் பெற்று பிஎம் கிசான் விண்ணப்பிப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_233"
+  },
+  {
+    "query": "100 நாள் வேலை பெற பஞ்சாயத்து தலைவரிடம் விண்ணப்பம் தருவது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_234"
+  },
+  {
+    "query": "पीएम किसान पोर्टल पर ओटीपी ई-केवाईसी कैसे करें?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_235"
+  },
+  {
+    "query": "सीएससी केंद्र पर बायोमेट्रिक द्वारा पीएम किसान पंजीकरण की प्रक्रिया क्या है?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_236"
+  },
+  {
+    "query": "ग्राम पंचायत सचिव को मनरेगा जॉब कार्ड का आवेदन कैसे दें?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_237"
+  },
+  {
+    "query": "जॉब कार्ड बनने के बाद काम मांगने के लिए फॉर्म 6 कैसे भरें?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_238"
+  },
+  {
+    "query": "beneficiary.nha.gov.in से आयुष्मान कार्ड डाउनलोड कैसे करें?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_239"
+  },
+  {
+    "query": "आयुष्मान ऐप से घर बैठे गोल्डन कार्ड के लिए आवेदन कैसे करें?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_240"
+  },
+  {
+    "query": "पीएम किसान आवेदन की स्थिति (Status) ऑनलाइन कैसे जांचें?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_241"
+  },
+  {
+    "query": "अस्पताल में आयुष्मान मित्र से मिलकर कार्ड कैसे बनवाएं?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_242"
+  },
+  {
+    "query": "मनरेगा में काम मांगने की रसीद ग्राम पंचायत से कैसे लें?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_243"
+  },
+  {
+    "query": "PM-KISAN పోర్టల్ ద్వారా ఆన్‌లైన్‌లో ఎలా దరఖాస్తు చేసుకోవాలి?",
+    "lang": "te",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_244"
+  },
+  {
+    "query": "పీఎం కిసాన్ ఈ-కేవైసీ (e-KYC) ఎలా పూర్తి చేయాలి?",
+    "lang": "te",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_245"
+  },
+  {
+    "query": "గ్రామ పంచాయతీలో ఉపాధి హామీ జాబ్ కార్డు కోసం ఎలా దరఖాస్తు చేయాలి?",
+    "lang": "te",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_246"
+  },
+  {
+    "query": "జాబ్ కార్డు పొందిన తర్వాత పని కోసం దరఖాస్తు చేసుకునే విధానం ఏమిటి?",
+    "lang": "te",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_247"
+  },
+  {
+    "query": "ఆయుష్మాన్ భారత్ గోల్డెన్ కార్డును ఆన్‌లైన్‌లో ఎలా డౌన్‌లోడ్ చేసుకోవాలి?",
+    "lang": "te",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_248"
+  },
+  {
+    "query": "సీఎస్సీ (CSC) కేంద్రంలో ఆయుష్మాన్ కార్డు కోసం ఎలా నమోదు చేసుకోవాలి?",
+    "lang": "te",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_249"
+  },
+  {
+    "query": "పీఎం కిసాన్ దరఖాస్తు స్థితిని ఆన్‌లైన్‌లో ఎలా తనిఖీ చేయాలి?",
+    "lang": "te",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_250"
+  },
+  {
+    "query": "ఉపాధి హామీ పథకంలో పని కావాలని దరఖాస్తు పత్రం ఎక్కడ ఇవ్వాలి?",
+    "lang": "te",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_251"
+  },
+  {
+    "query": "പിഎം കിസാൻ പദ്ധതിയിൽ ഓൺലൈനായി എങ്ങനെ രജിസ്റ്റർ ചെയ്യാം?",
+    "lang": "ml",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_252"
+  },
+  {
+    "query": "പിഎം കിസാൻ പോർട്ടലിൽ ഇ-കെവൈസി (eKYC) എങ്ങനെ പൂർത്തിയാക്കാം?",
+    "lang": "ml",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_253"
+  },
+  {
+    "query": "ഗ്രാമപഞ്ചായത്തിൽ തൊഴിലുറപ്പ് ജോബ് കാർഡിനായി എങ്ങനെ അപേക്ഷിക്കാം?",
+    "lang": "ml",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_254"
+  },
+  {
+    "query": "തൊഴിലുറപ്പ് പദ്ധതിയിൽ ജോലി ആവശ്യപ്പെട്ട് എങ്ങനെയാണ് അപേക്ഷ സമർപ്പിക്കേണ്ടത്?",
+    "lang": "ml",
+    "intent": "apply_process",
+    "scheme": "mgnrega",
+    "id": "intent_255"
+  },
+  {
+    "query": "ആയുഷ്മാൻ ഭാരത് ഗോൾഡൻ കാർഡ് ഓൺലൈനായി എങ്ങനെ ഡൗൺലോഡ് ചെയ്യാം?",
+    "lang": "ml",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_256"
+  },
+  {
+    "query": "അക്ഷയ കേന്ദ്രം വഴി ആയുഷ്മാൻ കാർഡിനായി എങ്ങനെ അപേക്ഷിക്കാം?",
+    "lang": "ml",
+    "intent": "apply_process",
+    "scheme": "ayushman_bharat",
+    "id": "intent_257"
+  },
+  {
+    "query": "പിഎം കിസാൻ അപേക്ഷയുടെ സ്ഥിതി എങ്ങനെ ഓൺലൈനായി പരിശോധിക്കാം?",
+    "lang": "ml",
+    "intent": "apply_process",
+    "scheme": "pm_kisan",
+    "id": "intent_258"
+  },
+  {
+    "query": "What is the exact amount deposited in PM Kisan each 4 months?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_259"
+  },
+  {
+    "query": "How much annual cash benefit is transferred under PM-KISAN?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_260"
+  },
+  {
+    "query": "What is the maximum medical cover provided under Ayushman Bharat per year?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_261"
+  },
+  {
+    "query": "Does Ayushman Bharat provide 5 lakh rupees health insurance?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_262"
+  },
+  {
+    "query": "What is the per day wage rate for MGNREGA manual labour?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_263"
+  },
+  {
+    "query": "How much money does a worker get for 100 days of MGNREGA employment?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_264"
+  },
+  {
+    "query": "How much unemployment allowance is paid if no work is given in 15 days?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_265"
+  },
+  {
+    "query": "Are diagnostic tests and medicine costs included in 5 lakh Ayushman cover?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_266"
+  },
+  {
+    "query": "Total amount credited under PM Kisan in three equal installments.",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_267"
+  },
+  {
+    "query": "What is the daily compensation for delayed wage payment in MGNREGA?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_268"
+  },
+  {
+    "query": "பிஎம் கிசான் திட்டத்தில் நான்கு மாதத்திற்கு ஒருமுறை எத்தனை ரூபாய் பணம் வரும்?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_269"
+  },
+  {
+    "query": "ஆண்டுக்கு 6000 ரூபாய் வங்கி கணக்கில் மூன்று தவணையாக வருகிறதா?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_270"
+  },
+  {
+    "query": "ஆயுஷ்மான் பாரத் திட்டத்தில் 5 லட்சம் ரூபாய் இலவச சிகிச்சை கிடைக்குமா?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_271"
+  },
+  {
+    "query": "100 நாள் வேலை திட்டத்தில் தினசரி கூலி எவ்வளவு பணம் வழங்கப்படுகிறது?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_272"
+  },
+  {
+    "query": "100 நாள் வேலையில் சம்பள பாக்கி ஏற்பட்டால் இழப்பீடு தொகை எவ்வளவு?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_273"
+  },
+  {
+    "query": "மருத்துவமனையில் அனுமதிக்கப்பட்டால் 5 லட்சம் வரை இலவச காப்பீட்டு தொகை உண்டா?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_274"
+  },
+  {
+    "query": "பிஎம் கிசான் தவணைத் தொகை 2000 ரூபாய் எப்போது வங்கி கணக்கில் வரவு வைக்கப்படும்?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_275"
+  },
+  {
+    "query": "15 நாட்களுக்குள் வேலை தராவிட்டால் வேலையின்மை உதவித்தொகை எவ்வளவு பணம் கிடைக்கும்?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_276"
+  },
+  {
+    "query": "पीएम किसान के तहत हर 4 महीने में कितने रुपये की किस्त आती है?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_277"
+  },
+  {
+    "query": "क्या पीएम किसान में सालाना कुल 6000 रुपये की आर्थिक सहायता मिलती है?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_278"
+  },
+  {
+    "query": "आयुष्मान भारत में प्रति परिवार 5 लाख रुपये का स्वास्थ्य कवर मिलता है क्या?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_279"
+  },
+  {
+    "query": "मनरेगा में 100 दिन काम करने पर कुल कितनी मजदूरी मिलेगी?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_280"
+  },
+  {
+    "query": "मनरेगा की दैनिक मजदूरी दर कितने रुपये निर्धारित है?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_281"
+  },
+  {
+    "query": "अगर 15 दिन में काम नहीं मिला तो बेरोजगारी भत्ते की दर क्या होगी?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_282"
+  },
+  {
+    "query": "अस्पताल में भर्ती होने पर 5 लाख रुपये तक का कैशलेस इलाज मिलता है क्या?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_283"
+  },
+  {
+    "query": "పీఎం కిసాన్ పథకం కింద సంవత్సరానికి ఎంత నగదు సహాయం అందుతుంది?",
+    "lang": "te",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_284"
+  },
+  {
+    "query": "ప్రతి నాలుగు నెలలకు పీఎం కిసాన్ వాయిదా కింద ఎంత మొత్తం జమ చేస్తారు?",
+    "lang": "te",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_285"
+  },
+  {
+    "query": "ఆయుష్మాన్ భారత్ కింద ఒక్కో కుటుంబానికి ఎంత ఉచిత వైద్య బీమా లభిస్తుంది?",
+    "lang": "te",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_286"
+  },
+  {
+    "query": "ఉపాధి హామీ పథకంలో రోజువారీ కూలీ ఎంత చెల్లిస్తారు?",
+    "lang": "te",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_287"
+  },
+  {
+    "query": "100 రోజుల పని పూర్తి చేస్తే మొత్తం ఎంత కూలీ డబ్బులు వస్తాయి?",
+    "lang": "te",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_288"
+  },
+  {
+    "query": "పని ఇవ్వకపోతే నిరుద్యోగ భృతి కింద ఎంత మొత్తం చెల్లిస్తారు?",
+    "lang": "te",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_289"
+  },
+  {
+    "query": "ఆయుష్మాన్ భారత్ లో 5 లక్షల రూపాయల వరకు ఉచిత చికిత్స వర్తిస్తుందా?",
+    "lang": "te",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_290"
+  },
+  {
+    "query": "പിഎം കിസാൻ പദ്ധതി വഴി പ്രതിവർഷം എത്ര രൂപയാണ് ലഭിക്കുന്നത്?",
+    "lang": "ml",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_291"
+  },
+  {
+    "query": "നാല് മാസം കൂടുമ്പോൾ എത്ര രൂപയുടെ ഗഡുക്കളാണ് അക്കൗണ്ടിൽ വരുന്നത്?",
+    "lang": "ml",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_292"
+  },
+  {
+    "query": "ആയുഷ്മാൻ ഭാരത് പ്രകാരം ഒരു കുടുംബത്തിന് എത്ര ലക്ഷം രൂപയുടെ ഇൻഷുറൻസ് പരിരക്ഷയുണ്ട്?",
+    "lang": "ml",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_293"
+  },
+  {
+    "query": "തൊഴിലുറപ്പ് പദ്ധതിയിലെ പ്രതിദിന വേതനം എത്ര രൂപയാണ്?",
+    "lang": "ml",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_294"
+  },
+  {
+    "query": "100 ദിവസത്തെ പണി ചെയ്താൽ എത്ര തുക കൂലിയായി ലഭിക്കും?",
+    "lang": "ml",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_295"
+  },
+  {
+    "query": "ജോലി തന്നില്ലെങ്കിൽ തൊഴിലില്ലായ്മ വേതനമായി എത്ര തുക കിട്ടും?",
+    "lang": "ml",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_296"
+  },
+  {
+    "query": "What are the specific eligibility requirements for small and marginal farmers in PM Kisan?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_297"
+  },
+  {
+    "query": "Is a farmer owning more than 2 hectares eligible for PM Kisan?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_298"
+  },
+  {
+    "query": "Are constitutional post holders excluded from PM Kisan Samman Nidhi?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_299"
+  },
+  {
+    "query": "Who is eligible to demand 100 days unskilled manual work in village?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_300"
+  },
+  {
+    "query": "Can migrant workers get MGNREGA work in their home gram panchayat?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_301"
+  },
+  {
+    "query": "Are households in SECC 2011 deprivation list automatically eligible for PMJAY?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_302"
+  },
+  {
+    "query": "Are elderly citizens over 70 eligible for Ayushman Bharat without income limit?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_303"
+  },
+  {
+    "query": "Can doctors, lawyers and engineers receive PM Kisan?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_304"
+  },
+  {
+    "query": "Are women headed rural households eligible for 100 days job card?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_305"
+  },
+  {
+    "query": "சிறு மற்றும் குறு விவசாயிகளுக்கான பிஎம் கிசான் தகுதி வரம்புகள் என்ன?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_306"
+  },
+  {
+    "query": "வருமான வரி கட்டுபவர்கள் பிஎம் கிசான் பெற தகுதியற்றவர்களா?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_307"
+  },
+  {
+    "query": "100 நாள் வேலை செய்ய கிராமத்தில் வசிக்கும் யாருக்கு தகுதி உள்ளது?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_308"
+  },
+  {
+    "query": "70 வயதுக்கு மேற்பட்ட முதியவர்களுக்கு வருமான வரம்பு இல்லாமல் ஆயுஷ்மான் அட்டை கிடைக்குமா?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_309"
+  },
+  {
+    "query": "குடும்பத்தில் உள்ள அனைத்து வயது வந்த உறுப்பினர்களுக்கும் வேலை அட்டை கிடைக்குமா?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_310"
+  },
+  {
+    "query": "சமூக பொருளாதார கணக்கெடுப்பில் உள்ள குடும்பங்கள் ஆயுஷ்மான் காப்பீட்டிற்கு தகுதியானவையா?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_311"
+  },
+  {
+    "query": "पीएम किसान सम्मान निधि योजना के लिए पात्रता की मुख्य शर्तें क्या हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_312"
+  },
+  {
+    "query": "क्या इनकम टैक्स रिटर्न भरने वाले किसान पीएम किसान के पात्र हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_313"
+  },
+  {
+    "query": "मनरेगा में अकुशल शारीरिक श्रम करने के लिए कौन पात्र है?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_314"
+  },
+  {
+    "query": "क्या 70 वर्ष से अधिक आयु के बुजुर्गों को आयुष्मान भारत में बिना आय सीमा के पात्रता है?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_315"
+  },
+  {
+    "query": "एसईसीसी 2011 की वंचित श्रेणी के परिवार क्या आयुष्मान के पात्र हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_316"
+  },
+  {
+    "query": "क्या एक परिवार के कई वयस्क सदस्य मनरेगा जॉब कार्ड के पात्र हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_317"
+  },
+  {
+    "query": "పీఎం కిసాన్ పథకానికి అర్హత ప్రమాణాలు మరియు నిబంధనలు ఏమిటి?",
+    "lang": "te",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_318"
+  },
+  {
+    "query": "ఆదాయపు పన్ను చెల్లించే రైతులు పీఎం కిసాన్ కు అర్హులా కాదా?",
+    "lang": "te",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_319"
+  },
+  {
+    "query": "ఉపాధి హామీ పథకంలో పని చేయడానికి ఎవరెవరు అర్హులు?",
+    "lang": "te",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_320"
+  },
+  {
+    "query": "70 ఏళ్లు పైబడిన వృద్ధులు ఆయుష్మాన్ భారత్ కార్డుకు అర్హులా?",
+    "lang": "te",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_321"
+  },
+  {
+    "query": "SECC 2011 జాబితాలో పేరు ఉన్న పేద కుటుంబాలు ఆయుష్మాన్ కు అర్హులా?",
+    "lang": "te",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_322"
+  },
+  {
+    "query": "പിഎം കിസാൻ പദ്ധതിയിൽ അംഗമാകാനുള്ള യോഗ്യതാ മാനദണ്ഡങ്ങൾ എന്തൊക്കെയാണ്?",
+    "lang": "ml",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_323"
+  },
+  {
+    "query": "ആദായനികുതി അടയ്ക്കുന്നവർക്ക് പിഎം കിസാൻ പദ്ധതിക്ക് അർഹതയുണ്ടോ?",
+    "lang": "ml",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_324"
+  },
+  {
+    "query": "തൊഴിലുറപ്പ് പദ്ധതിയിൽ ജോലി ലഭിക്കാൻ ആർക്കാണ് അർഹതയുള്ളത്?",
+    "lang": "ml",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_325"
+  },
+  {
+    "query": "70 വയസ്സ് കഴിഞ്ഞ മുതിർന്ന പൗരന്മാർക്ക് ആയുഷ്മാൻ കാർഡിന് അർഹതയുണ്ടോ?",
+    "lang": "ml",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_326"
+  },
+  {
+    "query": "എസ്ഇസിസി പട്ടികയിൽ ഉൾപ്പെട്ട കുടുംബങ്ങൾക്ക് ആയുഷ്മാൻ പരിരക്ഷ ലഭിക്കുമോ?",
+    "lang": "ml",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_327"
+  },
+  {
+    "query": "What identity and land ownership documents are required for PM Kisan?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_328"
+  },
+  {
+    "query": "Is land mutation copy (Jamabandi/Khasra) required for PM Kisan registration?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_329"
+  },
+  {
+    "query": "Which documents must be produced at Gram Panchayat for MGNREGA Job Card?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_330"
+  },
+  {
+    "query": "Do I need proof of age and passport photo for MGNREGA enrollment?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_331"
+  },
+  {
+    "query": "What identification documents are needed to verify family for Ayushman Bharat?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_332"
+  },
+  {
+    "query": "Is ration card mandatory for hospital admission under Ayushman Bharat?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_333"
+  },
+  {
+    "query": "Do I need bank account IFSC code and Aadhaar for PM Kisan direct transfer?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_334"
+  },
+  {
+    "query": "பிஎம் கிசான் புதிய பதிவுக்கு பட்டா சிட்டா ஆவணங்கள் தேவையா?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_335"
+  },
+  {
+    "query": "100 நாள் வேலை அட்டை பெற என்ன அடையாள சான்றுகள் சமர்ப்பிக்க வேண்டும்?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_336"
+  },
+  {
+    "query": "ஆயுஷ்மான் கார்டு பெற ஆதார் அட்டை மற்றும் குடும்ப அட்டை ஆவணங்கள் தேவையா?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_337"
+  },
+  {
+    "query": "வங்கி பாஸ்புக் மற்றும் ஆதார் எண் பிஎம் கிசான் திட்டத்திற்கு கட்டாய ஆவணங்களா?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_338"
+  },
+  {
+    "query": "வேலை அட்டை பெற பாஸ்போர்ட் அளவு புகைப்படம் மற்றும் இருப்பிட சான்று ஆவணங்கள் தேவையா?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_339"
+  },
+  {
+    "query": "पीएम किसान के नए पंजीकरण के लिए खतौनी और आधार कार्ड के दस्तावेज चाहिए?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_340"
+  },
+  {
+    "query": "मनरेगा जॉब कार्ड के लिए कौन-कौन से पहचान पत्र और दस्तावेज देने होंगे?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_341"
+  },
+  {
+    "query": "आयुष्मान गोल्डन कार्ड के सत्यापन के लिए कौन से जरूरी दस्तावेज चाहिए?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_342"
+  },
+  {
+    "query": "क्या पीएम किसान के लिए बैंक पासबुक और आधार अनिवार्य दस्तावेज हैं?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_343"
+  },
+  {
+    "query": "जॉब कार्ड बनवाने के लिए क्या राशन कार्ड और निवास प्रमाण पत्र दस्तावेज लगेगा?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_344"
+  },
+  {
+    "query": "పీఎం కిసాన్ పథకంలో నమోదుకు ఏయే పత్రాలు మరియు ఆధారాలు అవసరం?",
+    "lang": "te",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_345"
+  },
+  {
+    "query": "ఉపాధి హామీ జాబ్ కార్డు పొందడానికి ఎలాంటి ధృవీకరణ పత్రాలు సమర్పించాలి?",
+    "lang": "te",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_346"
+  },
+  {
+    "query": "ఆయుష్మాన్ భారత్ కార్డు వెరిఫికేషన్ కోసం రేషన్ కార్డు మరియు ఆధార్ అవసరమా?",
+    "lang": "te",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_347"
+  },
+  {
+    "query": "పీఎం కిసాన్ కొరకు పట్టాదారు పాస్ పుస్తకం మరియు బ్యాంకు ఖాతా వివరాలు సమర్పించాలా?",
+    "lang": "te",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_348"
+  },
+  {
+    "query": "പിഎം കിസാൻ രജിസ്ട്രേഷന് എന്തെല്ലാം രേഖകളാണ് സമർപ്പിക്കേണ്ടത്?",
+    "lang": "ml",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_349"
+  },
+  {
+    "query": "തൊഴിലുറപ്പ് ജോബ് കാർഡ് ലഭിക്കാൻ ഏതൊക്കെ തിരിച്ചറിയൽ രേഖകൾ വേണം?",
+    "lang": "ml",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_350"
+  },
+  {
+    "query": "ആയുഷ്മാൻ കാർഡ് പരിശോധനയ്ക്ക് റേഷൻ കാർഡും ആധാർ കാർഡും ആവശ്യമാണോ?",
+    "lang": "ml",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_351"
+  },
+  {
+    "query": "ഭൂമിയുടെ കരം ഒടുക്കിയ രസീതും ബാങ്ക് പാസ്ബുക്കും ആവശ്യമാണോ?",
+    "lang": "ml",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_352"
+  },
+  {
+    "query": "What is the capital city of France?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_353"
+  },
+  {
+    "query": "How do I book flight tickets from Delhi to Mumbai online?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_354"
+  },
+  {
+    "query": "What are the interest rates for SBI home loans this month?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_355"
+  },
+  {
+    "query": "How to repair a leaking ceiling fan at home?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_356"
+  },
+  {
+    "query": "What is the procedure to get an international passport in India?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_357"
+  },
+  {
+    "query": "How to prepare vegetable biryani step by step?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_358"
+  },
+  {
+    "query": "Who is currently leading the ICC cricket test batsman ranking?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_359"
+  },
+  {
+    "query": "How can I recharge my Airtel mobile phone using UPI?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_360"
+  },
+  {
+    "query": "What are the traffic police fine rules for riding motorcycle without helmet?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_361"
+  },
+  {
+    "query": "How to learn Python programming language for beginners?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_362"
+  },
+  {
+    "query": "What are the stock prices of Reliance Industries today?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_363"
+  },
+  {
+    "query": "Where can I watch the latest Tamil blockbuster movies online?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_364"
+  },
+  {
+    "query": "சென்னையில் இன்று தங்கம் மற்றும் வெள்ளி விலை நிலவரம் என்ன?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_365"
+  },
+  {
+    "query": "வீட்டில் பிரியாணி சுவையாக சமைப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_366"
+  },
+  {
+    "query": "அமேசானில் பொருட்கள் ஆன்லைனில் ஆர்டர் செய்வது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_367"
+  },
+  {
+    "query": "புதிய பாஸ்போர்ட் எடுக்க ஆன்லைனில் விண்ணப்பிக்கும் முறை என்ன?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_368"
+  },
+  {
+    "query": "வங்கி வீட்டு கடன் வட்டி விகிதம் எவ்வளவு உள்ளது?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_369"
+  },
+  {
+    "query": "கூகுள் பே மூலம் மின்சார கட்டணம் செலுத்துவது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_370"
+  },
+  {
+    "query": "ஐபிஎல் கிரிக்கெட் போட்டியில் சென்னை சூப்பர் கிங்ஸ் எப்போது விளையாடுகிறது?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_371"
+  },
+  {
+    "query": "வாகன ஓட்டுநர் உரிமம் ஆன்லைனில் எடுப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_372"
+  },
+  {
+    "query": "भारत के प्रधानमंत्री कौन हैं?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_373"
+  },
+  {
+    "query": "पासपोर्ट बनवाने के लिए ऑनलाइन फॉर्म कैसे भरें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_374"
+  },
+  {
+    "query": "घर पर स्वादिष्ट गुलाब जामुन कैसे बनाएं?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_375"
+  },
+  {
+    "query": "एसबीआई में पर्सनल लोन की ब्याज दर क्या है?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_376"
+  },
+  {
+    "query": "बिजली का बिल ऑनलाइन कैसे जमा करें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_377"
+  },
+  {
+    "query": "ट्रेन की समय सारिणी और सीट उपलब्धता कैसे देखें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_378"
+  },
+  {
+    "query": "मोबाइल फोन का रीचार्ज गूगल पे से कैसे करें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_379"
+  },
+  {
+    "query": "హైదరాబాద్ లో ఈరోజు బంగారం ధర ఎంత ఉంది?",
+    "lang": "te",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_380"
+  },
+  {
+    "query": "రైలు టికెట్ ఆన్‌లైన్‌లో బుక్ చేసుకోవడం ఎలా?",
+    "lang": "te",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_381"
+  },
+  {
+    "query": "ఇంట్లో రుచికరమైన బిర్యానీ ఎలా తయారు చేయాలి?",
+    "lang": "te",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_382"
+  },
+  {
+    "query": "పాస్‌పోర్ట్ కోసం ఆన్‌లైన్‌లో ఎలా దరఖాస్తు చేసుకోవాలి?",
+    "lang": "te",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_383"
+  },
+  {
+    "query": "ఈరోజు క్రికెట్ మ్యాచ్ లో ఎవరు గెలిచారు?",
+    "lang": "te",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_384"
+  },
+  {
+    "query": "బ్యాంకులో హోమ్ లోన్ వడ్డీ రేట్లు ఎలా ఉన్నాయి?",
+    "lang": "te",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_385"
+  },
+  {
+    "query": "ഇന്ന് കേരളത്തിൽ കാലാവസ്ഥ എങ്ങനെയായിരിക്കും?",
+    "lang": "ml",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_386"
+  },
+  {
+    "query": "ട്രെയിൻ ടിക്കറ്റ് ഓൺലൈനായി എങ്ങനെ ബുക്ക് ചെയ്യാം?",
+    "lang": "ml",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_387"
+  },
+  {
+    "query": "പാസ്പോർട്ടിനായി ഓൺലൈനായി എങ്ങനെ അപേക്ഷിക്കാം?",
+    "lang": "ml",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_388"
+  },
+  {
+    "query": "രുചികരമായ സാമ്പാർ എങ്ങനെ ഉണ്ടാക്കാം?",
+    "lang": "ml",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_389"
+  },
+  {
+    "query": "ബാങ്ക് ഭവന വായ്പയുടെ പലിശ നിരക്ക് എത്രയാണ്?",
+    "lang": "ml",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_390"
+  },
+  {
+    "query": "ഇന്നത്തെ സ്വർണ്ണവില എത്രയാണ്?",
+    "lang": "ml",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_391"
+  },
+  {
+    "query": "How to apply for a duplicate PAN card online on NSDL?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_392"
+  },
+  {
+    "query": "How can I apply for an Aadhaar address update online?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_393"
+  },
+  {
+    "query": "How to check my passport application status online on Seva portal?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_394"
+  },
+  {
+    "query": "How to apply for voter ID card in election commission portal?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_395"
+  },
+  {
+    "query": "How to apply for education loan on Vidya Lakshmi portal?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_396"
+  },
+  {
+    "query": "How to book tatkal railway ticket on IRCTC website?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_397"
+  },
+  {
+    "query": "How to link PAN card with bank account online?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_398"
+  },
+  {
+    "query": "How to apply for college scholarship on National Scholarship Portal?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_399"
+  },
+  {
+    "query": "How to renew vehicle insurance policy online?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_400"
+  },
+  {
+    "query": "How to download driving licence from DigiLocker app?",
+    "lang": "en",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_401"
+  },
+  {
+    "query": "புதிய பான் கார்டு விண்ணப்பிப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_402"
+  },
+  {
+    "query": "வாக்காளர் அடையாள அட்டைக்கு ஆன்லைனில் விண்ணப்பிப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_403"
+  },
+  {
+    "query": "பாஸ்போர்ட் விண்ணப்ப நிலையை ஆன்லைனில் பார்ப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_404"
+  },
+  {
+    "query": "டிஜிலாக்கரில் ஓட்டுநர் உரிமம் பதிவிறக்கம் செய்வது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_405"
+  },
+  {
+    "query": "கல்லூரி சேர்க்கை விண்ணப்பம் பூர்த்தி செய்வது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_406"
+  },
+  {
+    "query": "தட்கல் ரயில் டிக்கெட் ஐஆர்சிடிசியில் முன்பதிவு செய்வது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_407"
+  },
+  {
+    "query": "மின்சார கட்டணம் மற்றும் குடிநீர் வரி ஆன்லைனில் செலுத்துவது எப்படி?",
+    "lang": "ta",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_408"
+  },
+  {
+    "query": "नया पैन कार्ड ऑनलाइन कैसे अप्लाई करें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_409"
+  },
+  {
+    "query": "वोटर आईडी कार्ड ऑनलाइन कैसे बनवाएं?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_410"
+  },
+  {
+    "query": "पासपोर्ट सेवा केंद्र पर अपॉइंटमेंट कैसे बुक करें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_411"
+  },
+  {
+    "query": "डिजीलॉकर से ड्राइविंग लाइसेंस कैसे डाउनलोड करें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_412"
+  },
+  {
+    "query": "कॉलेज में एडमिशन के लिए फॉर्म कैसे भरें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_413"
+  },
+  {
+    "query": "आईफोन या सैमसंग फोन का लॉक कैसे खोलें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_414"
+  },
+  {
+    "query": "बिजली का नया कनेक्शन लेने के लिए आवेदन कैसे करें?",
+    "lang": "hi",
+    "intent": "out_of_scope",
+    "scheme": null,
+    "id": "intent_415"
+  },
+  {
+    "query": "Which land record documents like 7/12 or Khasra are required?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_416"
+  },
+  {
+    "query": "Is Aadhaar card mandatory document for PM Kisan farmer verification?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_417"
+  },
+  {
+    "query": "What proof of address and identity documents are needed for Job Card?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_418"
+  },
+  {
+    "query": "List of valid documents required for hospital Ayushman card verification.",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_419"
+  },
+  {
+    "query": "Do I need to submit bank passbook copy document for MGNREGA wages?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_420"
+  },
+  {
+    "query": "What supporting certificate documents are required for PM Kisan online form?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_421"
+  },
+  {
+    "query": "Is ration card or voter ID document required for Ayushman Golden Card?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_422"
+  },
+  {
+    "query": "வேலை அட்டை பெற குடும்ப அட்டை மற்றும் ஆதார் ஆவணங்கள் தேவையா?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_423"
+  },
+  {
+    "query": "பிஎம் கிசான் பதிவுக்கு பட்டா மாறுதல் ஆவணம் மற்றும் ஆதார் அட்டை தேவையா?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_424"
+  },
+  {
+    "query": "ஆயுஷ்மான் பாரத் இலவச மருத்துவத்திற்கு என்னென்ன ஆவணங்கள் சமர்ப்பிக்க வேண்டும்?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_425"
+  },
+  {
+    "query": "வங்கி கணக்கு புத்தக நகல் மற்றும் ஆதார் ஆவணங்கள் வேலை அட்டைக்கு தேவையா?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_426"
+  },
+  {
+    "query": "நில உரிமைக்கான சிட்டா மற்றும் அடங்கல் ஆவணங்கள் பிஎம் கிசானுக்கு சமர்ப்பிக்க வேண்டுமா?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_427"
+  },
+  {
+    "query": "मनरेगा जॉब कार्ड के लिए कौन-कौन से प्रमाण पत्र और दस्तावेज जरूरी हैं?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_428"
+  },
+  {
+    "query": "पीएम किसान के लिए खसरा खतौनी और बैंक पासबुक दस्तावेज अनिवार्य हैं क्या?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_429"
+  },
+  {
+    "query": "आयुष्मान गोल्डन कार्ड बनवाने के लिए क्या राशन कार्ड दस्तावेज चाहिए?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "ayushman_bharat",
+    "id": "intent_430"
+  },
+  {
+    "query": "जॉब कार्ड के आवेदन में कौन से पहचान पत्र और दस्तावेज लगाने होते हैं?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "mgnrega",
+    "id": "intent_431"
+  },
+  {
+    "query": "पीएम किसान के रजिस्ट्रेशन में जमीन के कौन से दस्तावेज अपलोड करने पड़ते हैं?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "pm_kisan",
+    "id": "intent_432"
+  },
+  {
+    "query": "What are the exact eligibility qualification rules for small farmers under PM-KISAN?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_433"
+  },
+  {
+    "query": "Are serving or retired government officers eligible or excluded from PM Kisan?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_434"
+  },
+  {
+    "query": "Who qualifies as an eligible adult member for 100 days MGNREGA work?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_435"
+  },
+  {
+    "query": "Are families living in kutcha one room houses eligible under Ayushman Bharat criteria?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_436"
+  },
+  {
+    "query": "Does PM Kisan exclude institutional landowners and MPs or MLAs?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_437"
+  },
+  {
+    "query": "What is the age requirement and qualification criteria for MGNREGA workers?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_438"
+  },
+  {
+    "query": "அரசு ஓய்வூதியம் பெறுபவர்கள் பிஎம் கிசான் திட்டத்திற்கு தகுதியுடையவர்களா?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_439"
+  },
+  {
+    "query": "கிராமத்தில் வசிக்கும் வயது வந்த அனைவருக்கும் 100 நாள் வேலை செய்ய தகுதி உண்டா?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_440"
+  },
+  {
+    "query": "ஆயுஷ்மான் பாரத் திட்டத்தின் கீழ் இலவச சிகிச்சை பெற தகுதி நிபந்தனைகள் என்ன?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_441"
+  },
+  {
+    "query": "சிறு மற்றும் குறு விவசாயிகளுக்கான தகுதி விதிகள் பிஎம் கிசானில் என்ன?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_442"
+  },
+  {
+    "query": "पीएम किसान योजना में कौन से किसान अपात्र घोषित किए गए हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_443"
+  },
+  {
+    "query": "मनरेगा में 100 दिन का रोजगार पाने के लिए कौन से ग्रामीण पात्र हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "mgnrega",
+    "id": "intent_444"
+  },
+  {
+    "query": "क्या 10000 से अधिक मासिक पेंशन पाने वाले किसान पीएम किसान के पात्र हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "pm_kisan",
+    "id": "intent_445"
+  },
+  {
+    "query": "आयुष्मान भारत योजना के तहत मुफ्त इलाज पाने की क्या पात्रता शर्तें हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "ayushman_bharat",
+    "id": "intent_446"
+  },
+  {
+    "query": "What is the annual financial assistance money given in PM Kisan scheme?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_447"
+  },
+  {
+    "query": "How many rupees are credited per installment under PM-KISAN bank transfer?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_448"
+  },
+  {
+    "query": "What is the daily wage money paid per day of work in MGNREGA?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_449"
+  },
+  {
+    "query": "How many rupees of free health cover does Ayushman Bharat provide per year?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_450"
+  },
+  {
+    "query": "What is the maximum money limit of 5 lakh coverage in Ayushman hospital bill?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_451"
+  },
+  {
+    "query": "What is the unemployment allowance compensation money if work is delayed?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_452"
+  },
+  {
+    "query": "பிஎம் கிசான் திட்டத்தில் ஆண்டுக்கு எத்தனை ரூபாய் நிதி உதவி பணம் வருகிறது?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_453"
+  },
+  {
+    "query": "100 நாள் வேலை திட்டத்தில் தினக்கூலி தொகை எத்தனை ரூபாய் நிர்ணயிக்கப்பட்டுள்ளது?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_454"
+  },
+  {
+    "query": "ஆயுஷ்மான் பாரத் திட்டத்தில் 5 லட்சம் ரூபாய் வரை மருத்துவ உதவி தொகை கிடைக்குமா?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_455"
+  },
+  {
+    "query": "ஒவ்வொரு தவணையிலும் 2000 ரூபாய் நிதி உதவி எப்போது கணக்கில் சேரும்?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_456"
+  },
+  {
+    "query": "पीएम किसान सम्मान निधि में सालाना कुल कितने रुपये की धनराशि मिलती है?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_457"
+  },
+  {
+    "query": "मनरेगा में मजदूरों को प्रतिदिन कितने रुपये मजदूरी दर मिलती है?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "mgnrega",
+    "id": "intent_458"
+  },
+  {
+    "query": "आयुष्मान कार्ड में 5 लाख रुपये तक का मुफ्त इलाज खर्च मिलता है क्या?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "ayushman_bharat",
+    "id": "intent_459"
+  },
+  {
+    "query": "हर किस्त में 2000 रुपये की सहायता राशि कितने महीनों में आती है?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "pm_kisan",
+    "id": "intent_460"
+  },
+  {
+    "query": "Who is eligible for PMAY-G rural housing scheme?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pmay_g",
+    "id": "intent_461"
+  },
+  {
+    "query": "Are homeless families and kutcha house dwellers eligible for PMAY-G?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pmay_g",
+    "id": "intent_462"
+  },
+  {
+    "query": "Can motorized vehicle or tractor owners be eligible for PMAY rural housing?",
+    "lang": "en",
+    "intent": "check_eligibility",
+    "scheme": "pmay_g",
+    "id": "intent_463"
+  },
+  {
+    "query": "கச்சா வீடு உள்ளவர்கள் பிஎம் ஆவாஸ் யோஜனா திட்டத்திற்கு தகுதியானவர்களா?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "pmay_g",
+    "id": "intent_464"
+  },
+  {
+    "query": "வீடற்ற ஏழை மக்களுக்கு பிஎம் ஆவாஸ் திட்டத்தில் தகுதி விதிகள் என்ன?",
+    "lang": "ta",
+    "intent": "check_eligibility",
+    "scheme": "pmay_g",
+    "id": "intent_465"
+  },
+  {
+    "query": "पीएम आवास योजना ग्रामीण के लिए कौन से परिवार पात्र हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "pmay_g",
+    "id": "intent_466"
+  },
+  {
+    "query": "क्या कच्चे मकान में रहने वाले परिवार पीएम आवास के पात्र हैं?",
+    "lang": "hi",
+    "intent": "check_eligibility",
+    "scheme": "pmay_g",
+    "id": "intent_467"
+  },
+  {
+    "query": "పీఎం ఆవాస్ యోజన గ్రామీణ పథకానికి అర్హత ప్రమాణాలు ఏమిటి?",
+    "lang": "te",
+    "intent": "check_eligibility",
+    "scheme": "pmay_g",
+    "id": "intent_468"
+  },
+  {
+    "query": "പിഎം ആവാസ് യോജന ഗ്രാമീൺ ഭവന പദ്ധതിക്ക് ആർക്കാണ് അർഹതയുള്ളത്?",
+    "lang": "ml",
+    "intent": "check_eligibility",
+    "scheme": "pmay_g",
+    "id": "intent_469"
+  },
+  {
+    "query": "What is the financial grant amount of 120000 under PMAY-G in plain areas?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "pmay_g",
+    "id": "intent_470"
+  },
+  {
+    "query": "How much money is provided for house construction in hilly northeastern states in PMAY-G?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "pmay_g",
+    "id": "intent_471"
+  },
+  {
+    "query": "How many days of MGNREGA wage assistance is provided under PMAY-G?",
+    "lang": "en",
+    "intent": "benefit_amount",
+    "scheme": "pmay_g",
+    "id": "intent_472"
+  },
+  {
+    "query": "பிஎம் ஆவாஸ் யோஜனா திட்டத்தில் வீடு கட்ட எத்தனை ரூபாய் நிதி உதவி கிடைக்கிறது?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "pmay_g",
+    "id": "intent_473"
+  },
+  {
+    "query": "சமவெளிப் பகுதிகளில் வீடு கட்ட 1 லட்சத்து 20 ஆயிரம் ரூபாய் பணம் வழங்கப்படுகிறதா?",
+    "lang": "ta",
+    "intent": "benefit_amount",
+    "scheme": "pmay_g",
+    "id": "intent_474"
+  },
+  {
+    "query": "पीएम आवास योजना में पक्का मकान बनाने के लिए कितने रुपये की सहायता मिलती है?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "pmay_g",
+    "id": "intent_475"
+  },
+  {
+    "query": "क्या पहाड़ी राज्यों में पीएम आवास के तहत 1 लाख 30 हजार रुपये मिलते हैं?",
+    "lang": "hi",
+    "intent": "benefit_amount",
+    "scheme": "pmay_g",
+    "id": "intent_476"
+  },
+  {
+    "query": "పీఎం ఆవాస్ యోజన కింద ఇల్లు నిర్మించుకోవడానికి ఎంత నగదు లభిస్తుంది?",
+    "lang": "te",
+    "intent": "benefit_amount",
+    "scheme": "pmay_g",
+    "id": "intent_477"
+  },
+  {
+    "query": "പിഎം ആവാസ് യോജന പ്രകാരം വീട് നിർമ്മാണത്തിന് എത്ര ലക്ഷം രൂപയാണ് ലഭിക്കുന്നത്?",
+    "lang": "ml",
+    "intent": "benefit_amount",
+    "scheme": "pmay_g",
+    "id": "intent_478"
+  },
+  {
+    "query": "What documents like Aadhaar, bank passbook and job card are needed for PMAY-G?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "pmay_g",
+    "id": "intent_479"
+  },
+  {
+    "query": "Is land possession certificate patta document mandatory for PMAY housing?",
+    "lang": "en",
+    "intent": "documents_needed",
+    "scheme": "pmay_g",
+    "id": "intent_480"
+  },
+  {
+    "query": "பிஎம் ஆவாஸ் வீடு கட்ட என்ன ஆவணங்கள் மற்றும் பட்டா சான்று தேவை?",
+    "lang": "ta",
+    "intent": "documents_needed",
+    "scheme": "pmay_g",
+    "id": "intent_481"
+  },
+  {
+    "query": "पीएम आवास योजना ग्रामीण के लिए कौन-कौन से पहचान पत्र और दस्तावेज चाहिए?",
+    "lang": "hi",
+    "intent": "documents_needed",
+    "scheme": "pmay_g",
+    "id": "intent_482"
+  },
+  {
+    "query": "పీఎం ఆవాస్ పథకం కొరకు ఎలాంటి ధృవీకరణ పత్రాలు సమర్పించాలి?",
+    "lang": "te",
+    "intent": "documents_needed",
+    "scheme": "pmay_g",
+    "id": "intent_483"
+  },
+  {
+    "query": "പിഎം ആവാസ് ഗ്രാമീൺ പദ്ധതിയിൽ അപേക്ഷിക്കാൻ എന്തെല്ലാം രേഖകൾ വേണം?",
+    "lang": "ml",
+    "intent": "documents_needed",
+    "scheme": "pmay_g",
+    "id": "intent_484"
+  },
+  {
+    "query": "How to check name in SECC Awaas+ list for PMAY-G on pmayg.nic.in portal?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "pmay_g",
+    "id": "intent_485"
+  },
+  {
+    "query": "How are construction inspection stages tracked using AwaasApp mobile application?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "pmay_g",
+    "id": "intent_486"
+  },
+  {
+    "query": "How to track PMAY-G FTO and installment payment status online?",
+    "lang": "en",
+    "intent": "apply_process",
+    "scheme": "pmay_g",
+    "id": "intent_487"
+  },
+  {
+    "query": "பிஎம் ஆவாஸ் பட்டியலில் பெயர் உள்ளதா என்பதை ஆன்லைனில் பார்ப்பது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "pmay_g",
+    "id": "intent_488"
+  },
+  {
+    "query": "ஆவாஸ்ஆப் மூலம் வீடு கட்டும் புகைப்படங்கள் ஆய்வு செய்வது எப்படி?",
+    "lang": "ta",
+    "intent": "apply_process",
+    "scheme": "pmay_g",
+    "id": "intent_489"
+  },
+  {
+    "query": "पीएम आवास योजना ग्रामीण की लिस्ट में अपना नाम कैसे चेक करें?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "pmay_g",
+    "id": "intent_490"
+  },
+  {
+    "query": "आवास ऐप से घर के निर्माण की जियो-टैगिंग फोटो कैसे अपलोड होती है?",
+    "lang": "hi",
+    "intent": "apply_process",
+    "scheme": "pmay_g",
+    "id": "intent_491"
+  },
+  {
+    "query": "పీఎం ఆవాస్ యోజన లబ్ధిదారుల జాబితాలో పేరు ఎలా పరిశీలించాలి?",
+    "lang": "te",
+    "intent": "apply_process",
+    "scheme": "pmay_g",
+    "id": "intent_492"
+  },
+  {
+    "query": "പിഎം ആവാസ് ഗ്രാമീൺ മുൻഗണനാ ലിസ്റ്റിൽ പേര് എങ്ങനെ പരിശോധിക്കാം?",
+    "lang": "ml",
+    "intent": "apply_process",
+    "scheme": "pmay_g",
+    "id": "intent_493"
   }
 ]

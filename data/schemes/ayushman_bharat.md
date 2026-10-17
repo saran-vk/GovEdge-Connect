@@ -62,3 +62,26 @@ PM-JAY has no enrollment fee or subscription process; beneficiaries are automati
 - **Pre & Post Hospitalization:** Covers up to 3 days of pre-hospitalization consultations/diagnostics and up to 15 days of post-hospitalization medication and follow-up care.
 - **Pre-existing Conditions:** All pre-existing medical conditions are covered from day one of enrollment without waiting periods.
 - **Portability:** Benefits are national and fully portable across any empanelled hospital in India.
+
+---
+
+## 6. High-End Specialty Treatment Packages
+PM-JAY covers tertiary interventions across 1,949 pre-notified health benefit packages:
+- **Cardiology & Cardiothoracic Surgery:** Angioplasty with drug-eluting stents, coronary artery bypass graft (CABG), valve replacements, and pacemaker implantations.
+- **Oncology (Cancer Treatment):** Comprehensive surgical oncology, chemotherapy cycles, immunotherapy, and linear accelerator radiotherapy.
+- **Nephrology & Urology:** Hemodialysis, peritoneal dialysis, renal stone interventions, and kidney transplant surgical packages.
+- **Orthopedics & Polytrauma:** Hip and knee joint replacements, spinal decompression and fixation, and emergency intensive care polytrauma management.
+
+---
+
+## 7. National Portability & Multi-Hospital Treatment
+- **Interstate Healthcare Access:** Beneficiaries can seek cashless treatment at any empanelled hospital (public or private) anywhere in India without requiring prior State transfer certificates or referrals.
+- **Empanelled Network:** Covers over 28,000+ public and private hospitals across the country connected via the National Health Authority Transaction Management System (TMS).
+- **Ayushman Mitra Assistance:** Present at hospital admission desks 24/7 to facilitate patient e-KYC, doctor allocation, package selection, and discharge authorization.
+
+---
+
+## 8. Grievance Helpline (14555) & Anti-Fraud Guidelines
+- **Toll-Free National Helpline:** Citizens can dial **14555** or **1800-111-565** (24/7 toll-free) for eligibility checks, empanelled hospital searches, and filing grievances.
+- **Zero Out-of-Pocket Cost Rule:** Empanelled hospitals are strictly forbidden from charging patients for medicines, consumables, bed charges, or diagnostic tests covered under the authorized package.
+- **National Anti-Fraud Unit (NAFU):** Monitors abnormal claim spikes, phantom surgeries, and illegal co-payments. Patients can report fraud or demands for bribes directly through the grievance portal (grievance.pmjay.gov.in) or district health authorities.

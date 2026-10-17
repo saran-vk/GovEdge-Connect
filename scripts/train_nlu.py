@@ -14,6 +14,8 @@ DATA_PATH = Path(__file__).parent.parent / "data" / "intents" / "intent_dataset.
 MODEL_PATH = Path(__file__).parent.parent / "models" / "indicbert_nlu.joblib"
 
 
+from services.nlu.features import DomainKeywordFeature
+
 def train_nlu():
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -22,13 +24,14 @@ def train_nlu():
     labels = [x["intent"] for x in data]
 
     union = FeatureUnion([
-        ("word", TfidfVectorizer(ngram_range=(1, 2), analyzer="word", min_df=1)),
-        ("char", TfidfVectorizer(ngram_range=(3, 5), analyzer="char_wb", min_df=1)),
+        ("word", TfidfVectorizer(ngram_range=(1, 3), analyzer="word", sublinear_tf=True, min_df=1)),
+        ("char", TfidfVectorizer(ngram_range=(2, 5), analyzer="char_wb", sublinear_tf=True, min_df=1)),
+        ("domain", DomainKeywordFeature()),
     ])
 
     pipeline = Pipeline([
         ("features", union),
-        ("clf", LogisticRegression(C=10.0, max_iter=300)),
+        ("clf", LogisticRegression(C=15.0, max_iter=500)),
     ])
 
     pipeline.fit(texts, labels)

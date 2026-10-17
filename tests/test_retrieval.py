@@ -44,6 +44,34 @@ RETRIEVAL_TEST_CASES = [
     {"scheme": "ayushman_bharat", "query": "Does Ayushman Bharat cover cashless secondary and tertiary hospitalization?", "expected_keywords": ["cashless", "secondary", "tertiary", "hospital"]},
     {"scheme": "ayushman_bharat", "query": "Are pre-existing diseases and medical conditions covered?", "expected_keywords": ["pre-existing", "day one", "covered"]},
     {"scheme": "ayushman_bharat", "query": "How to download Ayushman Card PDF after approval?", "expected_keywords": ["card", "download", "pvc", "ayushman"]},
+
+    # Operational Additions: PM-KISAN (3 queries)
+    {"scheme": "pm_kisan", "query": "How can an ineligible farmer refund PM-KISAN installment online?", "expected_keywords": ["refund", "ineligible", "voluntary"]},
+    {"scheme": "pm_kisan", "query": "What should I do if PFMS shows CBE0061 UID never enabled for DBT?", "expected_keywords": ["cbe0061", "dbt", "mandate", "npci"]},
+    {"scheme": "pm_kisan", "query": "Can PM Kisan beneficiaries get a Kisan Credit Card KCC loan at 4 percent?", "expected_keywords": ["kcc", "credit", "loan", "4%"]},
+
+    # Operational Additions: MGNREGA (4 queries)
+    {"scheme": "mgnrega", "query": "Are water harvesting and check dams permissible under Category A NRM works?", "expected_keywords": ["natural resource", "water conservation", "permissible"]},
+    {"scheme": "mgnrega", "query": "How is worker attendance captured using NMMS mobile app?", "expected_keywords": ["nmms", "attendance", "geo-tagged", "photographs"]},
+    {"scheme": "mgnrega", "query": "What facilities like drinking water, first-aid, and crèche are mandated at worksite?", "expected_keywords": ["drinking water", "first-aid", "crèche", "shade"]},
+    {"scheme": "mgnrega", "query": "What is the wage delay compensation percentage per day after 15 days?", "expected_keywords": ["0.05%", "delay compensation", "unpaid wage"]},
+
+    # Operational Additions: Ayushman Bharat (3 queries)
+    {"scheme": "ayushman_bharat", "query": "Does PM-JAY cover cancer chemotherapy oncology and heart bypass surgery?", "expected_keywords": ["oncology", "chemotherapy", "cardiology", "surgical"]},
+    {"scheme": "ayushman_bharat", "query": "Can I get cashless hospital treatment in another state outside my hometown?", "expected_keywords": ["portability", "interstate", "empanelled"]},
+    {"scheme": "ayushman_bharat", "query": "What is the toll-free helpline number 14555 to report hospital fraud?", "expected_keywords": ["14555", "helpline", "toll-free", "anti-fraud"]},
+
+    # New Scheme: PMAY-G (10 queries)
+    {"scheme": "pmay_g", "query": "What is the unit financial assistance amount for building house in plain areas?", "expected_keywords": ["1,20,000", "plain", "assistance"]},
+    {"scheme": "pmay_g", "query": "What is the assistance amount for hilly and northeastern states in PMAY-G?", "expected_keywords": ["1,30,000", "hilly", "north-eastern"]},
+    {"scheme": "pmay_g", "query": "How many days of MGNREGA unskilled labour wages are provided for house construction?", "expected_keywords": ["90", "95", "person-days", "mgnrega"]},
+    {"scheme": "pmay_g", "query": "How are construction inspection stages tracked using AwaasApp mobile photos?", "expected_keywords": ["awaasapp", "geo-tagged", "photographs", "inspection"]},
+    {"scheme": "pmay_g", "query": "What are the exclusion criteria like motorized vehicles or KCC limit in PMAY-G?", "expected_keywords": ["exclusion", "motorized", "50,000", "vehicle"]},
+    {"scheme": "pmay_g", "query": "How are the three installments disbursed across foundation and roof cast stages?", "expected_keywords": ["installment", "first", "second", "roof-cast"]},
+    {"scheme": "pmay_g", "query": "What is the Rural Mason Training program for disaster resilient houses?", "expected_keywords": ["rural mason", "training", "disaster-resilient", "nsqf"]},
+    {"scheme": "pmay_g", "query": "How do landless rural households get homestead land for PMAY house?", "expected_keywords": ["landless", "homestead", "residential land"]},
+    {"scheme": "pmay_g", "query": "Does PM-JANMAN mission provide fast track houses for vulnerable tribal groups?", "expected_keywords": ["pm-janman", "pvtg", "tribal", "vulnerable"]},
+    {"scheme": "pmay_g", "query": "How can beneficiaries track their FTO and inspection photos on pmayg.nic.in?", "expected_keywords": ["pmayg.nic.in", "fto", "registration", "tracking"]},
 ]
 
 

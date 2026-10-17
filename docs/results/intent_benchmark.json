@@ -1,75 +1,75 @@
 {
-  "accuracy": 0.7028,
-  "total": 212,
-  "correct": 149,
-  "target_met": false,
+  "accuracy": 0.8682,
+  "total": 493,
+  "correct": 428,
+  "target_met": true,
   "per_class": {
     "apply_process": {
-      "precision": 0.6098,
-      "recall": 0.6098,
-      "f1": 0.6098,
-      "support": 41
+      "precision": 0.8061,
+      "recall": 0.8229,
+      "f1": 0.8144,
+      "support": 96
     },
     "benefit_amount": {
-      "precision": 0.7647,
-      "recall": 0.619,
-      "f1": 0.6842,
-      "support": 42
+      "precision": 0.88,
+      "recall": 0.8544,
+      "f1": 0.867,
+      "support": 103
     },
     "check_eligibility": {
-      "precision": 0.642,
-      "recall": 0.8525,
-      "f1": 0.7324,
-      "support": 61
+      "precision": 0.8909,
+      "recall": 0.8522,
+      "f1": 0.8711,
+      "support": 115
     },
     "documents_needed": {
-      "precision": 0.8571,
-      "recall": 0.7895,
-      "f1": 0.8219,
-      "support": 38
+      "precision": 0.9467,
+      "recall": 0.8256,
+      "f1": 0.882,
+      "support": 86
     },
     "out_of_scope": {
-      "precision": 0.7619,
-      "recall": 0.5333,
-      "f1": 0.6275,
-      "support": 30
+      "precision": 0.8364,
+      "recall": 0.9892,
+      "f1": 0.9064,
+      "support": 93
     }
   },
   "confusion_matrix": {
     "apply_process": {
-      "apply_process": 25,
-      "benefit_amount": 3,
+      "apply_process": 79,
+      "benefit_amount": 5,
       "check_eligibility": 6,
-      "documents_needed": 4,
+      "documents_needed": 3,
       "out_of_scope": 3
     },
     "benefit_amount": {
-      "apply_process": 1,
-      "benefit_amount": 26,
-      "check_eligibility": 15,
-      "documents_needed": 0,
-      "out_of_scope": 0
-    },
-    "check_eligibility": {
-      "apply_process": 2,
-      "benefit_amount": 5,
-      "check_eligibility": 52,
-      "documents_needed": 1,
-      "out_of_scope": 1
-    },
-    "documents_needed": {
       "apply_process": 4,
-      "benefit_amount": 0,
-      "check_eligibility": 3,
-      "documents_needed": 30,
-      "out_of_scope": 1
-    },
-    "out_of_scope": {
-      "apply_process": 9,
-      "benefit_amount": 0,
+      "benefit_amount": 88,
       "check_eligibility": 5,
       "documents_needed": 0,
-      "out_of_scope": 16
+      "out_of_scope": 6
+    },
+    "check_eligibility": {
+      "apply_process": 5,
+      "benefit_amount": 6,
+      "check_eligibility": 98,
+      "documents_needed": 1,
+      "out_of_scope": 5
+    },
+    "documents_needed": {
+      "apply_process": 9,
+      "benefit_amount": 1,
+      "check_eligibility": 1,
+      "documents_needed": 71,
+      "out_of_scope": 4
+    },
+    "out_of_scope": {
+      "apply_process": 1,
+      "benefit_amount": 0,
+      "check_eligibility": 0,
+      "documents_needed": 0,
+      "out_of_scope": 92
     }
   }
 }

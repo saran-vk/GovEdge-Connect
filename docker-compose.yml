@@ -25,8 +25,15 @@ services:
       - RUNTIME_MODE=${RUNTIME_MODE:-mock}
       - REDIS_URL=redis://redis:6379/0
       - CHROMA_PERSIST_DIR=/app/data/chroma
+      - CONF_THRESHOLD=0.80
+      - USE_NMT=true
     volumes:
       - ./data:/app/data
+      - ./models:/app/models
+      - ./services:/app/services
+      - ./gateway:/app/gateway
+      - ./web-ui:/app/web-ui
+      - ./middleware:/app/middleware
     depends_on:
       redis:
         condition: service_healthy

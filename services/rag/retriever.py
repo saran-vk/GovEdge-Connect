@@ -3,6 +3,7 @@ RAG retriever service querying ChromaDB with metadata filtering,
 dense similarity search, and lexical re-ranking for maximum recall.
 """
 
+import os
 import time
 from typing import List, Optional, Tuple
 import chromadb
@@ -16,10 +17,10 @@ class RAGRetriever:
 
     def __init__(
         self,
-        persist_dir: str = "./data/chroma",
+        persist_dir: Optional[str] = None,
         collection_name: str = "govconnect_schemes",
     ):
-        self.persist_dir = persist_dir
+        self.persist_dir = persist_dir or os.getenv("CHROMA_PERSIST_DIR", "./data/chroma")
         self.collection_name = collection_name
         self.embedding_fn = HybridFastEmbeddingFunction()
 
